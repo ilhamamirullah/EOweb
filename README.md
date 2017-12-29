@@ -1,4 +1,4 @@
 # EOweb
 Event Organizer Website
 
-Template: AdminLTE
+Template: AdminLTE https://github.com/almasaeed2010/AdminLTE

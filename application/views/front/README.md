@@ -1,2 +1,0 @@
-# EOweb
-Event Organizer Website

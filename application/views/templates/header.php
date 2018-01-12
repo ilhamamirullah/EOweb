@@ -73,10 +73,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo base_url();?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo base_url();?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -116,8 +116,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
-          <a href="index.html">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -152,30 +152,30 @@
           </ul>
         </li> -->
         <li class="treeview">
-          <a href="#">
+          <a href="<?php echo base_url();?>">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i>A1</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i>A2</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i>A3</a></li>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/debindo/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>debindo/event1"><i class="fa fa-circle-o"></i>A1</a></li>
+            <li><a href="<?php echo base_url();?>"><i class="fa fa-circle-o"></i>A2</a></li>
+            <li><a href="<?php echo base_url();?>"><i class="fa fa-circle-o"></i>A3</a></li>
           </ul>
         </li>
-        <li>
-          <a href="pages/myclient.php">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/debindo/myclient' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>debindo/myclient">
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>
         </li>
-        <li>
-          <a href="pages/tables/data.html">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/debindo/company' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>debindo/company">
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
         <li>
-          <a href="pages/tables/data.html">
+          <a href="<?php echo base_url();?>">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>
@@ -202,8 +202,8 @@
           </ul>
         </li> -->
         <li class="header">Account</li>
-        <li><a href="#"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+        <li><a href="<?php echo base_url();?>"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
+        <li><a href="<?php echo base_url();?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -23,4 +23,11 @@ class debindo extends CI_Controller {
     $this->load->view('pages/company');
     $this->load->view('templates/footer');
   }
+
+	public function event1()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('pages/event');
+		$this->load->view('templates/footer');
+	}
 }

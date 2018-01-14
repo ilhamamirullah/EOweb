@@ -26,7 +26,7 @@ class debindo extends CI_Controller {
 
   public function company()
   {
-		$data['user'] = $this->m_data->tampil_data()->result();
+		$data['company'] = $this->m_data->tampil_data()->result();
     $this->load->view('templates/header');
     $this->load->view('pages/company',$data);
     $this->load->view('templates/footer');

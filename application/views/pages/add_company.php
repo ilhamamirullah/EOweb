@@ -75,7 +75,7 @@
                   <div class="form-group">
              	      <label for="pic_contact" class ="control-label col-sm-2">PIC Contact</label>
              		<div class="col-sm-8">
-             	      <input type="pic_contact" class="form-control" id="pic_contact" placeholder="Enter pic_contact">
+             	      <input type="pic_contact" class="form-control" id="pic_contact" placeholder="Enter pic contact">
              		</div>
              	    </div>
                   <br>

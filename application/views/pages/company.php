@@ -9,8 +9,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li class="active">Company</li>
       </ol>
     </section>
 
@@ -28,6 +27,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>No</th>
                   <th>Company Name</th>
                   <th>Category</th>
                   <th>PIC</th>
@@ -38,33 +38,21 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php
+                		$no = 1;
+                		foreach($company as $company2){
+                	?>
                 <tr>
-                  <td>PT. Agung Abadi Sejahtera</td>
-                  <td>Craft</td>
-                  <td>Ilham Amirullah</td>
-                  <td>081517147321</td>
-                  <td>emailrahasia@rahasia.com</td>
-                  <td>JustLion</td>
-                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $company2->name ?></td>
+                  <td><?php echo $company2->id_category ?></td>
+                  <td><?php echo $company2->pic ?></td>
+                  <td><?php echo $company2->contact_pic ?></td>
+                  <td><?php echo $company2->email_pic ?></td>
+                  <td><?php echo $company2->address ?></td>
+                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-danger btn-xs">delete</a> </td>
                 </tr>
-                <tr>
-                  <td>PT. Jaya Makmur</td>
-                  <td>Consumer Goods</td>
-                  <td>Yandra Budianto </td>
-                  <td>081313006441</td>
-                  <td>yandra@debindo.com</td>
-                  <td>Jakarta</td>
-                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
-                </tr>
-                <tr>
-                  <td>PT. Cyber Intertama</td>
-                  <td>Techonolgy</td>
-                  <td>Nabil Iswar Siregar</td>
-                  <td>081572892831</td>
-                  <td>nabil@cyber.com</td>
-                  <td>Bojong Gede</td>
-                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
-                </tr>
+              <?php } ?>
                 </tbody>
               </table>
             </div>

@@ -21,7 +21,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Company List</h3>
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>debindo/add_company" class="btn btn-primary btn-sm" >Add Company</a> </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -34,6 +34,7 @@
                   <th>PIC Number</th>
                   <th>PIC Email</th>
                   <th>Address</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,7 @@
                   <td>081517147321</td>
                   <td>emailrahasia@rahasia.com</td>
                   <td>JustLion</td>
+                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
                 </tr>
                 <tr>
                   <td>PT. Jaya Makmur</td>
@@ -52,6 +54,7 @@
                   <td>081313006441</td>
                   <td>yandra@debindo.com</td>
                   <td>Jakarta</td>
+                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
                 </tr>
                 <tr>
                   <td>PT. Cyber Intertama</td>
@@ -60,22 +63,7 @@
                   <td>081572892831</td>
                   <td>nabil@cyber.com</td>
                   <td>Bojong Gede</td>
-                </tr>
-                <tr>
-                  <td>Batik Azizih</td>
-                  <td>Craft</td>
-                  <td>Abdul Aziz</td>
-                  <td>081517147321</td>
-                  <td>abdulaziz@gmail.com</td>
-                  <td>Bogor</td>
-                </tr>
-                <tr>
-                  <td>PT. Apa Ajalah</td>
-                  <td>Consumer Goods</td>
-                  <td>Yoga Bagasakthi</td>
-                  <td>081313006441</td>
-                  <td>yogabagashakti@yahoo.co.id</td>
-                  <td>Jakarta</td>
+                  <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-success btn-xs">delete</a> </td>
                 </tr>
                 </tbody>
               </table>

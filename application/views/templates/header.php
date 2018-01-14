@@ -27,6 +27,22 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker from form advvance -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs from form advvance -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/all.css">
+  <!-- Bootstrap Color Picker from form advvance-->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap time Picker from form advvance-->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/timepicker/bootstrap-timepicker.min.css">
+  <!-- Select2 from form advvance -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/select2/dist/css/select2.min.css">
+  <!-- Theme style from form advvance -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+      folder instead of downloading all of them to reduce the load. from form advvance -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/skins/_all-skins.min.css">
+
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
@@ -169,7 +185,7 @@
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/debindo/company' ): ?> class="active"<?php endif; ?>>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/debindo/company' || $_SERVER['REQUEST_URI'] == '/debindo/debindo/add_company' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>debindo/company">
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>

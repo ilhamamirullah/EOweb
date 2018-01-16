@@ -47,8 +47,8 @@
                   <td><?php echo $company2->name ?></td>
                   <td><?php echo $company2->id_category ?></td>
                   <td><?php echo $company2->pic ?></td>
-                  <td><?php echo $company2->contact_pic ?></td>
-                  <td><?php echo $company2->email_pic ?></td>
+                  <td><?php echo $company2->pic_contact ?></td>
+                  <td><?php echo $company2->email ?></td>
                   <td><?php echo $company2->address ?></td>
                   <td> <a href="#" class="btn-success btn-xs">edit</a> | <a href="#" class="btn-danger btn-xs">delete</a> </td>
                 </tr>

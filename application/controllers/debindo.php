@@ -51,21 +51,61 @@ class debindo extends CI_Controller {
 		$id_category = $this->input->post('id_category');
 		$name = $this->input->post('name');
 		$address = $this->input->post('address');
-		$email = $this->input->post('email');
 		$website = $this->input->post('website');
 		$pic = $this->input->post('pic');
-		$pic_contact = $this->input->post('pic_contact');
+		$email_pic = $this->input->post('email_pic');
+		$contact_pic = $this->input->post('contact_pic');
 		$data = array(
 			'id_category' => $id_category,
 			'name' => $name,
 			'address' => $address,
-			'email' => $email,
 			'website' => $website,
 			'pic' => $pic,
-			'pic_contact' => $pic_contact
+			'email_pic' => $email_pic,
+			'contact_pic' => $contact_pic
 			);
 		$this->m_data->input_data($data,'company');
 		redirect('debindo');
 	}
+
+	function delete_company($id){
+			$where = array('id' => $id );
+			$this->m_data->delete_data($where,'company');
+			redirect('debindo/company/');
+	}
+
+	function edit_company($id){
+			$where = array('id' => $id);
+			$data['company'] = $this->m_data->edit_data($where,'company')->result();
+			$this->load->view('templates/header');
+			$this->load->view('pages/edit_company',$data);
+			$this->load->view('templates/footer');
+	}
+
+	function update_company(){
+		$id = $this->input->post('id');
+		$id_category = $this->input->post('id_category');
+		$name = $this->input->post('name');
+		$address = $this->input->post('address');
+		$website = $this->input->post('website');
+		$pic = $this->input->post('pic');
+		$email_pic = $this->input->post('email_pic');
+		$contact_pic = $this->input->post('contact_pic');
+		$data = array(
+			'id_category' => $id_category,
+			'name' => $name,
+			'address' => $address,
+			'website' => $website,
+			'pic' => $pic,
+			'email_pic' => $email_pic,
+			'contact_pic' => $contact_pic
+		);
+	$where = array(
+		'id' => $id
+	);
+	$this->m_data->update_data($where,$data,'company');
+	redirect('debindo/company/');
+}
+
 
 }

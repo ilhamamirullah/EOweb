@@ -62,15 +62,15 @@
              		</div>
              	    </div>
                   <div class="form-group">
-                    <label for="email_pic" class ="control-label col-sm-2">Email</label>
+                    <label for="email" class ="control-label col-sm-2">Email</label>
                 <div class="col-sm-8">
-                    <input type="email_pic" class="form-control" id="email_pic" name="email_pic" placeholder="Enter email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                 </div>
                   </div>
                   <div class="form-group">
-             	      <label for="contact_pic" class ="control-label col-sm-2">PIC Contact</label>
+             	      <label for="pic_contact" class ="control-label col-sm-2">PIC Contact</label>
              		<div class="col-sm-8">
-             	      <input type="contact_pic" class="form-control" name="contact_pic" id="contact_pic" placeholder="Enter pic contact">
+             	      <input type="pic_contact" class="form-control" name="pic_contact" id="pic_contact" placeholder="Enter pic contact">
              		</div>
              	    </div>
                   <br>

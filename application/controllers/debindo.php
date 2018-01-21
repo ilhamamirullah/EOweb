@@ -53,16 +53,16 @@ class debindo extends CI_Controller {
 		$address = $this->input->post('address');
 		$website = $this->input->post('website');
 		$pic = $this->input->post('pic');
-		$email_pic = $this->input->post('email_pic');
-		$contact_pic = $this->input->post('contact_pic');
+		$email = $this->input->post('email');
+		$pic_contact = $this->input->post('pic_contact');
 		$data = array(
 			'id_category' => $id_category,
 			'name' => $name,
 			'address' => $address,
 			'website' => $website,
 			'pic' => $pic,
-			'email_pic' => $email_pic,
-			'contact_pic' => $contact_pic
+			'email' => $email,
+			'pic_contact' => $pic_contact
 			);
 		$this->m_data->input_data($data,'company');
 		redirect('debindo');
@@ -89,16 +89,16 @@ class debindo extends CI_Controller {
 		$address = $this->input->post('address');
 		$website = $this->input->post('website');
 		$pic = $this->input->post('pic');
-		$email_pic = $this->input->post('email_pic');
-		$contact_pic = $this->input->post('contact_pic');
+		$email = $this->input->post('email');
+		$pic_contact = $this->input->post('pic_contact');
 		$data = array(
 			'id_category' => $id_category,
 			'name' => $name,
 			'address' => $address,
 			'website' => $website,
 			'pic' => $pic,
-			'email_pic' => $email_pic,
-			'contact_pic' => $contact_pic
+			'email' => $email,
+			'pic_contact' => $pic_contact
 		);
 	$where = array(
 		'id' => $id

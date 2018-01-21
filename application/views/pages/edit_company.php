@@ -57,19 +57,19 @@
                   <div class="form-group">
              	      <label for="pic" class ="control-label col-sm-2">PIC</label>
              		<div class="col-sm-8">
-             	      <input type="pic" class="form-control" id="pic" name="pic" value="<?php echo $company2->pic ?>"">
+             	      <input type="pic" class="form-control" id="pic" name="pic" value="<?php echo $company2->pic ?>">
              		</div>
              	    </div>
                   <div class="form-group">
-                    <label for="email_pic" class ="control-label col-sm-2">Email</label>
+                    <label for="email" class ="control-label col-sm-2">Email</label>
                 <div class="col-sm-8">
-                    <input type="email_pic" class="form-control" id="email_pic" name="email_pic" value="<?php echo $company2->email_pic ?>">
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $company2->email ?>">
                 </div>
                   </div>
                   <div class="form-group">
-             	      <label for="contact_pic" class ="control-label col-sm-2">PIC Contact</label>
+             	      <label for="pic_contact" class ="control-label col-sm-2">PIC Contact</label>
              		<div class="col-sm-8">
-             	      <input type="contact_pic" class="form-control" name="contact_pic" id="contact_pic" value="<?php echo $company2->contact_pic ?>">
+             	      <input type="pic_contact" class="form-control" name="pic_contact" id="pic_contact" value="<?php echo $company2->pic_contact ?>">
              		</div>
              	    </div>
                   <br>

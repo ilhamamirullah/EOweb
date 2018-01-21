@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2018 at 10:08 AM
+-- Generation Time: Jan 21, 2018 at 03:39 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -55,17 +55,18 @@ CREATE TABLE `company` (
   `address` text,
   `website` varchar(255) DEFAULT NULL,
   `pic` varchar(255) NOT NULL,
-  `email_pic` varchar(255) NOT NULL,
-  `contact_pic` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `pic_contact` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `id_category`, `name`, `address`, `website`, `pic`, `email_pic`, `contact_pic`) VALUES
+INSERT INTO `company` (`id`, `id_category`, `name`, `address`, `website`, `pic`, `email`, `pic_contact`) VALUES
 (1, 1, 'Asus', 'Jakarta', 'asus.com', 'ilham', 'Ilham@asus.com', '085777777777'),
-(2, 2, 'Alisan', 'Bogor', 'alisan.com', 'Amir', 'amir@gmail.com', '0854453647563');
+(2, 2, 'Alisan', 'Bogor', 'alisan.com', 'Amir', 'amir@gmail.com', '0854453647563'),
+(3, 1, 'xiaomi', 'cina', 'xiaomi.com', 'yandra', 'yandra@xiaomi.com', '085533422234');
 
 --
 -- Indexes for dumped tables
@@ -98,7 +99,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

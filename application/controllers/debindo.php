@@ -107,5 +107,9 @@ class debindo extends CI_Controller {
 	redirect('debindo/company/');
 }
 
+function login(){
+	$this->load->view('pages/login');
+}
+
 
 }

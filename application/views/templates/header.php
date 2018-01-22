@@ -219,7 +219,7 @@
         </li> -->
         <li class="header">Account</li>
         <li><a href="<?php echo base_url();?>"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
-        <li><a href="<?php echo base_url();?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+        <li><a href="<?php echo base_url();?>debindo/login"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

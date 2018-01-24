@@ -65,7 +65,7 @@ class debindo extends CI_Controller {
 			'pic_contact' => $pic_contact
 			);
 		$this->m_data->input_data($data,'company');
-		redirect('debindo');
+		redirect('debindo/company');
 	}
 
 	function delete_company($id){
@@ -105,10 +105,6 @@ class debindo extends CI_Controller {
 	);
 	$this->m_data->update_data($where,$data,'company');
 	redirect('debindo/company/');
-}
-
-function login(){
-	$this->load->view('pages/login');
 }
 
 

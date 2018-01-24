@@ -29,10 +29,6 @@
           <div class="row">
             <div class="container" style="max-width:100%;padding:30px 10px;">
             	<form class="form-horizontal" role="form" action="<?php echo base_url();?>debindo/add_company_save" method="post">
-                <?php
-                    $this->load->library('form_validation');
-                    echo validation_errors(); ?>
-                <?php echo form_open('form/aksi');?>
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
@@ -96,7 +92,6 @@
         </div>
       </div>
       <!-- /.box -->
-
     </section>
     <!-- /.content -->
   </div>

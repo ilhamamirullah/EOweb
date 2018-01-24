@@ -19,6 +19,12 @@
         <div class="box-header with-border">
           <h3 class="box-title">Edit Company Data</h3>
         </div>
+        <div class="box box-default">
+        <?php
+            $this->load->library('form_validation');
+            echo validation_errors(); ?>
+        <?php echo form_open('form/aksi');?>
+          </div>
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">

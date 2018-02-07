@@ -44,15 +44,15 @@
                 	?>
                 <tr>
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $company2->name ?></td>
-                  <td><?php echo $company2->id_category ?></td>
+                  <td><?php echo $company2->company_name ?></td>
+                  <td><?php echo $company2->category_name ?></td>
                   <td><?php echo $company2->pic ?></td>
                   <td><?php echo $company2->pic_contact ?></td>
                   <td><?php echo $company2->email ?></td>
                   <td><?php echo $company2->address ?></td>
                   <td>
-                    <a  class="btn-success btn-xs" <?php echo anchor('debindo/edit_company/'.$company2->id,'Edit'); ?></a>
-                    <a  class="btn-danger btn-xs" <?php echo anchor('debindo/delete_company/'.$company2->id,'Delete'); ?></a>
+                    <a  class="btn-success btn-xs" <?php echo anchor('debindo/edit_company/'.$company2->company_id,'Edit'); ?></a>
+                    <a  class="btn-danger btn-xs" <?php echo anchor('debindo/delete_company/'.$company2->company_id,'Delete'); ?></a>
                   </td>
                 </tr>
               <?php } ?>

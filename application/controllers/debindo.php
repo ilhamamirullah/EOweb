@@ -26,7 +26,11 @@ class debindo extends CI_Controller {
 
   public function company()
   {
-		$data['company'] = $this->m_data->tampil_data()->result();
+		$query = $this->m_data->tampil_data();
+		$data['company'] = null;
+  if($query){
+   $data['company'] =  $query;
+  }
     $this->load->view('templates/header');
     $this->load->view('pages/company',$data);
     $this->load->view('templates/footer');
@@ -48,16 +52,16 @@ class debindo extends CI_Controller {
 	}
 
 	function add_company_save(){
-		$id_category = $this->input->post('id_category');
-		$name = $this->input->post('name');
+		$id_category = $this->input->post('category_id');
+		$name = $this->input->post('company_name');
 		$address = $this->input->post('address');
 		$website = $this->input->post('website');
 		$pic = $this->input->post('pic');
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
 		$data = array(
-			'id_category' => $id_category,
-			'name' => $name,
+			'category_id' => $id_category,
+			'company_name' => $name,
 			'address' => $address,
 			'website' => $website,
 			'pic' => $pic,

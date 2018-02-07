@@ -3,7 +3,11 @@
 class M_data extends CI_Model{
 
 	function tampil_data(){
-		return $this->db->get('company');
+		$this->db->select('*');
+		$this->db->from('company');
+		$this->db->join('category', 'category.category_id = company.category_id');
+		$query = $this->db->get();
+		return $query->result();
 	}
 
 	function input_data($data,$table){

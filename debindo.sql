@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2018 at 03:39 AM
+-- Generation Time: Feb 07, 2018 at 05:11 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -29,18 +29,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(225) NOT NULL,
+  `description` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `description`) VALUES
-(1, 'Technology', 'Technology'),
-(2, 'Fashion', 'Fashion');
+INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
+(1, 'technology', 'technology'),
+(2, 'fashion', 'fashion');
 
 -- --------------------------------------------------------
 
@@ -49,24 +49,65 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `address` text,
-  `website` varchar(255) DEFAULT NULL,
-  `pic` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `pic_contact` varchar(255) NOT NULL
+  `company_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `company_name` varchar(225) NOT NULL,
+  `address` varchar(225) NOT NULL,
+  `website` varchar(225) DEFAULT NULL,
+  `pic` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL,
+  `pic_contact` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id`, `id_category`, `name`, `address`, `website`, `pic`, `email`, `pic_contact`) VALUES
-(1, 1, 'Asus', 'Jakarta', 'asus.com', 'ilham', 'Ilham@asus.com', '085777777777'),
-(2, 2, 'Alisan', 'Bogor', 'alisan.com', 'Amir', 'amir@gmail.com', '0854453647563'),
-(3, 1, 'xiaomi', 'cina', 'xiaomi.com', 'yandra', 'yandra@xiaomi.com', '085533422234');
+INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `website`, `pic`, `email`, `pic_contact`) VALUES
+(1, 1, 'asus', 'jakarta', 'asus.com', 'digi', 'digi@asus.com', '123'),
+(2, 2, 'batik', 'bogor', 'batik.com', 'ega', 'ega@batik.com', '456'),
+(3, 1, 'samsung', 'batam', 'samsung.com', 'ripki', 'ripki@samsung.com', '789'),
+(4, 3, 'Indofood', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`, `description`) VALUES
+(1, 'sales', 'sales'),
+(2, 'directors', 'directors');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `id_role` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `nip` varchar(255) DEFAULT NULL,
+  `jabatan` varchar(255) DEFAULT NULL,
+  `no_telp` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -76,14 +117,27 @@ INSERT INTO `company` (`id`, `id_category`, `name`, `address`, `website`, `pic`,
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `company`
 --
 ALTER TABLE `company`
+  ADD PRIMARY KEY (`company_id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_category` (`id_category`);
+  ADD KEY `id_role` (`id_role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -93,23 +147,35 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `company`
+-- Constraints for table `user`
 --
-ALTER TABLE `company`
-  ADD CONSTRAINT `company_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

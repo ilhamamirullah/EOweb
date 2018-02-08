@@ -10,6 +10,10 @@ class M_data extends CI_Model{
 		return $query->result();
 	}
 
+	function tampil_category(){
+		return $this->db->get('category');
+	}
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}

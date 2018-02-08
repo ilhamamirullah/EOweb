@@ -23,7 +23,7 @@
         <?php
             $this->load->library('form_validation');
             echo validation_errors(); ?>
-        <?php echo form_open('form/aksi');?>
+        <?php echo form_open('debindo/add_company_save');?>
           </div>
         <div class="box-body">
           <div class="row">
@@ -34,9 +34,9 @@
                    <div class="col-sm-8">
                    <select class="form-control select2" name="id_category" style="width: 100%;">
                      <?php
-                   		foreach($company as $company2){
+                   		foreach($category as $category2){
                    	?>
-                     <option selected="selected" value="<?php echo $company2->id_category ?>"><?php echo $company2->id_category ?></option>
+                     <option selected="selected" value="<?php echo $category2->category_id ?>"><?php echo $category2->category_name ?></option>
                      <?php } ?>
                    </select>
                    </div>

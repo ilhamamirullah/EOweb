@@ -6,8 +6,9 @@ class debindo extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('form_validation');
 		$this->load->model('m_data');
-    $this->load->helper('url');
+    $this->load->helper(array('form','url'));
 	}
 
 	public function index()
@@ -28,9 +29,9 @@ class debindo extends CI_Controller {
   {
 		$query = $this->m_data->tampil_data();
 		$data['company'] = null;
-  if($query){
-   $data['company'] =  $query;
-  }
+	  if($query){
+	   $data['company'] =  $query;
+	  }
     $this->load->view('templates/header');
     $this->load->view('pages/company',$data);
     $this->load->view('templates/footer');
@@ -45,13 +46,22 @@ class debindo extends CI_Controller {
 
 	public function add_company()
 	{
-		$data['company'] = $this->m_data->tampil_data()->result();
+		$data['category'] = $this->m_data->tampil_category()->result();
 		$this->load->view('templates/header');
 		$this->load->view('pages/add_company',$data);
 		$this->load->view('templates/footer');
 	}
 
-	function add_company_save(){
+	function add_company_save()
+	{
+
+		$this->form_validation->set_rules('company_name','Name','required');
+    $this->form_validation->set_rules('address','Address','required');
+		$this->form_validation->set_rules('pic','PIC','required');
+		$this->form_validation->set_rules('email','Email','required');
+		$this->form_validation->set_rules('pic_contact','PIC Contact','required');
+
+		if($this->form_validation->run() != false){
 		$id_category = $this->input->post('category_id');
 		$name = $this->input->post('company_name');
 		$address = $this->input->post('address');
@@ -70,7 +80,13 @@ class debindo extends CI_Controller {
 			);
 		$this->m_data->input_data($data,'company');
 		redirect('debindo/company');
+	}else{
+		$data['category'] = $this->m_data->tampil_category()->result();
+		$this->load->view('templates/header');
+		$this->load->view('pages/add_company',$data);
+		$this->load->view('templates/footer');
 	}
+}
 
 	function delete_company($id){
 			$where = array('id' => $id );
@@ -88,16 +104,16 @@ class debindo extends CI_Controller {
 
 	function update_company(){
 		$id = $this->input->post('id');
-		$id_category = $this->input->post('id_category');
-		$name = $this->input->post('name');
+		$id_category = $this->input->post('category_id');
+		$name = $this->input->post('company_name');
 		$address = $this->input->post('address');
 		$website = $this->input->post('website');
 		$pic = $this->input->post('pic');
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
 		$data = array(
-			'id_category' => $id_category,
-			'name' => $name,
+			'category_id' => $id_category,
+			'company_name' => $name,
 			'address' => $address,
 			'website' => $website,
 			'pic' => $pic,

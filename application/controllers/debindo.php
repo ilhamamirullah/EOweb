@@ -54,8 +54,8 @@ class debindo extends CI_Controller {
 
 	function add_company_save()
 	{
-
-		$this->form_validation->set_rules('company_name','Name','required');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('company_name','Company Name','required');
     $this->form_validation->set_rules('address','Address','required');
 		$this->form_validation->set_rules('pic','PIC','required');
 		$this->form_validation->set_rules('email','Email','required');

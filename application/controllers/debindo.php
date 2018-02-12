@@ -94,15 +94,24 @@ class debindo extends CI_Controller {
 			redirect('debindo/company/');
 	}
 
-	function edit_company($company_id){
-			$where = array('company_id' => $company_id);
+	function edit_company($id){
+			$where = array('company_id' => $id);
 			$data['company'] = $this->m_data->edit_data($where,'company')->result();
+			$data['category'] = $this->m_data->tampil_category($where,'category')->result();
 			$this->load->view('templates/header');
 			$this->load->view('pages/edit_company',$data);
 			$this->load->view('templates/footer');
 	}
 
 	function update_company(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('company_name','Company Name','required');
+    $this->form_validation->set_rules('address','Address','required');
+		$this->form_validation->set_rules('pic','PIC','required');
+		$this->form_validation->set_rules('email','Email','required');
+		$this->form_validation->set_rules('pic_contact','PIC Contact','required');
+
+		if($this->form_validation->run() != false){
 		$id = $this->input->post('company_id');
 		$id_category = $this->input->post('category_id');
 		$name = $this->input->post('company_name');
@@ -121,11 +130,17 @@ class debindo extends CI_Controller {
 			'pic_contact' => $pic_contact
 		);
 	$where = array(
-		'id_company' => $id_company
+		'company_id' => $id
 	);
 	$this->m_data->update_data($where,$data,'company');
 	redirect('debindo/company/');
+}else{
+		$data['category'] = $this->m_data->tampil_category()->result();
+		$data['company'] = $this->m_data->edit_data($where,'company')->result();
+		$this->load->view('templates/header');
+		$this->load->view('pages/edit_company',$data);
+		$this->load->view('templates/footer');
 }
 
-
+}
 }

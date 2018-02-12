@@ -26,7 +26,7 @@
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
-                   <select class="form-control select2" name="category_id" style="width: 100%;">
+                   <select class="form-control select2" id="category_id" name="category_id" style="width: 100%;" placeholder="Choose Company Category">
                      <?php
                    		foreach($category as $category2){
                    	?>
@@ -39,7 +39,7 @@
             	   <div class="form-group">
             	      <label for="company_name" class ="control-label col-sm-2">Company Name</label>
             		<div class="col-sm-8">
-            	      <input type="company_name" class="form-control" id="address" name="company_name" placeholder="Enter company name" required>
+            	      <input type="company_name" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" required>
                       <span class="help-block" style="color:red;"><?php echo form_error('company_name'); ?></span>
             		</div>
             	    </div>

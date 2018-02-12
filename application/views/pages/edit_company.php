@@ -21,9 +21,9 @@
         </div>
         <div class="box box-default">
         <?php
-            $this->load->library('form_validation');
-            echo validation_errors(); ?>
-        <?php echo form_open('form/aksi');?>
+            // $this->load->library('form_validation');
+            // echo validation_errors();
+            // echo form_open('form/aksi');?>
           </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -36,16 +36,16 @@
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
-                   <select class="form-control select2" name="id_category" style="width: 100%;">
-                     <option selected="selected" value="<?php echo $company2->id_category ?>"><?php echo $company2->id_category ?></option>
+                   <select class="form-control select2" name="category_id" style="width: 100%;">
+                     <option selected="selected" value="<?php echo $company2->category_id ?>"><?php echo $company2->company_name ?></option>
                    </select>
                    </div>
             		</div>
             	   <div class="form-group">
             	      <label for="name_company" class ="control-label col-sm-2">Company Name</label>
             		<div class="col-sm-8">
-                    <input type="hidden" name="id" value="<?php echo $company2->id ?>">
-            	      <input type="name" class="form-control" id="address" name="name" value="<?php echo $company2->name ?>">
+                    <input type="hidden" name="company_id" value="<?php echo $company2->company_id ?>">
+            	      <input type="company_name" class="form-control" id="address" name="company_name" value="<?php echo $company2->company_name ?>">
             		</div>
             	    </div>
             	   <div class="form-group">

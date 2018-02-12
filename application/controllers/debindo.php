@@ -88,14 +88,14 @@ class debindo extends CI_Controller {
 	}
 }
 
-	function delete_company($id){
-			$where = array('id' => $id );
+	function delete_company($company_id){
+			$where = array('company_id' => $company_id );
 			$this->m_data->delete_data($where,'company');
 			redirect('debindo/company/');
 	}
 
-	function edit_company($id){
-			$where = array('id' => $id);
+	function edit_company($company_id){
+			$where = array('company_id' => $company_id);
 			$data['company'] = $this->m_data->edit_data($where,'company')->result();
 			$this->load->view('templates/header');
 			$this->load->view('pages/edit_company',$data);
@@ -103,7 +103,7 @@ class debindo extends CI_Controller {
 	}
 
 	function update_company(){
-		$id = $this->input->post('id');
+		$id = $this->input->post('company_id');
 		$id_category = $this->input->post('category_id');
 		$name = $this->input->post('company_name');
 		$address = $this->input->post('address');
@@ -121,7 +121,7 @@ class debindo extends CI_Controller {
 			'pic_contact' => $pic_contact
 		);
 	$where = array(
-		'id' => $id
+		'id_company' => $id_company
 	);
 	$this->m_data->update_data($where,$data,'company');
 	redirect('debindo/company/');

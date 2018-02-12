@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2018 at 05:11 PM
+-- Generation Time: Feb 12, 2018 at 05:19 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -40,7 +40,9 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
 (1, 'technology', 'technology'),
-(2, 'fashion', 'fashion');
+(2, 'fashion', 'fashion'),
+(3, 'food', 'food'),
+(4, 'other', 'other');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,9 @@ INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `
 (1, 1, 'asus', 'jakarta', 'asus.com', 'digi', 'digi@asus.com', '123'),
 (2, 2, 'batik', 'bogor', 'batik.com', 'ega', 'ega@batik.com', '456'),
 (3, 1, 'samsung', 'batam', 'samsung.com', 'ripki', 'ripki@samsung.com', '789'),
-(4, 3, 'Indofood', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312');
+(4, 3, 'Indofood', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312'),
+(5, 3, 'belfood', 'jonggol', '', 'rizki', 'rizki@belfood.com', '08773737373'),
+(6, 4, 'lamborghini', 'jakarta', 'lamb.com', 'siti', 'siti@lamb.com', '08111');
 
 -- --------------------------------------------------------
 
@@ -147,13 +151,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `role`

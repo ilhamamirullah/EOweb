@@ -95,16 +95,30 @@ class debindo extends CI_Controller {
 	}
 
 	function edit_company($company_id){
-			$where = array('company_id' => $company_id);
-			$data['company'] = $this->m_data->edit_data($where,'company')->result();
+			$data['category'] = $this->m_data->tampil_category()->result();
+			$where = $company_id;
+			$query = $this->m_data->edit_data($where)->result();
+			$data['company'] = null;
+		  if($query){
+		   $data['company'] =  $query;
+		  }
+			// $data['company'] = $this->m_data->edit_data($where,'company')->result();
 			$this->load->view('templates/header');
 			$this->load->view('pages/edit_company',$data);
 			$this->load->view('templates/footer');
 	}
 
 	function update_company(){
-		$id = $this->input->post('company_id');
-		$id_category = $this->input->post('category_id');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('company_name','Company Name','required');
+    $this->form_validation->set_rules('address','Address','required');
+		$this->form_validation->set_rules('pic','PIC','required');
+		$this->form_validation->set_rules('email','Email','required');
+		$this->form_validation->set_rules('pic_contact','PIC Contact','required');
+
+		if($this->form_validation->run() != false){
+		$company_id = $this->input->post('company_id');
+		$category_id = $this->input->post('category_id');
 		$name = $this->input->post('company_name');
 		$address = $this->input->post('address');
 		$website = $this->input->post('website');
@@ -112,7 +126,7 @@ class debindo extends CI_Controller {
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
 		$data = array(
-			'category_id' => $id_category,
+			'category_id' => $category_id,
 			'company_name' => $name,
 			'address' => $address,
 			'website' => $website,
@@ -121,10 +135,13 @@ class debindo extends CI_Controller {
 			'pic_contact' => $pic_contact
 		);
 	$where = array(
-		'id_company' => $id_company
+		'company_id' => $company_id
 	);
 	$this->m_data->update_data($where,$data,'company');
 	redirect('debindo/company/');
+}else{
+
+}
 }
 
 

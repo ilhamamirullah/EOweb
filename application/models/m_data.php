@@ -23,8 +23,12 @@ class M_data extends CI_Model{
 		$this->db->delete($table);
 	}
 
-	function edit_data($where,$table){
-	return $this->db->get_where($table,$where);
+	function edit_data($where){
+		$this->db->select('*');
+		$this->db->from('company');
+		$this->db->join('category', 'category.category_id = company.category_id');
+		$this->db->where("company_id",$where);
+		return $query = $this->db->get();
 }
 
 	function update_data($where,$data,$table){

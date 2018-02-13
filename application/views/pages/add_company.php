@@ -27,10 +27,11 @@
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
                    <select class="form-control select2" name="category_id" style="width: 100%;">
+                     <option selected disabled hidden>Choose here</option>
                      <?php
                    		foreach($category as $category2){
                    	?>
-                     <option selected="selected" value="<?php echo $category2->category_id ?>"><?php echo $category2->category_name ?></option>
+                     <option value="<?php echo $category2->category_id ?>"><?php echo $category2->category_name ?></option>
                      <?php } ?>
                    </select>
                    <span class="help-block"></span>

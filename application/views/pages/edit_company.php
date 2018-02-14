@@ -37,11 +37,11 @@
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
                    <select class="form-control select2" name="category_id" style="width: 100%;">
-                     <option selected value="<?php echo $company2->category_id ?>"><?php echo $company2->category_name ?></option>
+                     <!-- <option selected value="<?php echo $company2->category_id ?>"><?php echo $company2->category_name ?></option> -->
                      <?php
                    		foreach($category as $category2){
                    	?>
-                     <option value="<?php echo $category2->category_id ?>"><?php echo $category2->category_name ?></option>
+                     <option <?php if($category2->category_id === $company2->category_id){echo "selected";} ?> value="<?php echo $category2->category_id ?>"><?php echo $category2->category_name ?></option>
                      <?php } ?>
                    </select>
                    <span class="help-block" style="color:red;"><?php echo form_error('company_name'); ?></span>

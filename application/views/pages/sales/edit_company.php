@@ -32,7 +32,7 @@
               <?php
                foreach($company as $company2){
              ?>
-            	<form class="form-horizontal" role="form" action="<?php echo base_url();?>debindo/update_company" method="post">
+            	<form class="form-horizontal" role="form" action="<?php echo base_url();?>sales/c_sales_company/update_company" method="post">
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
@@ -93,7 +93,7 @@
             	   <div class="col-sm-offset-2 col-sm-8">
                    <button type="submit" class="btn btn-success">Simpan</button>
                    <button class="btn btn-warning" type="reset">Reset</button>
-                   <a class="btn btn-danger" type="button" href="<?php echo base_url();?>debindo/company">Cancel</a>
+                   <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales_company/company">Cancel</a>
             	   </div>
             	</form>
                <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 
-class M_data extends CI_Model{
+class m_sales extends CI_Model{
 
 	function tampil_data(){
 		$this->db->select('*');

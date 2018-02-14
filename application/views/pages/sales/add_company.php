@@ -4,7 +4,7 @@
     <section class="content-header">
       <h1>
         Add Company
-        <small>sales/c_sales_company</small>
+        <small>c_sales</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,7 +22,7 @@
         <div class="box-body">
           <div class="row">
             <div class="container" style="max-width:100%;padding:30px 10px;">
-            	<form class="form-horizontal" role="form" action="<?php echo base_url();?>sales/c_sales_company/add_company_save" method="post">
+            	<form class="form-horizontal" role="form" action="<?php echo base_url();?>c_sales/add_company_save" method="post">
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
@@ -83,7 +83,7 @@
             	   <div class="col-sm-offset-2 col-sm-8">
                     <button type="submit" class="btn btn-success">Simpan</button>
                     <button class="btn btn-warning" type="reset">Reset</button>
-                    <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales_company/company">Cancel</a>
+                    <a class="btn btn-danger" type="button" href="<?php echo base_url();?>c_sales/company">Cancel</a>
             	   </div>
             	</form>
             </div>

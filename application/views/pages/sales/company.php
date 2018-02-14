@@ -20,7 +20,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales_company/add_company" class="btn btn-primary btn-sm" >Add Company</a> </h3>
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>c_sales/add_company" class="btn btn-primary btn-sm" >Add Company</a> </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -51,8 +51,8 @@
                   <td><?php echo $company2->email ?></td>
                   <td><?php echo $company2->address ?></td>
                   <td>
-                    <a  class="btn-success btn-xs" <?php echo anchor('sales/c_sales_company/edit_company/'.$company2->company_id,'Edit'); ?></a>
-                    <a  class="btn-danger btn-xs" <?php echo anchor('sales/c_sales_company/delete_company/'.$company2->company_id,'Delete'); ?></a>
+                    <a  class="btn-success btn-xs" <?php echo anchor('c_sales/edit_company/'.$company2->company_id,'Edit'); ?></a>
+                    <a  class="btn-danger btn-xs" <?php echo anchor('c_sales/delete_company/'.$company2->company_id,'Delete'); ?></a>
                   </td>
                 </tr>
               <?php } ?>

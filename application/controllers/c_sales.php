@@ -1,20 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_sales_company extends CI_Controller {
+class c_sales extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('m_sales_company');
+		$this->load->model('m_sales');
     $this->load->helper(array('form','url'));
 	}
 
 	public function index()
 	{
     $this->load->view('templates/sales/header');
-		$this->load->view('index');
+		$this->load->view('pages/sales/index');
     $this->load->view('templates/sales/footer');
 	}
 
@@ -27,7 +27,7 @@ class C_sales_company extends CI_Controller {
 
   public function company()
   {
-		$query = $this->m_sales_company->tampil_data();
+		$query = $this->m_sales->tampil_data();
 		$data['company'] = null;
 	  if($query){
 	   $data['company'] =  $query;
@@ -46,7 +46,7 @@ class C_sales_company extends CI_Controller {
 
 	public function add_company()
 	{
-		$data['category'] = $this->m_sales_company->tampil_category()->result();
+		$data['category'] = $this->m_sales->tampil_category()->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_company',$data);
 		$this->load->view('templates/sales/footer');
@@ -78,10 +78,10 @@ class C_sales_company extends CI_Controller {
 			'email' => $email,
 			'pic_contact' => $pic_contact
 			);
-		$this->m_sales_company->input_data($data,'company');
-		redirect('sales/c_sales_company/company');
+		$this->m_sales->input_data($data,'company');
+		redirect('c_sales/company');
 	}else{
-		$data['category'] = $this->m_sales_company->tampil_category()->result();
+		$data['category'] = $this->m_sales->tampil_category()->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_company',$data);
 		$this->load->view('templates/sales/footer');
@@ -90,19 +90,19 @@ class C_sales_company extends CI_Controller {
 
 	function delete_company($company_id){
 			$where = array('company_id' => $company_id );
-			$this->m_sales_company->delete_data($where,'company');
-			redirect('sales/c_sales_company/company/');
+			$this->m_sales->delete_data($where,'company');
+			redirect('c_sales/company/');
 	}
 
 	function edit_company($company_id){
-			$data['category'] = $this->m_sales_company->tampil_category()->result();
+			$data['category'] = $this->m_sales->tampil_category()->result();
 			$where = $company_id;
-			$query = $this->m_sales_company->edit_data($where)->result();
+			$query = $this->m_sales->edit_data($where)->result();
 			$data['company'] = null;
 		  if($query){
 		   $data['company'] =  $query;
 		  }
-			// $data['company'] = $this->m_sales_company->edit_data($where,'company')->result();
+			// $data['company'] = $this->m_sales->edit_data($where,'company')->result();
 			$this->load->view('templates/sales/header');
 			$this->load->view('pages/sales/edit_company',$data);
 			$this->load->view('templates/sales/footer');
@@ -137,11 +137,11 @@ class C_sales_company extends CI_Controller {
 	$where = array(
 		'company_id' => $company_id
 	);
-	$this->m_sales_company->update_data($where,$data,'company');
-	redirect('sales/c_sales_company/company/');
+	$this->m_sales->update_data($where,$data,'company');
+	redirect('c_sales/company/');
 }else{
-		$data['category'] = $this->m_sales_company->tampil_category()->result();
-		$data['company'] = $this->m_sales_company->edit_data($where,'company')->result();
+		$data['category'] = $this->m_sales->tampil_category()->result();
+		$data['company'] = $this->m_sales->edit_data($where,'company')->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/edit_company',$data);
 		$this->load->view('templates/sales/footer');

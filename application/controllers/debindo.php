@@ -140,9 +140,12 @@ class debindo extends CI_Controller {
 	$this->m_data->update_data($where,$data,'company');
 	redirect('debindo/company/');
 }else{
+		$data['category'] = $this->m_data->tampil_category()->result();
+		$data['company'] = $this->m_data->edit_data($where,'company')->result();
+		$this->load->view('templates/header');
+		$this->load->view('pages/edit_company',$data);
+		$this->load->view('templates/footer');
+}
 
 }
-}
-
-
 }

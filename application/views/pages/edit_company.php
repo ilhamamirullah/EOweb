@@ -37,7 +37,6 @@
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
                    <select class="form-control select2" name="category_id" style="width: 100%;">
-                     <!-- <option selected value="<?php echo $company2->category_id ?>"><?php echo $company2->category_name ?></option> -->
                      <?php
                    		foreach($category as $category2){
                    	?>

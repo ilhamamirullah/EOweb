@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2018 at 05:19 AM
+-- Generation Time: Feb 15, 2018 at 10:35 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -68,50 +68,40 @@ CREATE TABLE `company` (
 INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `website`, `pic`, `email`, `pic_contact`) VALUES
 (1, 1, 'asus', 'jakarta', 'asus.com', 'digi', 'digi@asus.com', '123'),
 (2, 2, 'batik', 'bogor', 'batik.com', 'ega', 'ega@batik.com', '456'),
-(3, 1, 'samsung', 'batam', 'samsung.com', 'ripki', 'ripki@samsung.com', '789'),
-(4, 3, 'Indofood', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312'),
-(5, 3, 'belfood', 'jonggol', '', 'rizki', 'rizki@belfood.com', '08773737373'),
-(6, 4, 'lamborghini', 'jakarta', 'lamb.com', 'siti', 'siti@lamb.com', '08111');
+(4, 3, 'Indofooddd', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312'),
+(6, 1, 'lamborghini', 'jakarta', 'lamb.com', 'siti', 'siti@lamb.com', '08111'),
+(8, 2, 'thxsmn', 'jakarta', '', 'fifi Mei', 'fifi@thxsmn.com', '089'),
+(9, 4, 'hahaha', 'test', 'test', 'test', 'test@ggg.mm', 'test');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `level` enum('admin','sales','director','') NOT NULL,
+  `active` enum('0','1') NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(225) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contact` varchar(50) DEFAULT NULL,
+  `nip` varchar(100) DEFAULT NULL,
+  `jabatan` varchar(100) DEFAULT NULL,
+  `photo` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `role` (`id`, `name`, `description`) VALUES
-(1, 'sales', 'sales'),
-(2, 'directors', 'directors');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `id_role` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `nip` varchar(255) DEFAULT NULL,
-  `jabatan` varchar(255) DEFAULT NULL,
-  `no_telp` varchar(50) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`) VALUES
+(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'sales', 'tes'),
+(4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL),
+(5, 'digi', '123', 'sales', '0', 'digs', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -131,17 +121,10 @@ ALTER TABLE `company`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `role`
+-- Indexes for table `users`
 --
-ALTER TABLE `role`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_role` (`id_role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -157,29 +140,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

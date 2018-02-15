@@ -54,7 +54,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url();?>c_sales" class="logo">
+    <a href="<?php echo base_url();?>sales/c_sales" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>D</b>IN</span>
       <!-- logo for regular state and mobile devices -->
@@ -74,7 +74,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Yandra Budianto</span>
+              <span class="hidden-xs"><?php echo $this->session->userdata('username'); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -82,7 +82,7 @@
                 <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Yandra Budianto
+                  <?php echo $this->session->userdata('username'); ?>
                   <small>Member since Nov. 2017</small>
                 </p>
               </li>
@@ -112,7 +112,7 @@
           <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Yandra Budianto</p>
+          <p><?php echo $this->session->userdata('username'); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -132,8 +132,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/c_sales' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>c_sales">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -168,30 +168,30 @@
           </ul>
         </li> -->
         <li class="treeview">
-          <a href="<?php echo base_url();?>c_sales">
+          <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/c_sales/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>c_sales/event1"><i class="fa fa-circle-o"></i>A1</a></li>
-            <li><a href="<?php echo base_url();?>c_sales"><i class="fa fa-circle-o"></i>A2</a></li>
-            <li><a href="<?php echo base_url();?>c_sales"><i class="fa fa-circle-o"></i>A3</a></li>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>sales/c_sales/event1"><i class="fa fa-circle-o"></i>A1</a></li>
+            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A2</a></li>
+            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A3</a></li>
           </ul>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/c_sales/myclient' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>c_sales/myclient">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>sales/c_sales/myclient">
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/c_sales/add_company' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>c_sales/company">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>sales/c_sales/company">
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url();?>c_sales">
+          <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>
@@ -219,7 +219,7 @@
         </li> -->
         <li class="header">Account</li>
         <li><a href="<?php echo base_url();?>"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
-        <li><a href="<?php echo base_url();?>login"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+        <li><a href="<?php echo base_url();?>authentication/auth/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

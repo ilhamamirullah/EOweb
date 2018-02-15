@@ -1,11 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_sales extends CI_Controller {
+class c_sales extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		//memanggil function dari MY_Controller
+    $this->cekLogin();
+    //validasi jika session dengan level sales mengakses halaman ini maka akan dialihkan ke halaman sales
+    if ($this->session->userdata('level') == "director") {
+      redirect('director/sales/c_sales');
+    }
 		$this->load->library('form_validation');
 		$this->load->model('m_sales');
     $this->load->helper(array('form','url'));
@@ -79,7 +85,7 @@ class c_sales extends CI_Controller {
 			'pic_contact' => $pic_contact
 			);
 		$this->m_sales->input_data($data,'company');
-		redirect('c_sales/company');
+		redirect('sales/c_sales/company');
 	}else{
 		$data['category'] = $this->m_sales->tampil_category()->result();
 		$this->load->view('templates/sales/header');
@@ -91,7 +97,7 @@ class c_sales extends CI_Controller {
 	function delete_company($company_id){
 			$where = array('company_id' => $company_id );
 			$this->m_sales->delete_data($where,'company');
-			redirect('c_sales/company/');
+			redirect('sales/c_sales/company/');
 	}
 
 	function edit_company($company_id){
@@ -138,7 +144,7 @@ class c_sales extends CI_Controller {
 		'company_id' => $company_id
 	);
 	$this->m_sales->update_data($where,$data,'company');
-	redirect('c_sales/company/');
+	redirect('sales/c_sales/company/');
 }else{
 		$data['category'] = $this->m_sales->tampil_category()->result();
 		$data['company'] = $this->m_sales->edit_data($where,'company')->result();

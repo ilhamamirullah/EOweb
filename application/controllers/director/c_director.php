@@ -15,6 +15,6 @@ class C_director extends MY_Controller
 
   public function index()
   {
-    $this->load->view('director/Dashboard');
+    $this->load->view('pages/director/Dashboard');
   }
 }

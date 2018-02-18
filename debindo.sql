@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2018 at 10:35 AM
+-- Generation Time: Feb 18, 2018 at 07:41 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -66,12 +66,10 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `website`, `pic`, `email`, `pic_contact`) VALUES
-(1, 1, 'asus', 'jakarta', 'asus.com', 'digi', 'digi@asus.com', '123'),
-(2, 2, 'batik', 'bogor', 'batik.com', 'ega', 'ega@batik.com', '456'),
-(4, 3, 'Indofooddd', 'dimana ajalah', 'www.indofood.co.id', 'Japri', 'japri@indofood.co.id', '0813132312'),
-(6, 1, 'lamborghini', 'jakarta', 'lamb.com', 'siti', 'siti@lamb.com', '08111'),
-(8, 2, 'thxsmn', 'jakarta', '', 'fifi Mei', 'fifi@thxsmn.com', '089'),
-(9, 4, 'hahaha', 'test', 'test', 'test', 'test@ggg.mm', 'test');
+(1, 1, 'asus 5', 'jakarta', 'asus.com', 'digi', 'digi@asus.com', '123'),
+(12, 1, 'aaaa', 'saaa', 'aaa', 'aaa', 'aa@aad.ccc', 'aaa'),
+(13, 3, 'aass', 'sss', 'sss', 'sss', 'siti@lamb.com', 'sss'),
+(15, 3, 'sorin', 'bogor', '', 'haha', 'aa@aad.ccc', '08883');
 
 -- --------------------------------------------------------
 
@@ -140,7 +138,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

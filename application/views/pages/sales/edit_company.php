@@ -50,7 +50,7 @@
             	      <label for="name_company" class ="control-label col-sm-2">Company Name</label>
             		<div class="col-sm-8">
                     <input type="hidden" name="company_id" value="<?php echo $company2->company_id ?>" required>
-            	      <input type="company_name" class="form-control" id="address" name="company_name" value="<?php echo $company2->company_name ?>">
+            	      <input type="company_name" class="form-control" id="address" name="company_name" value="<?php echo $company2->company_name ?>" required>
                     <span class="help-block" style="color:red;"><?php echo form_error('company_name'); ?></span>
             		</div>
             	    </div>
@@ -85,7 +85,7 @@
                   <div class="form-group">
              	      <label for="pic_contact" class ="control-label col-sm-2">PIC Contact</label>
              		<div class="col-sm-8">
-             	      <input type="pic_contact" class="form-control" name="pic_contact" id="pic_contact" value="<?php echo $company2->pic_contact ?>">
+             	      <input type="pic_contact" class="form-control" name="pic_contact" id="pic_contact" value="<?php echo $company2->pic_contact ?>" required>
                     <span class="help-block" style="color:red;"><?php echo form_error('pic_contact'); ?></span>
              		</div>
              	    </div>

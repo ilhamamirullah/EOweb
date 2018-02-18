@@ -12,7 +12,7 @@ class c_sales extends MY_Controller {
     if ($this->session->userdata('level') == "director") {
       redirect('director/sales/c_sales');
     }
-		$this->load->library('form_validation');
+		$this->load->library('form_validation','session');
 		$this->load->model('m_sales');
     $this->load->helper(array('form','url'));
 	}
@@ -85,8 +85,10 @@ class c_sales extends MY_Controller {
 			'pic_contact' => $pic_contact
 			);
 		$this->m_sales->input_data($data,'company');
+		$this->session->set_flashdata('success','Data saved');
 		redirect('sales/c_sales/company');
 	}else{
+		$this->session->set_flashdata('error','Failed to save');
 		$data['category'] = $this->m_sales->tampil_category()->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_company',$data);
@@ -97,6 +99,7 @@ class c_sales extends MY_Controller {
 	function delete_company($company_id){
 			$where = array('company_id' => $company_id );
 			$this->m_sales->delete_data($where,'company');
+			$this->session->set_flashdata('success','data deleted');
 			redirect('sales/c_sales/company/');
 	}
 
@@ -144,13 +147,11 @@ class c_sales extends MY_Controller {
 		'company_id' => $company_id
 	);
 	$this->m_sales->update_data($where,$data,'company');
-	redirect('sales/c_sales/company/');
+	$this->session->set_flashdata('success','Data updated');
+	redirect('sales/c_sales/company/edit_company');
 }else{
-		$data['category'] = $this->m_sales->tampil_category()->result();
-		$data['company'] = $this->m_sales->edit_data($where,'company')->result();
-		$this->load->view('templates/sales/header');
-		$this->load->view('pages/sales/edit_company',$data);
-		$this->load->view('templates/sales/footer');
+	$this->session->set_flashdata('error','Data failed to update');
+	redirect('sales/c_sales/company/edit_company');
 }
 
 }

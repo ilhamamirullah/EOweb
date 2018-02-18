@@ -167,7 +167,7 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li class="treeview">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1'|| $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event2' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event3' ){ ?>class="treeview active"<?php }else { ?> class="treeview" <?php } ?> >
           <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">

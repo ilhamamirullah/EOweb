@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Add Company
-        <small>sales/c_sales</small>
+        Debindo
+        <small>company</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Advanced Elements</li>
+        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo base_url(); ?>sales/c_sales/company">Company</a></li>
+        <li class="active">Add Company</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -91,9 +91,6 @@
           <!-- /.row -->
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Debindo
-        </div>
       </div>
       <!-- /.box -->
     </section>

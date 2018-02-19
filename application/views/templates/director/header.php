@@ -54,7 +54,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url();?>sales/c_sales" class="logo">
+    <a href="<?php echo base_url();?>director/c_director" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>D</b>IN</span>
       <!-- logo for regular state and mobile devices -->
@@ -133,8 +133,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>sales/c_sales">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>director/c_director">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -168,31 +168,31 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1'|| $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event2' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event3' ){ ?>class="treeview active"<?php }else { ?> class="treeview" <?php } ?> >
-          <a href="<?php echo base_url();?>sales/c_sales">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1'|| $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event2' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event3' ){ ?>class="treeview active"<?php }else { ?> class="treeview" <?php } ?> >
+          <a href="<?php echo base_url();?>director/c_director">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>sales/c_sales/event1"><i class="fa fa-circle-o"></i>A1</a></li>
-            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A2</a></li>
-            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A3</a></li>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>director/c_director/event1"><i class="fa fa-circle-o"></i>A1</a></li>
+            <li><a href="<?php echo base_url();?>director/c_director"><i class="fa fa-circle-o"></i>A2</a></li>
+            <li><a href="<?php echo base_url();?>director/c_director"><i class="fa fa-circle-o"></i>A3</a></li>
           </ul>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>sales/c_sales/myclient">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>director/c_director/myclient">
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>sales/c_sales/company">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/company' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/add_company' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>director/c_director/company">
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url();?>sales/c_sales">
+          <a href="<?php echo base_url();?>director/c_director">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>

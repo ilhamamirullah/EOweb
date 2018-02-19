@@ -10,7 +10,7 @@ class c_sales extends MY_Controller {
     $this->cekLogin();
     //validasi jika session dengan level sales mengakses halaman ini maka akan dialihkan ke halaman sales
     if ($this->session->userdata('level') == "director") {
-      redirect('director/sales/c_sales');
+      redirect('sales/c_sales');
     }
 		$this->load->library('form_validation','session');
 		$this->load->model('m_sales');

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2018 at 09:04 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: Mar 01, 2018 at 08:12 AM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,6 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `debindo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `booking_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `stand` varchar(225) NOT NULL,
+  `sqm` varchar(225) NOT NULL,
+  `notes` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`booking_id`, `event_id`, `company_id`, `status_id`, `id`, `stand`, `sqm`, `notes`) VALUES
+(1, 1, 12, 1, 3, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -76,6 +98,28 @@ INSERT INTO `company` (`company_id`, `category_id`, `status_id`, `company_name`,
 (15, 3, 1, 'sorin maharasa', 'bogor', 'qqq', 'haha', 'aa@aad.ccc', '08883', '', NULL, '2018-02-18 07:33:33', '2018-02-28 05:27:16'),
 (16, 1, 1, 'apple', 'jakarta', 'apple.com', 'jajas', 'jaja@apple', '089999', 'ilham', NULL, '2018-02-18 07:39:13', '2018-02-28 05:27:09'),
 (17, 2, 1, 'asd', 'asd', 'ads', 'asd', 'asd@waja.com', '0192323', 'yandra', NULL, '2018-02-28 07:12:35', '2018-02-28 07:12:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `event_id` int(11) NOT NULL,
+  `event_name` varchar(225) NOT NULL,
+  `event_desc` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`event_id`, `event_name`, `event_desc`) VALUES
+(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan'),
+(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran'),
+(3, 'CTCT', 'pameran logistik'),
+(4, 'REI EXPO', 'pameran properti');
 
 -- --------------------------------------------------------
 
@@ -137,6 +181,16 @@ INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `a
 --
 
 --
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`booking_id`),
+  ADD UNIQUE KEY `event_id` (`event_id`),
+  ADD UNIQUE KEY `company_id` (`company_id`),
+  ADD UNIQUE KEY `status_id` (`status_id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -149,6 +203,12 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`company_id`),
   ADD KEY `category_id` (`category_id`),
   ADD KEY `status_id` (`status_id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`event_id`);
 
 --
 -- Indexes for table `status`
@@ -167,40 +227,54 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_3` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_4` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `company`
 --
 ALTER TABLE `company`
-  ADD CONSTRAINT `company_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `company_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+  ADD CONSTRAINT `company_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `company_ibfk_3` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

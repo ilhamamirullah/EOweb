@@ -36,4 +36,14 @@ class m_sales extends CI_Model{
 		$this->db->update($table,$data);
 	}
 
+	function tampil_status()
+	{
+		return $this->db->get('status');
+	}
+
+	function tampil_event()
+	{
+		return $this->db->get('event	');
+	}
+
 }

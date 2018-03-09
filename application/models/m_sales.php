@@ -10,6 +10,23 @@ class m_sales extends CI_Model{
 		return $query->result();
 	}
 
+	function tampil_client(){
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->join('event', 'event.event_id = booking.event_id');
+		$this->db->join('company', 'company.company_id = booking.company_id');
+		$this->db->join('status', 'status.status_id = booking.status_id');
+		$this->db->join('users', 'users.id = booking.id');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+
+		function tampil_users(){
+			return $this->db->get('users');
+		}
+
 	function tampil_category(){
 		return $this->db->get('category');
 	}

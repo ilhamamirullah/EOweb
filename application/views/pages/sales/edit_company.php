@@ -50,7 +50,7 @@
             	      <label for="name_company" class ="control-label col-sm-2">Company Name</label>
             		<div class="col-sm-8">
                     <input type="hidden" name="company_id" value="<?php echo $company2->company_id ?>" required>
-            	      <input type="company_name" class="form-control" id="address" name="company_name" value="<?php echo $company2->company_name ?>" required>
+            	      <input type="company_name" class="form-control" id="company_name" name="company_name" value="<?php echo $company2->company_name ?>" required>
                     <span class="help-block" style="color:red;"><?php echo form_error('company_name'); ?></span>
             		</div>
             	    </div>

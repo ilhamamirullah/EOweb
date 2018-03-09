@@ -26,10 +26,11 @@ class c_sales extends MY_Controller {
 
   public function myclient()
   {
-		$query = $this->m_sales->tampil_data();
-		$data['company'] = null;
+		$data['users'] = $this->m_sales->tampil_users()->result();
+		$query = $this->m_sales->tampil_client();
+		$data['booking'] = null;
 	  if($query){
-	   $data['company'] =  $query;
+	   $data['booking'] =  $query;
 	  }
     $this->load->view('templates/sales/header');
     $this->load->view('pages/sales/myclient', $data);
@@ -176,9 +177,15 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/footer');
 	}
 
-	function add_client()
+	function add_client($company_id)
 	{
 		$data['event'] = $this->m_sales->tampil_event()->result();
+		$where = $company_id;
+		$query = $this->m_sales->edit_data($where)->result();
+		$data['company'] = null;
+		if($query){
+		$data['company'] =  $query;
+	}
 		$data['status'] = $this->m_sales->tampil_status()->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_myclient',$data);

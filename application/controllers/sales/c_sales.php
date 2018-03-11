@@ -176,11 +176,11 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/footer');
 	}
 
-	function add_client()
+	function add_myclient()
 	{
 		$data['category'] = $this->m_sales->tampil_category()->result();
 		$this->load->view('templates/sales/header');
-		$this->load->view('pages/sales/add_company',$data);
+		$this->load->view('pages/sales/add_myclient',$data);
 		$this->load->view('templates/sales/footer');
 	}
 

@@ -36,6 +36,7 @@
                   <?php
                 		$no = 1;
                 		foreach($company as $company2){
+                      if ($company2->status_id === '1') {
                 	?>
                 <tr>
                   <td><?php echo $no++ ?></td>
@@ -47,11 +48,11 @@
                   <td><?php echo $company2->address ?></td>
                   <td>
                     <form>
-                          <a class="btn btn-success btn-xs" <?php echo anchor('sales/c_sales/add_client/'.$company2->company_id,'Pilih'); ?></a>
+                          <a class="btn btn-success btn-xs" <?php echo anchor('sales/c_sales/add_myclient/'.$company2->company_id,'Pilih'); ?></a>
                     </form>
                   </td>
                 </tr>
-              <?php } ?>
+              <?php } }?>
                 </tbody>
               </table>
             </div>

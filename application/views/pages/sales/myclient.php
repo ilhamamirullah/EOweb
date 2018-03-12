@@ -45,7 +45,7 @@
                 <tbody>
                 <tr>
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $booking2->updated_at ?></td>
+                  <td><?php echo $booking2->booking_updated_at ?></td>
                   <td><?php echo $booking2->event_name ?></td>
                   <td><?php echo $booking2->company_name ?></td>
                   <td><?php echo $booking2->status_name ?></td>

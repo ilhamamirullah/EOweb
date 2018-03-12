@@ -85,7 +85,7 @@
                 <p>
                   <?php echo $this->session->userdata('username'); ?>
                   <small>Level : <?php echo $this->session->userdata('level'); ?></small>
-                  <small>Member since : <?php echo $this->session->userdata('created_at'); ?></small>
+                  <small>Member since : <?php echo $this->session->userdata('user_created_at'); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->

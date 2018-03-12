@@ -81,7 +81,7 @@ class c_sales extends MY_Controller {
 		$pic = $this->input->post('pic');
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
-		$created_by = $this->session->userdata('username');
+		$company_created_by = $this->session->userdata('username');
 		$data = array(
 			'category_id' => $id_category,
 			'company_name' => $name,
@@ -90,7 +90,7 @@ class c_sales extends MY_Controller {
 			'pic' => $pic,
 			'email' => $email,
 			'pic_contact' => $pic_contact,
-			'created_by' => $created_by
+			'company_created_by' => $company_created_by
 			);
 		$this->m_sales->input_data($data,'company');
 		$this->session->set_flashdata('success','Data saved');
@@ -142,7 +142,7 @@ class c_sales extends MY_Controller {
 		$pic = $this->input->post('pic');
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
-		$updated_by = $this->session->userdata('username');
+		$company_updated_by = $this->session->userdata('username');
 		$data = array(
 			'category_id' => $category_id,
 			'company_name' => $name,
@@ -151,7 +151,7 @@ class c_sales extends MY_Controller {
 			'pic' => $pic,
 			'email' => $email,
 			'pic_contact' => $pic_contact,
-			'updated_by' => $updated_by
+			'company_updated_by' => $company_updated_by
 		);
 	$where = array(
 		'company_id' => $company_id
@@ -190,6 +190,11 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_myclient',$data);
 		$this->load->view('templates/sales/footer');
+	}
+
+	function save_myclient()
+	{
+		//buat save my client
 	}
 
 }

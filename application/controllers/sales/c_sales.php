@@ -26,10 +26,11 @@ class c_sales extends MY_Controller {
 
   public function myclient()
   {
-		$query = $this->m_sales->tampil_data();
-		$data['company'] = null;
+		// $data['users'] = $this->m_sales->tampil_users()->result();
+		$query = $this->m_sales->tampil_client();
+		$data['booking'] = null;
 	  if($query){
-	   $data['company'] =  $query;
+	   $data['booking'] =  $query;
 	  }
     $this->load->view('templates/sales/header');
     $this->load->view('pages/sales/myclient', $data);
@@ -66,7 +67,7 @@ class c_sales extends MY_Controller {
 	function add_company_save()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('company_name','Company Name','required');
+		$this->form_validation->set_rules('company_name','Company Name','trim|required|is_unique[company.company_name]');
     $this->form_validation->set_rules('address','Address','required');
 		$this->form_validation->set_rules('pic','PIC','required');
 		$this->form_validation->set_rules('email','Email','required');
@@ -176,9 +177,16 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/footer');
 	}
 
-	function add_myclient()
+	function add_myclient($company_id)
 	{
-		$data['category'] = $this->m_sales->tampil_category()->result();
+		$data['event'] = $this->m_sales->tampil_event()->result();
+		$where = $company_id;
+		$query = $this->m_sales->edit_data($where)->result();
+		$data['company'] = null;
+		if($query){
+		$data['company'] =  $query;
+	}
+		$data['status'] = $this->m_sales->tampil_status()->result();
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/add_myclient',$data);
 		$this->load->view('templates/sales/footer');

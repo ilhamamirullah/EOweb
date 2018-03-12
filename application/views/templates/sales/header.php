@@ -85,7 +85,7 @@
                 <p>
                   <?php echo $this->session->userdata('username'); ?>
                   <small>Level : <?php echo $this->session->userdata('level'); ?></small>
-                  <small>Member since <?php echo $this->session->userdata('created_at'); ?></small>
+                  <small>Member since : <?php echo $this->session->userdata('created_at'); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -182,7 +182,7 @@
             <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A3</a></li>
           </ul>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' ): ?> class="active"<?php endif; ?>>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>sales/c_sales/myclient">
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>

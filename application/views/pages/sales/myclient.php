@@ -37,7 +37,29 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <?php
+                  $no = 1;
+                   foreach($booking as $booking2){
+                     if ($booking2->user_id === $this->session->userdata('id')) {
+                 ?>
+                <tbody>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $booking2->updated_at ?></td>
+                  <td><?php echo $booking2->event_name ?></td>
+                  <td><?php echo $booking2->company_name ?></td>
+                  <td><?php echo $booking2->status_name ?></td>
+                  <td><?php echo $booking2->notes ?></td>
+                  <td>
+                    <form>
+                          <a class="btn btn-success btn-xs" <?php echo anchor('sales/c_sales/edit_myclient/'.$booking2->booking_id,'Edit'); ?></a>
+                    </form>
 
+                  </td>
+
+                </tr>
+              <?php } }?>
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->

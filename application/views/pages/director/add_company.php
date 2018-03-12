@@ -22,7 +22,7 @@
         <div class="box-body">
           <div class="row">
             <div class="container" style="max-width:100%;padding:30px 10px;">
-            	<form class="form-horizontal" role="form" action="<?php echo base_url();?>director/c_director/add_company_save" method="post">
+            	<form class="form-horizontal" autocomplete="off" role="form" action="<?php echo base_url();?>director/c_director/add_company_save" method="post">
             	   <div class="form-group">
                    <label class ="control-label col-sm-2">Category</label>
                    <div class="col-sm-8">
@@ -40,7 +40,7 @@
             	   <div class="form-group">
             	      <label for="company_name" class ="control-label col-sm-2">Company Name</label>
             		<div class="col-sm-8">
-            	      <input type="company_name" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" required>
+            	      <input type="company_name" autocomplete="off" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" required>
                       <span class="help-block" style="color:red;"><?php echo form_error('company_name'); ?></span>
             		</div>
             	    </div>

@@ -36,7 +36,6 @@
                   <?php
                 		$no = 1;
                 		foreach($company as $company2){
-                      if ($company2->status_id === '1') {
                 	?>
                 <tr>
                   <td><?php echo $no++ ?></td>
@@ -52,7 +51,7 @@
                     </form>
                   </td>
                 </tr>
-              <?php } }?>
+              <?php }?>
                 </tbody>
               </table>
             </div>

@@ -28,6 +28,8 @@ class Auth extends CI_Controller
       $userData = array(
         'username' => $query->username,
         'level' => $query->level,
+        'id' => $query->id,
+        'created_at' => $query->created_at,
         'logged_in' => TRUE
       );
       $this->session->set_userdata($userData);

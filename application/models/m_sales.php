@@ -60,10 +60,10 @@ class m_sales extends CI_Model{
 
 	function tampil_event()
 	{
-		return $this->db->get('event	');
+		return $this->db->get('event');
 	}
 
-	function input_myclient(){
+	function input_myclient($data,$table){
 		$this->db->insert($table,$data);
 	}
 

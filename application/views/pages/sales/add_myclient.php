@@ -25,7 +25,7 @@
             <?php
              foreach($company as $company2){
            ?>
-            <form class="form-horizontal" role="form" action="<?php echo base_url();?>sales/c_sales/add_company_save" method="post">
+            <form class="form-horizontal" autocomplete="off" role="form" action="<?php echo base_url();?>sales/c_sales/save_myclient" method="post">
               <div class="form-group">
                  <label for="company_name" class ="control-label col-sm-2">Company Name</label>
              <div class="col-sm-8">
@@ -69,15 +69,17 @@
               </div>
                 </div>
                 <div class="form-group">
-                  <label for="design" class ="control-label col-sm-2">Design</label>
+                  <label for="stand" class ="control-label col-sm-2">Design</label>
               <div class="col-sm-8">
-                  <input type="design" class="form-control" id="design" name="design" placeholder="(standard/special)">
+                  <input type="text" class="form-control" id="stand" name="stand" placeholder="(standard/special)">
+                  <span class="help-block"></span>
               </div>
                 </div>
                 <div class="form-group">
                   <label for="notes" class ="control-label col-sm-2">Notes</label>
               <div class="col-sm-8">
                   <input type="notes" class="form-control" id="notes" name="notes" placeholder="Enter notes">
+                  <span class="help-block"></span>
               </div>
                 </div>
                 <br>

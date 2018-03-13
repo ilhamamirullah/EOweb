@@ -68,6 +68,7 @@ class c_sales extends MY_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('company_name','Company Name','trim|required|is_unique[company.company_name]');
+		$this->form_validation->set_rules('category_id','Category','required');
     $this->form_validation->set_rules('address','Address','required');
 		$this->form_validation->set_rules('pic','PIC','required');
 		$this->form_validation->set_rules('email','Email','required');
@@ -128,6 +129,7 @@ class c_sales extends MY_Controller {
 	function update_company(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('company_name','Company Name','required');
+		$this->form_validation->set_rules('category_id','Category','required');
     $this->form_validation->set_rules('address','Address','required');
 		$this->form_validation->set_rules('pic','PIC','required');
 		$this->form_validation->set_rules('email','Email','required');
@@ -158,10 +160,10 @@ class c_sales extends MY_Controller {
 	);
 	$this->m_sales->update_data($where,$data,'company');
 	$this->session->set_flashdata('success','Data updated');
-	redirect('sales/c_sales/company/edit_company');
+	redirect('sales/c_sales/company');
 }else{
 	$this->session->set_flashdata('error','Data failed to update');
-	redirect('sales/c_sales/company/edit_company');
+	redirect('sales/c_sales/company');
 }
 
 }
@@ -194,7 +196,28 @@ class c_sales extends MY_Controller {
 
 	function save_myclient()
 	{
-		//buat save my client
+		$event_id = $this->input->post('event_id');
+		$company_id = $this->input->post('company_id');
+		$status_id = $this->input->post('status_id');
+		$user_id = $this->session->userdata('id');
+		$stand = $this->input->post('stand');
+		$sqm = $this->input->post('sqm');
+		$notes = $this->input->post('notes');
+		$booking_created_by = $this->session->userdata('username');
+		$data = array(
+			'event_id' => $event_id,
+			'company_id' => $company_id,
+			'status_id' => $status_id,
+			'user_id' => $user_id,
+			'stand' => $stand,
+			'sqm' => $sqm,
+			'notes' => $notes,
+			'booking_created_by' => $booking_created_by
+			);
+		$this->m_sales->input_myclient($data,'booking');
+		$this->session->set_flashdata('success','Data saved');
+		redirect('sales/c_sales/myclient');
+
 	}
 
 }

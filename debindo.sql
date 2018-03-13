@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2018 at 04:56 AM
+-- Generation Time: Mar 13, 2018 at 05:43 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -34,7 +34,7 @@ CREATE TABLE `booking` (
   `company_id` int(11) NOT NULL,
   `status_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `stand` varchar(225) NOT NULL,
+  `stand` varchar(225) DEFAULT NULL,
   `sqm` varchar(225) DEFAULT NULL,
   `notes` varchar(225) DEFAULT NULL,
   `booking_created_by` varchar(225) DEFAULT NULL,
@@ -50,7 +50,9 @@ CREATE TABLE `booking` (
 INSERT INTO `booking` (`booking_id`, `event_id`, `company_id`, `status_id`, `user_id`, `stand`, `sqm`, `notes`, `booking_created_by`, `booking_updated_by`, `booking_created_at`, `booking_updated_at`) VALUES
 (1, 1, 12, 1, 3, '', '', '', '', '', '2018-03-11 07:30:24', '2018-03-11 07:30:24'),
 (4, 4, 16, 2, 6, 'qwq', 'wqw', 'qwq', NULL, NULL, '2018-03-11 08:56:29', '2018-03-11 08:56:29'),
-(7, 4, 1, 3, 6, '', NULL, NULL, NULL, NULL, '2018-03-11 10:03:16', '2018-03-11 10:03:16');
+(7, 4, 1, 3, 6, '', NULL, NULL, NULL, NULL, '2018-03-11 10:03:16', '2018-03-11 10:03:16'),
+(8, 2, 21, 3, 3, 'special', '15', 'nothing', 'ilham', NULL, '2018-03-13 04:34:06', '2018-03-13 04:34:06'),
+(9, 2, 17, 2, 3, 'asa', 'asa', 'asas', 'ilham', NULL, '2018-03-13 04:43:08', '2018-03-13 04:43:08');
 
 -- --------------------------------------------------------
 
@@ -102,10 +104,14 @@ CREATE TABLE `company` (
 INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `website`, `pic`, `email`, `pic_contact`, `company_created_by`, `company_updated_by`, `company_created_at`, `company_updated_at`) VALUES
 (1, 1, 'asus', 'jakarta', 'asus.com', 'digi adeyana', 'digi@asus.com', '083333', '', 'ilham', '2018-02-18 07:33:33', '2018-02-28 05:26:51'),
 (12, 1, 'aaaa', 'saaa', 'aaa', 'aaa', 'aa@aad.ccc', 'aaa', '', NULL, '2018-02-18 07:33:33', '2018-02-28 05:27:00'),
-(15, 3, 'sorin maharasa', 'bogor', 'qqq', 'haha', 'aa@aad.ccc', '08883', '', NULL, '2018-02-18 07:33:33', '2018-02-28 05:27:16'),
-(16, 1, 'apple', 'jakarta', 'apple.com', 'jajas', 'jaja@apple', '089999', 'ilham', NULL, '2018-02-18 07:39:13', '2018-02-28 05:27:09'),
+(15, 3, 'sorin maharasa', 'bogor', 'qqq', 'haha', 'aa@aad.ccc', '08883', '', 'ilham', '2018-02-18 07:33:33', '2018-03-13 04:11:15'),
+(16, 1, 'apple', 'jakarta', 'apple.com', 'jajas', 'jaja@apple', '089999', 'ilham', 'ilham', '2018-02-18 07:39:13', '2018-03-13 04:13:40'),
 (17, 2, 'asd', 'asd', 'ads', 'asd', 'asd@waja.com', '0192323', 'yandra', NULL, '2018-02-28 07:12:35', '2018-02-28 07:12:35'),
-(20, 3, 'sd', 'fs', 'sd', 'sd', 'sese@ses', 'd', 'ilham', NULL, '2018-03-11 07:56:28', '2018-03-11 07:56:28');
+(20, 3, 'sd', 'fs', 'sd', 'sd', 'sese@ses', 'd', 'ilham', NULL, '2018-03-11 07:56:28', '2018-03-11 07:56:28'),
+(21, 2, '420', 'tebet', '420society', 'tes', 'tes@tes', '123', 'ilham', NULL, '2018-03-13 04:05:47', '2018-03-13 04:05:47'),
+(22, 1, 'qq', 'qq', 'qq', 'qq', 'qq@qq', 'qq', 'ilham', NULL, '2018-03-13 04:07:26', '2018-03-13 04:07:26'),
+(23, 4, 'rfr', 'frfr', 'frf', 'frf', 'frf@err', 'er', 'ilham', 'ilham', '2018-03-13 04:07:51', '2018-03-13 04:08:34'),
+(24, 2, 'wwww', 'wwd', 'www', 'www', 'www@ww', 'www', 'ilham', NULL, '2018-03-13 04:10:04', '2018-03-13 04:10:04');
 
 -- --------------------------------------------------------
 
@@ -243,7 +249,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -255,7 +261,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `event`

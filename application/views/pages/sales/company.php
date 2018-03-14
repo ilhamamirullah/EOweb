@@ -38,6 +38,7 @@
                 </thead>
                 <tbody>
                   <?php
+                  if (!empty($company)) {
                 		$no = 1;
                 		foreach($company as $company2){
                 	?>
@@ -56,7 +57,7 @@
                     </form>
                   </td>
                 </tr>
-              <?php } ?>
+              <?php } }?>
                 </tbody>
               </table>
             </div>

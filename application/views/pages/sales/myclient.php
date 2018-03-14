@@ -37,12 +37,14 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tbody>
                 <?php
+                if (!empty($booking)) {
                   $no = 1;
                    foreach($booking as $booking2){
                      if ($booking2->user_id === $this->session->userdata('id')) {
                  ?>
-                <tbody>
+
                 <tr>
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $booking2->booking_updated_at ?></td>
@@ -54,11 +56,9 @@
                     <form>
                           <a class="btn btn-success btn-xs" <?php echo anchor('sales/c_sales/edit_myclient/'.$booking2->booking_id,'Edit'); ?></a>
                     </form>
-
                   </td>
-
                 </tr>
-              <?php } }?>
+              <?php } } }?>
                 </tbody>
               </table>
             </div>

@@ -52,11 +52,18 @@ class c_sales extends MY_Controller {
     $this->load->view('templates/sales/footer');
   }
 
-	public function event1()
+	public function event1($event_id)
 	{
-		$data['event'] = $this->m_sales->tampil_event()->result();
-		$this->load->view('templates/sales/header', $data);
-		$this->load->view('pages/sales/event', $data);
+		$data2['event'] = $this->m_sales->tampil_event()->result();
+		$where = $event_id;
+		$query = $this->m_sales->event1_book($where);
+		$data['booking'] = null;
+		if($query){
+		$data['booking'] =  $query;
+	}
+		// $data['status'] = $this->m_sales->tampil_status()->result();
+		$this->load->view('templates/sales/header', $data2);
+		$this->load->view('pages/sales/event',$data);
 		$this->load->view('templates/sales/footer');
 	}
 
@@ -237,17 +244,7 @@ class c_sales extends MY_Controller {
 
 	function edit_myclient($booking_id)
 	{
-		$data['event'] = $this->m_sales->tampil_event()->result();
-		$where = $booking_id;
-		$query = $this->m_sales->edit_clientdata($where)->result();
-		$data['booking'] = null;
-		if($query){
-		$data['booking'] =  $query;
-	}
-		$data['status'] = $this->m_sales->tampil_status()->result();
-		$this->load->view('templates/sales/header', $data);
-		$this->load->view('pages/sales/edit_myclient',$data);
-		$this->load->view('templates/sales/footer');
+
 	}
 
 	function update_myclient()

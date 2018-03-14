@@ -1,17 +1,14 @@
 
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Event List
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li class="active">Event</li>
       </ol>
     </section>
 
@@ -22,37 +19,36 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Date</th>
-                  <th>Company</th>
-                  <th>Sales/AE</th>
-                  <th>Status</th>
-                  <th>SQM</th>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>Company</th>
+                    <th>Sales/AE</th>
+                    <th>Status</th>
+                    <th>SQM</th>
                 </tr>
                 </thead>
-                <?php
-                  $no = 1;
-                   foreach($booking as $booking2){
-                 ?>
                 <tbody>
+                  <?php
+                  if (!empty($booking)) {
+                		$no = 1;
+                		foreach($booking as $booking2){
+                	?>
                 <tr>
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $booking2->booking_updated_at ?></td>
-                  <td><?php echo $booking2->company_name ?></td>
-                  <td><?php echo $booking2->username?></td>
-                  <td><?php echo $booking2->status_name ?></td>
-                  <td><?php echo $booking2->sqm?></td>
-                  <td>
-                  </tr>
+                    <td><?php echo $booking2->booking_updated_at ?></td>
+                    <td><?php echo $booking2->company_name ?></td>
+                    <td><?php echo $booking2->username?></td>
+                    <td><?php echo $booking2->status_name ?></td>
+                    <td><?php echo $booking2->sqm?></td>
+                </tr>
+              <?php } }?>
                 </tbody>
-              <?php } ?>
               </table>
             </div>
             <!-- /.box-body -->

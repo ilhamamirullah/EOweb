@@ -19,47 +19,52 @@ class c_sales extends MY_Controller {
 
 	public function index()
 	{
-    $this->load->view('templates/sales/header');
-		$this->load->view('pages/sales/index');
+		$data['event'] = $this->m_sales->tampil_event()->result();
+    $this->load->view('templates/sales/header', $data);
+		$this->load->view('pages/sales/index', $data);
     $this->load->view('templates/sales/footer');
 	}
 
   public function myclient()
   {
 		// $data['users'] = $this->m_sales->tampil_users()->result();
+		$data['event'] = $this->m_sales->tampil_event()->result();
 		$query = $this->m_sales->tampil_client();
 		$data['booking'] = null;
 	  if($query){
 	   $data['booking'] =  $query;
 	  }
-    $this->load->view('templates/sales/header');
+    $this->load->view('templates/sales/header', $data);
     $this->load->view('pages/sales/myclient', $data);
     $this->load->view('templates/sales/footer');
   }
 
   public function company()
   {
+		$data['event'] = $this->m_sales->tampil_event()->result();
 		$query = $this->m_sales->tampil_data();
 		$data['company'] = null;
 	  if($query){
 	   $data['company'] =  $query;
 	  }
-    $this->load->view('templates/sales/header');
+    $this->load->view('templates/sales/header', $data);
     $this->load->view('pages/sales/company',$data);
     $this->load->view('templates/sales/footer');
   }
 
 	public function event1()
 	{
-		$this->load->view('templates/sales/header');
-		$this->load->view('pages/sales/event');
+		$data['event'] = $this->m_sales->tampil_event()->result();
+		$this->load->view('templates/sales/header', $data);
+		$this->load->view('pages/sales/event', $data);
 		$this->load->view('templates/sales/footer');
 	}
 
 	public function add_company()
 	{
+		$data['event'] = $this->m_sales->tampil_event()->result();
 		$data['category'] = $this->m_sales->tampil_category()->result();
-		$this->load->view('templates/sales/header');
+		$this->load->view('templates/sales/header', $data);
 		$this->load->view('pages/sales/add_company',$data);
 		$this->load->view('templates/sales/footer');
 	}
@@ -113,6 +118,7 @@ class c_sales extends MY_Controller {
 	}
 
 	function edit_company($company_id){
+		$data['event'] = $this->m_sales->tampil_event()->result();
 			$data['category'] = $this->m_sales->tampil_category()->result();
 			$where = $company_id;
 			$query = $this->m_sales->edit_data($where)->result();
@@ -121,7 +127,7 @@ class c_sales extends MY_Controller {
 		   $data['company'] =  $query;
 		  }
 			// $data['company'] = $this->m_sales->edit_data($where,'company')->result();
-			$this->load->view('templates/sales/header');
+			$this->load->view('templates/sales/header', $data);
 			$this->load->view('pages/sales/edit_company',$data);
 			$this->load->view('templates/sales/footer');
 	}
@@ -169,12 +175,13 @@ class c_sales extends MY_Controller {
 }
 	function choose_client()
 	{
+		$data['event'] = $this->m_sales->tampil_event()->result();
 		$query = $this->m_sales->tampil_data();
 		$data['company'] = null;
 	  if($query){
 	   $data['company'] =  $query;
 	  }
-		$this->load->view('templates/sales/header');
+		$this->load->view('templates/sales/header', $data);
 		$this->load->view('pages/sales/choose_client',$data);
 		$this->load->view('templates/sales/footer');
 	}
@@ -189,13 +196,18 @@ class c_sales extends MY_Controller {
 		$data['company'] =  $query;
 	}
 		$data['status'] = $this->m_sales->tampil_status()->result();
-		$this->load->view('templates/sales/header');
+		$this->load->view('templates/sales/header', $data);
 		$this->load->view('pages/sales/add_myclient',$data);
 		$this->load->view('templates/sales/footer');
 	}
 
 	function save_myclient()
 	{
+		$this->load->library('form_validation');
+    $this->form_validation->set_rules('event_id','event id','required');
+		$this->form_validation->set_rules('status_id','status id','required');
+
+		if($this->form_validation->run() != false){
 		$event_id = $this->input->post('event_id');
 		$company_id = $this->input->post('company_id');
 		$status_id = $this->input->post('status_id');
@@ -217,7 +229,25 @@ class c_sales extends MY_Controller {
 		$this->m_sales->input_myclient($data,'booking');
 		$this->session->set_flashdata('success','Data saved');
 		redirect('sales/c_sales/myclient');
+	}else{
+		$this->session->set_flashdata('error','Failed to save');
+		redirect('sales/c_sales/myclient');
+		}
+	}
 
+	function edit_myclient($booking_id)
+	{
+		$data['event'] = $this->m_sales->tampil_event()->result();
+		$where = $company_id;
+		$query = $this->m_sales->edit_data($where)->result();
+		$data['company'] = null;
+		if($query){
+		$data['company'] =  $query;
+	}
+		$data['status'] = $this->m_sales->tampil_status()->result();
+		$this->load->view('templates/sales/header', $data);
+		$this->load->view('pages/sales/add_myclient',$data);
+		$this->load->view('templates/sales/footer');
 	}
 
 }

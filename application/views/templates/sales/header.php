@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Debindo | Dashboard</title>
+  <title>Debindo</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -169,7 +169,7 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1'|| $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event2' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event3' ){ ?>class="treeview active"<?php }else { ?> class="treeview" <?php } ?> >
+        <li class="treeview active">
           <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
@@ -177,9 +177,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>sales/c_sales/event1"><i class="fa fa-circle-o"></i>A1</a></li>
-            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A2</a></li>
-            <li><a href="<?php echo base_url();?>sales/c_sales"><i class="fa fa-circle-o"></i>A3</a></li>
+            <?php foreach ($event as $event1) { ?>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/event1/'.$event1->event_id ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>sales/c_sales/event1/<?php echo $event1->event_id; ?>"><i class="fa fa-circle-o"></i><?php echo $event1->event_name; ?></a></li>
+          <?php } ?>
           </ul>
         </li>
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' ): ?> class="active"<?php endif; ?>>

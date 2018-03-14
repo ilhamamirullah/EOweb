@@ -169,7 +169,8 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li class="treeview active">
+        <li <?php
+           if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ){ ?>class="treeview"<?php }else { ?> class="treeview active" <?php } ?> >
           <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">

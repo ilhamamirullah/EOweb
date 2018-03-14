@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="<?php echo base_url(); ?>sales/c_sales/company">Company</a></li>
-      <li class="active">Edit Client</li>
+      <li class="active">Edit Your Client</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -17,32 +17,27 @@
     <!-- SELECT2 EXAMPLE -->
     <div class="box box-default">
       <div class="box-header with-border">
-        <h3 class="box-title">Edit Client</h3>
+        <h3 class="box-title">Edit Your Client</h3>
       </div>
       <div class="box-body">
         <div class="row">
           <div class="container" style="max-width:100%;padding:30px 10px;">
             <?php
-             foreach($company as $company2){
+             foreach($booking as $booking2){
            ?>
-            <form class="form-horizontal" autocomplete="off" role="form" action="<?php echo base_url();?>sales/c_sales/save_myclient" method="post">
+            <form class="form-horizontal" role="form" action="<?php echo base_url();?>sales/c_sales/update_myclient" method="post">
               <div class="form-group">
                  <label for="company_name" class ="control-label col-sm-2">Company Name</label>
              <div class="col-sm-8">
-               <input type="hidden" name="company_id" value="<?php echo $company2->company_id ?>" required>
-               <input type selected disabled hidden class="form-control" id="company_name" name="company_name" value="<?php echo $company2->company_name ?>">
+               <input type="hidden" id="company_id" name="company_id" value="<?php echo $booking2->booking_id ?>" required>
+               <input type selected disabled hidden class="form-control" id="company_name" name="company_name" value="<?php echo $booking2->company_name ?>">
              </div>
                </div>
                <div class="form-group">
                  <label class ="control-label col-sm-2">Event</label>
                  <div class="col-sm-8">
-                 <select class="form-control select2" name="event_id" style="width: 100%;">
-                   <option selected disabled hidden>Choose here</option>
-                   <?php
-                    foreach($event as $event2){
-                  ?>
-                   <option value="<?php echo $event2->event_id ?>"><?php echo $event2->event_name ?></option>
-                   <?php } ?>
+                  <input type="hidden" id="event_id" name="event_id" value="<?php echo $booking2->event_id ?>" required>
+                  <input type selected disabled hidden class="form-control" id="event_id" name="event_id" value="<?php echo $booking2->event_name ?>">
                  </select>
                  <span class="help-block"></span>
                  </div>
@@ -50,12 +45,12 @@
                 <div class="form-group">
                   <label class ="control-label col-sm-2">Status</label>
                   <div class="col-sm-8">
-                  <select class="form-control select2" name="status_id" style="width: 100%;">
+                  <select class="form-control select2" id="status_id" name="status_id" style="width: 100%;">
                     <option selected disabled hidden>Choose here</option>
                     <?php
                      foreach($status as $status2){
                    ?>
-                    <option value="<?php echo $status2->status_id ?>"><?php echo $status2->status_name ?></option>
+                    <option <?php if($status2->status_id === $booking2->status_id){echo "selected";} ?> value="<?php echo $status2->status_id ?>"><?php echo $status2->status_name ?></option>
                     <?php } ?>
                   </select>
                   <span class="help-block"></span>
@@ -64,21 +59,27 @@
                 <div class="form-group">
                   <label for="sqm" class ="control-label col-sm-2">Luas Space(sqm)</label>
               <div class="col-sm-8">
-                  <input type="sqm" class="form-control" id="sqm" name="sqm" placeholder="Enter sqm">
+                  <input type="sqm" class="form-control" id="sqm" name="sqm" value=<?php echo $booking2->sqm ?>>
                   <span class="help-block"></span>
               </div>
                 </div>
-                <div class="form-group">
-                  <label for="stand" class ="control-label col-sm-2">Design</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="stand" name="stand" placeholder="(standard/special)">
-                  <span class="help-block"></span>
-              </div>
-                </div>
+
+                 <div class="form-group">
+                   <label class ="control-label col-sm-2">Design</label>
+                   <div class="col-sm-8">
+                   <select class="form-control select2" id="stand" name="stand" style="width: 100%;">
+                     <option  selected value="<?php echo $booking2->stand ?>"><?php echo $booking2->stand ?></option>
+                     <option  select value="Standard Design">Standard Design</option>
+                     <option select value="Special Design">Special Design</option>
+                   </select>
+                   </select>
+                   <span class="help-block"></span>
+                   </div>
+                 </div>
                 <div class="form-group">
                   <label for="notes" class ="control-label col-sm-2">Notes</label>
               <div class="col-sm-8">
-                  <input type="notes" class="form-control" id="notes" name="notes" placeholder="Enter notes">
+                  <input type="notes" class="form-control" id="notes" name="notes" value=<?php echo $booking2->notes ?>>
                   <span class="help-block"></span>
               </div>
                 </div>

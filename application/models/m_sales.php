@@ -63,8 +63,19 @@ class m_sales extends CI_Model{
 		return $this->db->get('event');
 	}
 
-	function input_myclient($data,$table){
+	function input_clientdata($data,$table){
 		$this->db->insert($table,$data);
+	}
+
+	function edit_clientdata($where){
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->join('event', 'event.event_id = booking.event_id');
+		$this->db->join('company', 'company.company_id = booking.company_id');
+		$this->db->join('status', 'status.status_id = booking.status_id');
+		$this->db->join('users', 'users.id = booking.user_id');
+		$this->db->where("booking_id",$where);
+		return $query = $this->db->get();
 	}
 
 }

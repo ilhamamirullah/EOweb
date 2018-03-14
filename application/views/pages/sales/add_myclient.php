@@ -71,7 +71,11 @@
                 <div class="form-group">
                   <label for="stand" class ="control-label col-sm-2">Design</label>
               <div class="col-sm-8">
-                  <input type="text" class="form-control" id="stand" name="stand" placeholder="(standard/special)">
+                  <select class="form-control select2" name="stand" style="width: 100%;">
+                  <option selected disabled hidden>Choose here</option>
+                  <option  select value="Standard Design">Standard Design</option>
+                  <option select value="Special Design">Special Design</option>
+                </select>
                   <span class="help-block"></span>
               </div>
                 </div>

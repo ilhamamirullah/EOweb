@@ -10,6 +10,10 @@ class m_sales extends CI_Model{
 		return $query->result();
 	}
 
+	function company(){
+		return $this->db->get('company');
+	}
+
 	function tampil_client(){
 		$this->db->select('*');
 		$this->db->from('booking');

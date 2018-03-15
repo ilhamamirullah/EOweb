@@ -44,7 +44,6 @@
                    foreach($booking as $booking2){
                      if ($booking2->user_id === $this->session->userdata('id')) {
                  ?>
-
                 <tr>
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $booking2->booking_updated_at ?></td>

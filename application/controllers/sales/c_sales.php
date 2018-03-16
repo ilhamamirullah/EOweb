@@ -245,7 +245,7 @@ class c_sales extends MY_Controller {
 
 	function edit_myclient($booking_id)
 	{
-		$data['event'] = $this->m_sales->tampil_event()->result();	+
+		$data['event'] = $this->m_sales->tampil_event()->result();
 				$where = $booking_id;
 				$query = $this->m_sales->edit_clientdata($where)->result();
 				$data['booking'] = null;
@@ -293,6 +293,13 @@ class c_sales extends MY_Controller {
 			$this->session->set_flashdata('error','Data failed to update');
 			redirect('sales/c_sales/myclient');
 		}
+	}
+
+	function floorplan(){
+		$data['event'] = $this->m_sales->tampil_event()->result();
+		$this->load->view('templates/sales/header', $data);
+		$this->load->view('pages/sales/floorplan',$data);
+		$this->load->view('templates/sales/footer');
 	}
 
 

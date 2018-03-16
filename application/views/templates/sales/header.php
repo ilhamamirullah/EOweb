@@ -170,7 +170,9 @@
           </ul>
         </li> -->
         <li <?php
-           if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ){ ?>class="treeview"<?php }else { ?> class="treeview active" <?php } ?> >
+           if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ){
+             ?>
+             class="treeview"<?php }else { ?> class="treeview active" <?php } ?> >
           <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
@@ -195,8 +197,8 @@
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
-        <li>
-          <a href="<?php echo base_url();?>sales/c_sales">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>sales/c_sales/floorplan">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>

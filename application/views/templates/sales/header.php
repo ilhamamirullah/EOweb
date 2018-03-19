@@ -169,10 +169,7 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li <?php
-           if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/myclient' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/choose_client' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/add_company' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales' ){
-             ?>
-             class="treeview"<?php }else { ?> class="treeview active" <?php } ?> >
+        <li class="treeview" >
           <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
@@ -197,10 +194,20 @@
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>sales/c_sales/floorplan">
-            <i class="fa fa-book"></i> <span>FloorPlan</span>
+        <li class="treeview" >
+          <a href="<?php echo base_url();?>sales/c_sales">
+            <i class="fa fa-table"></i> <span>Floor Plan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <?php foreach ($event as $event1) { ?>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
+              <a href="<?php echo base_url();?>sales/c_sales/floorplan/<?php echo $event1->event_id; ?>">
+                <i class="fa fa-circle-o"></i><?php echo $event1->event_name ?></a></li>
+          <?php } ?>
+          </ul>
         </li>
         <!-- <li>
           <a href="pages/calendar.html">

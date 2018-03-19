@@ -33,6 +33,7 @@
                   <th>Event</th>
                   <th>Company</th>
                   <th>Status</th>
+                  <th>Sqm</th>
                   <th>Notes</th>
                   <th>Action</th>
                 </tr>
@@ -50,6 +51,7 @@
                   <td><?php echo $booking2->event_name ?></td>
                   <td><?php echo $booking2->company_name ?></td>
                   <td><?php echo $booking2->status_name ?></td>
+                  <td><?php echo $booking2->sqm ?></td>
                   <td><?php echo $booking2->notes ?></td>
                   <td>
                     <form>

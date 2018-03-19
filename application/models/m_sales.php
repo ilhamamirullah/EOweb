@@ -57,6 +57,11 @@ class m_sales extends CI_Model{
 		$this->db->update($table,$data);
 	}
 
+	function update_myclient($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+
 	function event1_book($where){
 		$this->db->select('*');
 		$this->db->from('booking');

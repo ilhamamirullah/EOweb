@@ -126,7 +126,7 @@ class c_sales extends MY_Controller {
 	}
 
 	function edit_company($company_id){
-		$data['event'] = $this->m_sales->tampil_event()->result();
+		$data2['event'] = $this->m_sales->tampil_event()->result();
 			$data['category'] = $this->m_sales->tampil_category()->result();
 			$where = $company_id;
 			$query = $this->m_sales->edit_data($where)->result();
@@ -135,9 +135,24 @@ class c_sales extends MY_Controller {
 		   $data['company'] =  $query;
 		  }
 			// $data['company'] = $this->m_sales->edit_data($where,'company')->result();
-			$this->load->view('templates/sales/header', $data);
+			$this->load->view('templates/sales/header', $data2);
 			$this->load->view('pages/sales/edit_company',$data);
 			$this->load->view('templates/sales/footer');
+	}
+
+	function edit_myclient($booking_id)
+	{
+		$data2['event'] = $this->m_sales->tampil_event()->result();
+				$where = $booking_id;
+				$query = $this->m_sales->edit_clientdata($where)->result();
+				$data['booking'] = null;
+				if($query){
+				$data['booking'] =  $query;
+			}
+				 $data['status'] = $this->m_sales->tampil_status()->result();
+				$this->load->view('templates/sales/header', $data2);
+				$this->load->view('pages/sales/edit_myclient',$data);
+				$this->load->view('templates/sales/footer');
 	}
 
 	function update_company(){
@@ -243,28 +258,10 @@ class c_sales extends MY_Controller {
 		}
 	}
 
-	function edit_myclient($booking_id)
-	{
-		$data['event'] = $this->m_sales->tampil_event()->result();
-				$where = $booking_id;
-				$query = $this->m_sales->edit_clientdata($where)->result();
-				$data['booking'] = null;
-				if($query){
-				$data['booking'] =  $query;
-			}
-				$data['status'] = $this->m_sales->tampil_status()->result();
-				$this->load->view('templates/sales/header', $data);
-				$this->load->view('pages/sales/edit_myclient',$data);
-				$this->load->view('templates/sales/footer');
-	}
 
 	function update_myclient()
 	{
-		$this->load->library('form_validation');
-    $this->form_validation->set_rules('event_id','event id','required');
-		$this->form_validation->set_rules('status_id','status id','required');
-
-		if($this->form_validation->run() != false){
+		$booking_id = $this->input->post('booking_id');
 		$event_id = $this->input->post('event_id');
 		$company_id = $this->input->post('company_id');
 		$status_id = $this->input->post('status_id');
@@ -286,13 +283,9 @@ class c_sales extends MY_Controller {
 			$where = array(
 				'booking_id' => $booking_id
 			);
-			$this->m_sales->update_data($where,$data,'booking');
+			$this->m_sales->update_myclient($where,$data,'booking');
 			$this->session->set_flashdata('success','Data updated');
 			redirect('sales/c_sales/myclient');
-		}else{
-			$this->session->set_flashdata('error','Data failed to update');
-			redirect('sales/c_sales/myclient');
-		}
 	}
 
 	function floorplan(){

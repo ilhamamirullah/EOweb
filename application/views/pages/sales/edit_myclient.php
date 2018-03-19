@@ -29,7 +29,8 @@
               <div class="form-group">
                  <label for="company_name" class ="control-label col-sm-2">Company Name</label>
              <div class="col-sm-8">
-               <input type="hidden" id="company_id" name="company_id" value="<?php echo $booking2->booking_id ?>" required>
+               <input type="hidden" id="company_id" name="booking_id" value="<?php echo $booking2->booking_id ?>" required>
+               <input type="hidden" id="company_id" name="company_id" value="<?php echo $booking2->company_id ?>" required>
                <input type selected disabled hidden class="form-control" id="company_name" name="company_name" value="<?php echo $booking2->company_name ?>">
              </div>
                </div>
@@ -46,7 +47,7 @@
                   <label class ="control-label col-sm-2">Status</label>
                   <div class="col-sm-8">
                   <select class="form-control select2" id="status_id" name="status_id" style="width: 100%;">
-                    <option selected disabled hidden>Choose here</option>
+
                     <?php
                      foreach($status as $status2){
                    ?>
@@ -59,7 +60,7 @@
                 <div class="form-group">
                   <label for="sqm" class ="control-label col-sm-2">Luas Space(sqm)</label>
               <div class="col-sm-8">
-                  <input type="sqm" class="form-control" id="sqm" name="sqm" value=<?php echo $booking2->sqm ?>>
+                  <input type="sqm" class="form-control" id="sqm" name="sqm" value="<?php echo $booking2->sqm ?>">
                   <span class="help-block"></span>
               </div>
                 </div>
@@ -79,7 +80,7 @@
                 <div class="form-group">
                   <label for="notes" class ="control-label col-sm-2">Notes</label>
               <div class="col-sm-8">
-                  <input type="notes" class="form-control" id="notes" name="notes" value=<?php echo $booking2->notes ?>>
+                  <input type="notes" class="form-control" id="notes" name="notes" value="<?php echo $booking2->notes ?>">
                   <span class="help-block"></span>
               </div>
                 </div>

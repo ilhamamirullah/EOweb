@@ -29,6 +29,7 @@ class Auth extends CI_Controller
         'username' => $query->username,
         'level' => $query->level,
         'id' => $query->id,
+        'jabatan' => $query->jabatan,
         'user_created_at' => $query->user_created_at,
         'logged_in' => TRUE
       );

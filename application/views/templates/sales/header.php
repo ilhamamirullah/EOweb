@@ -115,7 +115,7 @@
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->userdata('username'); ?></p>
-          <p style="color:#f39c12;"><?php echo $this->session->userdata('level'); ?></p>
+          <p style="color:#f39c12;"><?php echo $this->session->userdata('jabatan'); ?></p>
         </div>
       </div>
       <br>

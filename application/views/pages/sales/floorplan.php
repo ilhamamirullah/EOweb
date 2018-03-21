@@ -18,61 +18,40 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
+        <div class="col-xs-12">
 
-        <div class="container">
           <h2>Floor Plan</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="thumbnail">
-                <a href="/debindo/assets/images/floorplan/education.jpg" target="_blank">
-                  <img src="/debindo/assets/images/floorplan/education.jpg" class="img-fluid" alt="Lights" style="width:100%">
-                  <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                  </div>
-                </a>
-              </div>
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Floor Plan List</h3>
             </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/debindo/assets/images/floorplan/smesco.jpg" target="_blank">
-                  <img src="/debindo/assets/images/floorplan/smesco.jpg" class="img-fluid" alt="Nature" style="width:100%">
-                  <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                  </div>
-                </a>
-              </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">No</th>
+                  <th>Event</th>
+                  <th>Title</th>
+                  <th>File name</th>
+                  <th>Description</th>
+                  <th style="width: 70px">Show</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>Expo</td>
+                  <td>FloorPlan</td>
+                  <td>floorplan1.pdf</td>
+                  <td>Floorplan pertama</td>
+                  <td><a href="#" class="btn btn-success btn-xs">Show</a> </td>
+                </tr>
+              </table>
             </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/debindo/assets/images/floorplan/education.jpg" target="_blank">
-                  <img src="/debindo/assets/images/floorplan/education.jpg" alt="Fjords" style="width:100%">
-                  <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/debindo/assets/images/floorplan/education.jpg" target="_blank">
-                  <img src="/debindo/assets/images/floorplan/education.jpg" alt="Fjords" style="width:100%">
-                  <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/debindo/assets/images/floorplan/education.jpg" target="_blank">
-                  <img src="/debindo/assets/images/floorplan/education.jpg" alt="Fjords" style="width:100%">
-                  <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                  </div>
-                </a>
-              </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <p>floorplan debindo</p>
             </div>
           </div>
+          <!-- /.box -->
         </div>
 
       </div>

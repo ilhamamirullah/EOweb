@@ -232,7 +232,7 @@
           </ul>
         </li> -->
         <li class="header">Account</li>
-        <li><a href="<?php echo base_url();?>"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
+        <li><a href="<?php echo base_url();?>sales/c_sales/myprofile"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
         <li><a href="<?php echo base_url();?>authentication/auth/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>

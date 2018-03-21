@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2018 at 05:40 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: Mar 20, 2018 at 10:27 AM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -48,7 +46,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`booking_id`, `event_id`, `company_id`, `status_id`, `user_id`, `stand`, `sqm`, `notes`, `booking_created_by`, `booking_updated_by`, `booking_created_at`, `booking_updated_at`) VALUES
-(12, 1, 25, 2, 3, 'special', '12', 'tes', 'ilham', NULL, '2018-03-14 04:53:11', '2018-03-14 04:53:11'),
+(12, 1, 25, 4, 3, 'special', '12', 'tes', 'ilham', NULL, '2018-03-14 04:53:11', '2018-03-20 09:14:58'),
 (13, 2, 27, 3, 3, 'spesial', '23', 'ss', 'ilham', NULL, '2018-03-14 04:53:41', '2018-03-14 04:53:41'),
 (14, 3, 26, 2, 3, '', '23', '', 'ilham', NULL, '2018-03-14 04:59:09', '2018-03-14 04:59:09'),
 (15, 1, 28, 3, 3, '', '44', '', 'ilham', NULL, '2018-03-14 05:01:27', '2018-03-14 05:01:27');
@@ -70,10 +68,16 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
-(1, 'technology', 'technology'),
-(2, 'fashion', 'fashion'),
-(3, 'food', 'food'),
-(4, 'other', 'other');
+(1, 'Property Developer', 'Property Developer, Real Estate'),
+(2, 'Craft', 'Barang-barang craft atau pernak pernik'),
+(3, 'Fashion', 'Fashion'),
+(4, 'Food and Beverage', 'Segala jenis makananan minuman'),
+(5, 'Furniture', 'Segala jenis furniture'),
+(6, 'Manufacture', 'Segala jenis manufacture'),
+(7, 'Agro', 'segala jenis agro'),
+(8, 'Logistics', 'Segala jenis logistik'),
+(9, 'Automotive', 'Segala jenis automotive'),
+(10, 'Other', 'dan yang lain-lain');
 
 -- --------------------------------------------------------
 
@@ -132,7 +136,8 @@ INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_created_by`,
 (1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
 (2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
 (3, 'CTCT', 'pameran logistik', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(4, 'REI EXPO', 'pameran properti', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44');
+(4, 'REI EXPO', 'pameran properti', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(5, 'INDOCRAFT', 'pamaeran batik', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
 
 -- --------------------------------------------------------
 
@@ -166,6 +171,7 @@ INSERT INTO `status` (`status_id`, `status_name`, `status_description`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
+  `nama_lengkap` varchar(225) NOT NULL,
   `password` varchar(100) NOT NULL,
   `level` enum('admin','sales','director','') NOT NULL,
   `active` enum('0','1') NOT NULL,
@@ -184,11 +190,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
-(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'sales', 'tes', '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
-(4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
-(5, 'digi', '123', 'sales', '0', 'digs', NULL, NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
-(6, 'rizki', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'rizki', 'aaa', 'aa@wwd.d', '08833', '3333', 'ff', NULL, '2018-03-11 08:04:17', '2018-03-11 08:04:17');
+INSERT INTO `users` (`id`, `username`, `nama_lengkap`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
+(3, 'ilham', 'Ilham Amirullah', '81dc9bdb52d04dc20036dbd8313ed055', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-03-20 09:12:53'),
+(4, 'yandra', '', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
+(5, 'digi', '', '123', 'sales', '0', 'digs', NULL, NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
+(6, 'rizki', '', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'rizki', 'aaa', 'aa@wwd.d', '08833', '3333', 'ff', NULL, '2018-03-11 08:04:17', '2018-03-11 08:04:17');
 
 --
 -- Indexes for dumped tables
@@ -245,37 +251,31 @@ ALTER TABLE `users`
 --
 ALTER TABLE `booking`
   MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- Constraints for dumped tables
 --
@@ -294,7 +294,6 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `company`
   ADD CONSTRAINT `company_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

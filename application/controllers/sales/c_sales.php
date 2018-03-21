@@ -295,5 +295,32 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/footer');
 	}
 
+	function myprofile(){
+		$this->load->view('templates/sales/header');
+		$this->load->view('pages/sales/myprofile');
+		$this->load->view('templates/sales/footer');
+	}
 
+
+
+	public function change_password()
+	{
+		$this->form_validation->set_rules('new','New','required|alpha_numeric');
+		$this->form_validation->set_rules('re_new', 'Retype New', 'required|matches[new]');
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('templates/sales/header');
+			$this->load->view('pages/sales/change_password');
+			$this->load->view('templates/sales/footer');
+			$this->session->set_flashdata('error','Your new password doesnt match !' );
+		}else{
+		$this->m_sales->update_password();
+		$this->session->sess_destroy();
+		$this->session->set_flashdata('success','Your password success to change, please relogin !' );
+		$this->load->view('templates/sales/header');
+		$this->load->view('pages/sales/myprofile');
+		$this->load->view('templates/sales/footer');
+
+		}//end if valid_user
+		}
 }

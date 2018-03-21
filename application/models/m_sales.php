@@ -99,4 +99,22 @@ class m_sales extends CI_Model{
 		return $query = $this->db->get();
 	}
 
+	public function update_password()
+ {
+  $password = md5($this->input->post('new'));
+  $data = array (
+   'password' => $password
+   );
+  $this->db->where('id', $this->session->userdata('id'));
+  $this->db->update('users', $data);
+ }
+
+ public function cek_old()
+{
+ 	$old = md5($this->input->post('old'));
+	$this->db->where('password',$old);
+ 	$query = $this->db->get('users');
+		return $query->result();;
+	}
+
 }

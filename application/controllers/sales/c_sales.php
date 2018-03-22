@@ -288,13 +288,6 @@ class c_sales extends MY_Controller {
 			redirect('sales/c_sales/myclient');
 	}
 
-	function floorplan(){
-		$data['event'] = $this->m_sales->tampil_event()->result();
-		$this->load->view('templates/sales/header', $data);
-		$this->load->view('pages/sales/floorplan',$data);
-		$this->load->view('templates/sales/footer');
-	}
-
 	function myprofile(){
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/myprofile');
@@ -323,4 +316,19 @@ class c_sales extends MY_Controller {
 
 		}//end if valid_user
 		}
+
+		function floorplan($event_id){
+			$data['event'] = $this->m_sales->tampil_event()->result();
+			$where = $event_id;
+			$query = $this->m_sales->tampil_floorplan($where);
+			$data['floorplan'] = null;
+			if($query){
+			$data['floorplan'] =  $query;
+		}
+			$this->load->view('templates/sales/header', $data);
+			$this->load->view('pages/sales/floorplan',$data);
+			$this->load->view('templates/sales/footer');
+		}
+
+
 }

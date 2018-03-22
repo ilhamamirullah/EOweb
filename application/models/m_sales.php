@@ -52,6 +52,17 @@ class m_sales extends CI_Model{
 		return $query = $this->db->get();
 }
 
+function edit_clientdata($where){
+	$this->db->select('*');
+	$this->db->from('booking');
+	$this->db->join('event', 'event.event_id = booking.event_id');
+	$this->db->join('company', 'company.company_id = booking.company_id');
+	$this->db->join('status', 'status.status_id = booking.status_id');
+	$this->db->join('users', 'users.id = booking.user_id');
+	$this->db->where("booking_id",$where);
+	return $query = $this->db->get();
+}
+
 	function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
@@ -88,33 +99,15 @@ class m_sales extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
-	function edit_clientdata($where){
+	function tampil_floorplan($where){
 		$this->db->select('*');
-		$this->db->from('booking');
-		$this->db->join('event', 'event.event_id = booking.event_id');
-		$this->db->join('company', 'company.company_id = booking.company_id');
-		$this->db->join('status', 'status.status_id = booking.status_id');
-		$this->db->join('users', 'users.id = booking.user_id');
-		$this->db->where("booking_id",$where);
-		return $query = $this->db->get();
+		$this->db->from('floorplan');
+		$this->db->join('event', 'event.event_id = floorplan.event_id');
+		$this->db->where("floorplan.event_id",$where);
+		$query = $this->db->get();
+		return $query->result();
 	}
 
-	public function update_password()
- {
-  $password = md5($this->input->post('new'));
-  $data = array (
-   'password' => $password
-   );
-  $this->db->where('id', $this->session->userdata('id'));
-  $this->db->update('users', $data);
- }
 
- public function cek_old()
-{
- 	$old = md5($this->input->post('old'));
-	$this->db->where('password',$old);
- 	$query = $this->db->get('users');
-		return $query->result();;
-	}
 
 }

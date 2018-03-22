@@ -41,7 +41,7 @@
                <div class="col-sm-offset-2 col-sm-8">
                   <button type="Submit" class="btn btn-success" href="<?php echo base_url();?>sales/c_sales/change_password">Ganti Password</button>
                   <button class="btn btn-warning" type="reset">Reset</button>
-                  <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales/company">Cancel</a>
+                  <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales/myprofile">Cancel</a>
                </div>
             </form>
           </div>

@@ -28,22 +28,32 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
-                <tr>
-                  <th style="width: 10px">No</th>
-                  <th>Event</th>
-                  <th>Title</th>
-                  <th>File name</th>
-                  <th>Description</th>
-                  <th style="width: 70px">Show</th>
-                </tr>
-                <tr>
-                  <td>1.</td>
-                  <td>Expo</td>
-                  <td>FloorPlan</td>
-                  <td>floorplan1.pdf</td>
-                  <td>Floorplan pertama</td>
-                  <td><a href="#" class="btn btn-success btn-xs">Show</a> </td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th style="width: 10px">No</th>
+                    <th>Event</th>
+                    <th>Title</th>
+                    <th>File name</th>
+                    <th>Description</th>
+                    <th style="width: 70px">Show</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    if (!empty($floorplan)) {
+                  foreach ($floorplan as $floorplan1) {
+                    $no = 1;
+                   ?>
+                  <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $floorplan1->event_id ?></td>
+                    <td><?php echo $floorplan1->title ?></td>
+                    <td><?php echo $floorplan1->file_name ?></td>
+                    <td><?php echo $floorplan1->description?></td>
+                    <td><a href="#" class="btn btn-success btn-xs">Show</a> </td>
+                  </tr>
+                <?php } } ?>
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->

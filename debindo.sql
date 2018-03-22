@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2018 at 10:27 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: Mar 22, 2018 at 04:59 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -142,6 +144,31 @@ INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_created_by`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `floorplan`
+--
+
+CREATE TABLE `floorplan` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `description` text,
+  `floorplan_created_by` varchar(255) DEFAULT NULL,
+  `floorplan_updated_by` varchar(255) DEFAULT NULL,
+  `floorplan_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `floorplan_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `floorplan`
+--
+
+INSERT INTO `floorplan` (`id`, `event_id`, `title`, `file_name`, `description`, `floorplan_created_by`, `floorplan_updated_by`, `floorplan_created_at`, `floorplan_updated_at`) VALUES
+(1, 3, 'floor plan CTCT', 'floorplan1.pdf', 'floorplan untuk event CTCT', 'ilham', NULL, '2018-03-21 13:53:57', '2018-03-21 13:53:57');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `status`
 --
 
@@ -191,7 +218,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `nama_lengkap`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
-(3, 'ilham', 'Ilham Amirullah', '81dc9bdb52d04dc20036dbd8313ed055', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-03-20 09:12:53'),
+(3, 'ilham', 'Ilham Amirullah', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-03-21 14:00:07'),
 (4, 'yandra', '', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
 (5, 'digi', '', '123', 'sales', '0', 'digs', NULL, NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
 (6, 'rizki', '', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'rizki', 'aaa', 'aa@wwd.d', '08833', '3333', 'ff', NULL, '2018-03-11 08:04:17', '2018-03-11 08:04:17');
@@ -231,6 +258,13 @@ ALTER TABLE `event`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Indexes for table `floorplan`
+--
+ALTER TABLE `floorplan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `event_id` (`event_id`);
+
+--
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
@@ -251,31 +285,43 @@ ALTER TABLE `users`
 --
 ALTER TABLE `booking`
   MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `floorplan`
+--
+ALTER TABLE `floorplan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- Constraints for dumped tables
 --
@@ -294,6 +340,13 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `company`
   ADD CONSTRAINT `company_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `floorplan`
+--
+ALTER TABLE `floorplan`
+  ADD CONSTRAINT `floorplan_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

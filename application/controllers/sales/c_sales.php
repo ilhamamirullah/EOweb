@@ -330,5 +330,43 @@ class c_sales extends MY_Controller {
 			$this->load->view('templates/sales/footer');
 		}
 
+		function create_floorplan()
+    {
+				$data['event'] = $this->m_sales->tampil_event()->result();
+					$this->load->view('templates/sales/header', $data);
+					$this->load->view('pages/sales/add_floorplan');
+					$this->load->view('templates/sales/footer');
+
+    }
+
+		function upload_file($file)
+    {
+        $this->load->library("upload");
+        $upload_cfg['upload_path'] = "global/uploads/";
+        $upload_cfg['encrypt_name'] = TRUE;
+        $upload_cfg['allowed_types'] = "gif|jpg|png|jpeg|pdf";
+/*        $upload_cfg['max_width'] = '1920'; /* max width of the image file */
+/*        $upload_cfg['max_height'] = '1080'; /* max height of the image file */
+/*        $upload_cfg['min_width'] = '300'; /* min width of the image file */
+/*        $upload_cfg['min_height'] = '300'; /* min height of the image file */
+
+        $this->upload->initialize($upload_cfg);
+
+        if ($this->upload->do_upload($file)) {
+            $image = $this->upload->data();
+            $this->session->set_flashdata('success_msg', lang('success_msg_edit_cat'));
+            return $image;
+        } else {
+            $msg = $this->form_validation->field_data['file_to_upload']['error'] = $this->upload->display_errors('', '');
+            $this->session->set_flashdata('success_msg', $msg);
+            redirect('files/overview/');
+        }
+    }
+
+		function is_multi($array)
+		{
+				return (count($array) != count($array, 1));
+		}
+
 
 }

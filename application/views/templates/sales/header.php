@@ -194,20 +194,10 @@
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
-        <li class="treeview" >
-          <a href="<?php echo base_url();?>sales/c_sales">
-            <i class="fa fa-table"></i> <span>Floor Plan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/create_floorplan' || $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/menu_floorplan' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>sales/c_sales/menu_floorplan">
+            <i class="fa fa-folder"></i> <span>Floor Plan</span>
           </a>
-          <ul class="treeview-menu">
-            <?php foreach ($event as $event1) { ?>
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/sales/c_sales/floorplan/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
-              <a href="<?php echo base_url();?>sales/c_sales/floorplan/<?php echo $event1->event_id; ?>">
-                <i class="fa fa-circle-o"></i><?php echo $event1->event_name ?></a></li>
-          <?php } ?>
-          </ul>
         </li>
         <!-- <li>
           <a href="pages/calendar.html">

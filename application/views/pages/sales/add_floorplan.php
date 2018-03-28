@@ -23,6 +23,20 @@
         <div class="row">
           <div class="container" style="max-width:100%;padding:30px 10px;">
             <form class="form-horizontal" autocomplete="off" role="form" action="<?php echo base_url();?>sales/c_sales/add_company_save" method="post">
+              <div class="form-group">
+                <label class ="control-label col-sm-2">Event</label>
+                <div class="col-sm-8">
+                <select class="form-control select2" name="event_id" style="width: 100%;">
+                  <option selected disabled hidden>Choose here</option>
+                  <?php
+                   foreach($event as $event2){
+                 ?>
+                  <option value="<?php echo $event2->event_id ?>"><?php echo $event2->event_name ?></option>
+                  <?php } ?>
+                </select>
+                <span class="help-block"></span>
+                </div>
+              </div>
                <div class="form-group">
                   <label for="title" class ="control-label col-sm-2">title</label>
               <div class="col-sm-8">

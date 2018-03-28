@@ -317,6 +317,13 @@ class c_sales extends MY_Controller {
 		}//end if valid_user
 		}
 
+		function menu_floorplan(){
+			$data['event'] = $this->m_sales->tampil_event()->result();
+			$this->load->view('templates/sales/header', $data);
+			$this->load->view('pages/sales/menu_floorplan',$data);
+			$this->load->view('templates/sales/footer');
+		}
+
 		function floorplan($event_id){
 			$data['event'] = $this->m_sales->tampil_event()->result();
 			$where = $event_id;

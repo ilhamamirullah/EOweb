@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2018 at 12:49 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: Apr 27, 2018 at 04:57 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -124,6 +124,7 @@ CREATE TABLE `event` (
   `event_id` int(11) NOT NULL,
   `event_name` varchar(225) NOT NULL,
   `event_desc` varchar(225) NOT NULL,
+  `event_date` date NOT NULL,
   `event_created_by` varchar(225) DEFAULT NULL,
   `event_updated_by` varchar(225) DEFAULT NULL,
   `event_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -134,12 +135,12 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
-(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(3, 'CTCT', 'pameran logistik', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(4, 'REI EXPO', 'pameran properti', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(5, 'INDOCRAFT', 'pamaeran batik', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
+INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_date`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
+(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(3, 'CTCT', 'pameran logistik', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(4, 'REI EXPO', 'pameran properti', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(5, 'INDOCRAFT', 'pamaeran batik', '0000-00-00', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
 
 -- --------------------------------------------------------
 

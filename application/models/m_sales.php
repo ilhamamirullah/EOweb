@@ -108,6 +108,24 @@ function edit_clientdata($where){
 		return $query->result();
 	}
 
+	public function update_password()
+ {
+ $password = md5($this->input->post('new'));
+ $data = array (
+  'password' => $password
+ );
+$this->db->where('id', $this->session->userdata('id'));
+$this->db->update('users', $data);
+}
+
+public function cek_old()
+{
+$odld = md5($this->input->post('old'));
+$this->db->where('password',$old);
+$query = $this->db->get('users');
+return $query->result();;
+}
+
 
 
 }

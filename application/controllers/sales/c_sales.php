@@ -309,7 +309,7 @@ class c_sales extends MY_Controller {
 		}else{
 		$this->m_sales->update_password();
 		$this->session->sess_destroy();
-		$this->session->set_flashdata('success','Your password success to change, please relogin !' );
+		$this->session->set_flashdata('success','Your password has been changed, please relogin with your new password !' );
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/myprofile');
 		$this->load->view('templates/sales/footer');

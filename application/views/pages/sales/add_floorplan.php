@@ -4,12 +4,12 @@
   <section class="content-header">
     <h1>
       Debindo
-      <small>Add New Company</small>
+      <small>Add New Floor Plan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="<?php echo base_url(); ?>sales/c_sales/company">Company</a></li>
-      <li class="active">Add Company</li>
+      <li><a href="<?php echo base_url(); ?>sales/c_sales/menu_floorplan">Floorplan</a></li>
+      <li class="active">Add Floor Plan</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -22,7 +22,7 @@
       <div class="box-body">
         <div class="row">
           <div class="container" style="max-width:100%;padding:30px 10px;">
-            <form class="form-horizontal" autocomplete="off" role="form" action="<?php echo base_url();?>sales/c_sales/add_company_save" method="post">
+            <form class="form-horizontal" autocomplete="off" role="form" action="" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label class ="control-label col-sm-2">Event</label>
                 <div class="col-sm-8">
@@ -60,7 +60,7 @@
                 </div>
                 <br>
                <div class="col-sm-offset-2 col-sm-8">
-                  <button type="submit" class="btn btn-success">Simpan</button>
+                  <input type="submit" name="fileSubmit" value="Simpan"/>
                   <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales/floorplan">Cancel</a>
                </div>
             </form>

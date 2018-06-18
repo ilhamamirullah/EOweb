@@ -126,6 +126,11 @@ $query = $this->db->get('users');
 return $query->result();;
 }
 
+public function insert_floorplan($data = array()){
+		$insert = $this->db->insert_batch('floorplan',$data);
+		return $insert?true:false;
+}
+
 
 
 }

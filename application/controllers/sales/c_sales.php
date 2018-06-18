@@ -309,7 +309,7 @@ class c_sales extends MY_Controller {
 		}else{
 		$this->m_sales->update_password();
 		$this->session->sess_destroy();
-		$this->session->set_flashdata('success','Your password has been changed, please relogin with your new password !' );
+		$this->session->set_flashdata('success','Your password success to change, please relogin !' );
 		$this->load->view('templates/sales/header');
 		$this->load->view('pages/sales/myprofile');
 		$this->load->view('templates/sales/footer');
@@ -344,36 +344,48 @@ class c_sales extends MY_Controller {
 					$this->load->view('pages/sales/add_floorplan');
 					$this->load->view('templates/sales/footer');
 
-    }
+					$data = array();
+// If file upload form submitted
+				if($this->input->post('fileSubmit') && !empty($_FILES['files']['name'])){
+						$filesCount = count($_FILES['files']['name']);
+						for($i = 0; $i < $filesCount; $i++){
+								$_FILES['file']['name']     = $_FILES['files']['name'][$i];
+								$_FILES['file']['type']     = $_FILES['files']['type'][$i];
+								$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+								$_FILES['file']['error']     = $_FILES['files']['error'][$i];
+								$_FILES['file']['size']     = $_FILES['files']['size'][$i];
 
-		function upload_file($file)
-    {
-        $this->load->library("upload");
-        $upload_cfg['upload_path'] = "global/uploads/";
-        $upload_cfg['encrypt_name'] = TRUE;
-        $upload_cfg['allowed_types'] = "gif|jpg|png|jpeg|pdf";
-/*        $upload_cfg['max_width'] = '1920'; /* max width of the image file */
-/*        $upload_cfg['max_height'] = '1080'; /* max height of the image file */
-/*        $upload_cfg['min_width'] = '300'; /* min width of the image file */
-/*        $upload_cfg['min_height'] = '300'; /* min height of the image file */
+								// File upload configuration
+								$uploadPath = 'uploads/files/';
+								$config['upload_path'] = $uploadPath;
+								$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
 
-        $this->upload->initialize($upload_cfg);
+								// Load and initialize upload library
+								$this->load->library('upload', $config);
+								$this->upload->initialize($config);
 
-        if ($this->upload->do_upload($file)) {
-            $image = $this->upload->data();
-            $this->session->set_flashdata('success_msg', lang('success_msg_edit_cat'));
-            return $image;
-        } else {
-            $msg = $this->form_validation->field_data['file_to_upload']['error'] = $this->upload->display_errors('', '');
-            $this->session->set_flashdata('success_msg', $msg);
-            redirect('files/overview/');
-        }
-    }
+								// Upload file to server
+								if($this->upload->do_upload('file')){
+										// Uploaded file data
+										$fileData = $this->upload->data();
+										//$this->input->post('event_id');
+										$uploadData[$i]['title'] = $this->input->post('title');
+										$uploadData[$i]['event_id'] = $this->input->post('event_id');
+										$uploadData[$i]['floorplan_created_by'] = $this->session->userdata('username');
+										$uploadData[$i]['file_name'] = $fileData['file_name'];
+										$uploadData[$i]['description'] = $this->input->post('description');
+								}
+						}
 
-		function is_multi($array)
-		{
-				return (count($array) != count($array, 1));
-		}
+						if(!empty($uploadData)){
+								// Insert files data into the database
+								$insert = $this->m_sales->insert_floorplan($uploadData);
+								$this->session->set_flashdata('success','Data saved');
+								redirect('sales/c_sales/menu_floorplan');
+						}
+					}
+    		}
+
 
 
 }

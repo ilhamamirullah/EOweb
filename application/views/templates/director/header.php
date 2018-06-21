@@ -168,24 +168,26 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li> -->
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1'|| $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event2' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event3' ){ ?>class="treeview active"<?php }else { ?> class="treeview" <?php } ?> >
-          <a href="<?php echo base_url();?>director/c_director">
+        <li class="treeview" >
+          <a href="<?php echo base_url();?>sales/c_sales">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1' ): ?> class="active"<?php endif; ?>><a href="<?php echo base_url();?>director/c_director/event1"><i class="fa fa-circle-o"></i>A1</a></li>
-            <li><a href="<?php echo base_url();?>director/c_director"><i class="fa fa-circle-o"></i>A2</a></li>
-            <li><a href="<?php echo base_url();?>director/c_director"><i class="fa fa-circle-o"></i>A3</a></li>
+            <?php foreach ($event as $event1) { ?>
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
+              <a href="<?php echo base_url();?>director/c_director/event1/<?php echo $event1->event_id; ?>">
+                <i class="fa fa-circle-o"></i><?php echo $event1->event_name ?></a></li>
+          <?php } ?>
           </ul>
         </li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>
+        <!--<li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>director/c_director/myclient">
             <i class="fa fa-table"></i> <span>My Client</span>
           </a>
-        </li>
+        </li>-->
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/company' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/add_company' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>director/c_director/company">
             <i class="fa fa-folder"></i> <span>Company</span>
@@ -219,8 +221,8 @@
           </ul>
         </li> -->
         <li class="header">Account</li>
-        <li><a href="<?php echo base_url();?>"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
-        <li><a href="<?php echo base_url();?>authentication/auth/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+          <li><a href="<?php echo base_url();?>director/c_director/myprofile"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
+          <li><a href="<?php echo base_url();?>authentication/auth/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

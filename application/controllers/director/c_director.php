@@ -19,144 +19,83 @@ class c_director extends MY_Controller {
 
 	public function index()
 	{
-    $this->load->view('templates/director/header');
-		$this->load->view('pages/director/index');
+		$data['event'] = $this->m_director->tampil_event()->result();
+		$data['company'] = $this->m_director->tampil_data();
+    $this->load->view('templates/director/header', $data);
+		$this->load->view('pages/director/index', $data);
     $this->load->view('templates/director/footer');
 	}
 
-  public function myclient()
-  {
-    $this->load->view('templates/director/header');
-    $this->load->view('pages/director/myclient');
-    $this->load->view('templates/director/footer');
-  }
+  //public function myclient()
+  //{
+		// $data['users'] = $this->m_sales->tampil_users()->result();
+		//$data['event'] = $this->m_sales->tampil_event()->result();
+		//$query = $this->m_sales->tampil_client();
+		//$data['booking'] = null;
+	  //if($query){
+	   //$data['booking'] =  $query;
+	  //}
+    //$this->load->view('templates/sales/header', $data);
+    //$this->load->view('pages/sales/myclient', $data);
+    //$this->load->view('templates/sales/footer');
+  //}
 
   public function company()
   {
+		$data['event'] = $this->m_director->tampil_event()->result();
 		$query = $this->m_director->tampil_data();
 		$data['company'] = null;
 	  if($query){
 	   $data['company'] =  $query;
 	  }
-    $this->load->view('templates/director/header');
+    $this->load->view('templates/director/header', $data);
     $this->load->view('pages/director/company',$data);
     $this->load->view('templates/director/footer');
   }
 
-	public function event1()
+	public function event1($event_id)
 	{
-		$this->load->view('templates/director/header');
-		$this->load->view('pages/director/event');
+		$data2['event'] = $this->m_director->tampil_event()->result();
+		$where = $event_id;
+		$query = $this->m_director->event1_book($where);
+		$data['booking'] = null;
+		if($query){
+		$data['booking'] =  $query;
+	}
+		// $data['status'] = $this->m_sales->tampil_status()->result();
+		$this->load->view('templates/director/header', $data2);
+		$this->load->view('pages/director/event',$data);
 		$this->load->view('templates/director/footer');
 	}
 
-	public function add_company()
-	{
-		$data['category'] = $this->m_director->tampil_category()->result();
+
+		function myprofile()
+		{
 		$this->load->view('templates/director/header');
-		$this->load->view('pages/director/add_company',$data);
+		$this->load->view('pages/director/myprofile');
 		$this->load->view('templates/director/footer');
 	}
 
-	function add_company_save()
+
+
+	public function change_password()
 	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('company_name','Company Name','required');
-    $this->form_validation->set_rules('address','Address','required');
-		$this->form_validation->set_rules('pic','PIC','required');
-		$this->form_validation->set_rules('email','Email','required');
-		$this->form_validation->set_rules('pic_contact','PIC Contact','required');
-
-		if($this->form_validation->run() != false){
-		$id_category = $this->input->post('category_id');
-		$name = $this->input->post('company_name');
-		$address = $this->input->post('address');
-		$website = $this->input->post('website');
-		$pic = $this->input->post('pic');
-		$email = $this->input->post('email');
-		$pic_contact = $this->input->post('pic_contact');
-		$created_by = $this->session->userdata('username');
-		$data = array(
-			'category_id' => $id_category,
-			'company_name' => $name,
-			'address' => $address,
-			'website' => $website,
-			'pic' => $pic,
-			'email' => $email,
-			'pic_contact' => $pic_contact,
-			'created_by' => $created_by
-			);
-		$this->m_director->input_data($data,'company');
-		$this->session->set_flashdata('success','Data saved');
-		redirect('director/c_director/company');
-	}else{
-		$this->session->set_flashdata('error','Failed to save');
-		$data['category'] = $this->m_director->tampil_category()->result();
-		$this->load->view('templates/director/header');
-		$this->load->view('pages/director/add_company',$data);
-		$this->load->view('templates/director/footer');
-	}
-}
-
-	function delete_company($company_id){
-			$where = array('company_id' => $company_id );
-			$this->m_director->delete_data($where,'company');
-			$this->session->set_flashdata('success','data deleted');
-			redirect('director/c_director/company/');
-	}
-
-	function edit_company($company_id){
-			$data['category'] = $this->m_director->tampil_category()->result();
-			$where = $company_id;
-			$query = $this->m_director->edit_data($where)->result();
-			$data['company'] = null;
-		  if($query){
-		   $data['company'] =  $query;
-		  }
-			// $data['company'] = $this->m_director->edit_data($where,'company')->result();
+		$this->form_validation->set_rules('new','New','required|alpha_numeric');
+		$this->form_validation->set_rules('re_new', 'Retype New', 'required|matches[new]');
+		if($this->form_validation->run() == FALSE)
+		{
 			$this->load->view('templates/director/header');
-			$this->load->view('pages/director/edit_company',$data);
+			$this->load->view('pages/director/change_password');
 			$this->load->view('templates/director/footer');
+			$this->session->set_flashdata('error','Your new password doesnt match !' );
+		}else{
+		$this->m_director->update_password();
+		$this->session->sess_destroy();
+		$this->session->set_flashdata('success','Your password success to change, please relogin !' );
+		$this->load->view('templates/director/header');
+		$this->load->view('pages/director/myprofile');
+		$this->load->view('templates/director/footer');
+
+		}//end if valid_user
 	}
-
-	function update_company(){
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('company_name','Company Name','required');
-    $this->form_validation->set_rules('address','Address','required');
-		$this->form_validation->set_rules('pic','PIC','required');
-		$this->form_validation->set_rules('email','Email','required');
-		$this->form_validation->set_rules('pic_contact','PIC Contact','required');
-
-		if($this->form_validation->run() != false){
-		$company_id = $this->input->post('company_id');
-		$category_id = $this->input->post('category_id');
-		$name = $this->input->post('company_name');
-		$address = $this->input->post('address');
-		$website = $this->input->post('website');
-		$pic = $this->input->post('pic');
-		$email = $this->input->post('email');
-		$pic_contact = $this->input->post('pic_contact');
-		$updated_by = $this->session->userdata('username');
-		$data = array(
-			'category_id' => $category_id,
-			'company_name' => $name,
-			'address' => $address,
-			'website' => $website,
-			'pic' => $pic,
-			'email' => $email,
-			'pic_contact' => $pic_contact,
-			'updated_by' => $updated_by
-		);
-	$where = array(
-		'company_id' => $company_id
-	);
-	$this->m_director->update_data($where,$data,'company');
-	$this->session->set_flashdata('success','Data updated');
-	redirect('director/c_director/company/edit_company');
-}else{
-	$this->session->set_flashdata('error','Data failed to update');
-	redirect('director/c_director/company/edit_company');
-}
-
-}
 }

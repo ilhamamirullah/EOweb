@@ -22,15 +22,15 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Debindo</b></a>
+    <a href="#"><b>Debindo</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Login to start your session</p>
 
-    <form action="<?php echo base_url();?>auth/cek_login" method="post">
+    <form autocomplete="off" role="form" action="<?php echo base_url();?>auth/cek_login" method="post">
       <div class="form-group has-feedback">
-        <input type="username" name="username" class="form-control" placeholder="Username">
+        <input type="text" name="username" autocomplete="nope" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -45,8 +45,6 @@
         <!-- /.col -->
       </div>
     </form>
-<br>
-<br>
   </div>
   <!-- /.login-box-body -->
 </div>

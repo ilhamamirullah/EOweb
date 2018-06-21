@@ -386,6 +386,18 @@ class c_sales extends MY_Controller {
 					}
     		}
 
+				function delete_floorplan($floorplan_id){
+						$this->db->where('floorplan_id',$floorplan_id);
+						$query = $this->db->get('floorplan');
+						$row = $query->row();
+						unlink("./uploads/files/$row->file_name");
+
+						$where = array('floorplan_id' => $floorplan_id );
+						$this->m_sales->delete_data($where,'floorplan');
+						$this->session->set_flashdata('success','data deleted');
+						redirect('sales/c_sales/menu_floorplan/');
+				}
+
 
 
 }

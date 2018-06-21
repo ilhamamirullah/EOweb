@@ -35,7 +35,7 @@
                     <th>Title</th>
                     <th>File name</th>
                     <th>Description</th>
-                    <th style="width: 70px">Show</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,12 @@
                     <td><?php echo $floorplan1->title ?></td>
                     <td><?php echo $floorplan1->file_name ?></td>
                     <td><?php echo $floorplan1->description?></td>
-                    <td><a href="#" class="btn btn-success btn-xs">Show</a> </td>
+                    <td>
+                      <form action="<?php echo base_url();?>sales/c_sales/delete_floorplan/<?php echo $floorplan1->floorplan_id ?>" method="post">
+                      <a href="#" class="btn btn-success btn-xs">Show</a>
+                      <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
+                    </form>
+                    </td>
                   </tr>
                 <?php } } ?>
                 </tbody>

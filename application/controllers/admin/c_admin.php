@@ -88,12 +88,71 @@ class c_admin extends MY_Controller {
 	}
 }
 
-function delete_user($id){
+function delete_user($id)
+{
 		$where = array('id' => $id );
 		$this->m_admin->delete_data($where,'users');
 		$this->session->set_flashdata('success','data deleted');
 		redirect('admin/c_admin/user');
-}
+	}
+
+	function edit_user($id)
+	{
+		$data2['event'] = $this->m_admin->tampil_event()->result();
+		$where = $id;
+		$query = $this->m_admin->edit_user_data($where)->result();
+		$data['users'] = null;
+		if($query){
+		$data['users'] =  $query;
+				}
+				// $data['company'] = $this->m_sales->edit_data($where,'company')->result();
+				$this->load->view('templates/admin/header', $data2);
+				$this->load->view('pages/admin/edit_user',$data);
+				$this->load->view('templates/admin/footer');
+		}
+
+	function update_user()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('name','Name','required');
+		$this->form_validation->set_rules('address','Address','required');
+		$this->form_validation->set_rules('email','Email','required');
+		$this->form_validation->set_rules('contact','Contact','required');
+
+		if($this->form_validation->run() != false)
+			{
+				$id = $this->input->post('id');
+				$username = $this->input->post('username');
+				$name = $this->input->post('name');
+				$level = $this->input->post('level');
+				$address = $this->input->post('address');
+				$email = $this->input->post('email');
+				$contact = $this->input->post('contact');
+				$data = array(
+					'username' => $username,
+					'name' => $name,
+					'level'=> $level,
+					'address' => $address,
+					'email' => $email,
+					'contact' => $contact,
+					'active' => '1'
+					);
+					$where = array(
+						'id' => $id
+					);
+				$this->m_admin->update_data($where,$data,'users');
+				$this->session->set_flashdata('success','Data saved');
+				redirect('admin/c_admin/user');
+			}else
+				{
+					$this->session->set_flashdata('error','Failed to save');
+					redirect('admin/c_admin/user');
+				}
+	}
+
+
+
   //public function myclient()
   //{
 		// $data['users'] = $this->m_sales->tampil_users()->result();

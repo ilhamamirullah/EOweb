@@ -46,7 +46,7 @@
                   <td><?php echo $users2->level ?></td>
                   <td>
                     <form action="<?php echo base_url();?>admin/c_admin/delete_user/<?php echo $users2->id ?>" method="post">
-                          <a class="btn btn-success btn-xs" <?php echo anchor('admin/c_admin/edit_company/'.$users2->id,'Edit'); ?></a>
+                          <a class="btn btn-success btn-xs" <?php echo anchor('admin/c_admin/edit_user/'.$users2->id,'Edit'); ?></a>
                           <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
                     </form>
                   </td>

@@ -39,6 +39,13 @@ class m_admin extends CI_Model{
 		$this->db->delete($table);
 	}
 
+	function edit_user_data($where){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where("id",$where);
+		return $query = $this->db->get();
+}
+
 	function edit_data($where){
 		$this->db->select('*');
 		$this->db->from('company');

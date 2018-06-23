@@ -16,7 +16,7 @@ class c_sales extends MY_Controller {
 		    }
 		$this->load->library('form_validation','session');
 		$this->load->model('m_sales');
-    $this->load->helper(array('form','url'));
+    $this->load->helper(array('form','url','file', 'download'));
 	}
 
 	public function index()
@@ -398,6 +398,22 @@ class c_sales extends MY_Controller {
 						$this->m_sales->delete_data($where,'floorplan');
 						$this->session->set_flashdata('success','data deleted');
 						redirect('sales/c_sales/menu_floorplan/');
+				}
+
+				public function download_file($floorplan_id){
+					$this->db->where('floorplan_id',$floorplan_id);
+					$query = $this->db->get('floorplan');
+					$row = $query->row();
+					// fopen("./uploads/files/$row->file_name", "r");
+					// force_download("./uploads/files/$row->file_name", NULL);
+					$file = "./uploads/files/$row->file_name";
+					$filename = "./uploads/files/$row->file_name";
+					header('Content-type: application/pdf');
+					header('Content-Disposition: inline; filename:"' . $filename . '"' );
+					header('Content-Transfer-Encoding: binary');
+					header('Accept-Ranger');
+					@readfile($file);
+
 				}
 
 

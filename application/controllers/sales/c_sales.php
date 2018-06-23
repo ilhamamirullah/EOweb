@@ -296,8 +296,6 @@ class c_sales extends MY_Controller {
 		$this->load->view('templates/sales/footer');
 	}
 
-
-
 	public function change_password()
 	{
 		$this->form_validation->set_rules('new','New','required|alpha_numeric');

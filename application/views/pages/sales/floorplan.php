@@ -52,7 +52,7 @@
                     <td><?php echo $floorplan1->description?></td>
                     <td>
                       <form action="<?php echo base_url();?>sales/c_sales/delete_floorplan/<?php echo $floorplan1->floorplan_id ?>" method="post">
-                      <a href="<?php echo base_url();?>" class="btn btn-success btn-xs">Show</a>
+                      <a href="<?php echo base_url();?>sales/c_sales/download_file/<?php echo $floorplan1->floorplan_id ?>" target="_blank" class="btn btn-success btn-xs">Show</a>
                       <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
                     </form>
                     </td>

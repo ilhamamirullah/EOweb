@@ -14,14 +14,9 @@ class m_admin extends CI_Model{
 		return $this->db->get('company');
 	}
 
-	function tampil_client(){
+	function tampil_user_list(){
 		$this->db->select('*');
-		$this->db->from('booking');
-		$this->db->join('event', 'event.event_id = booking.event_id');
-		$this->db->join('company', 'company.company_id = booking.company_id');
-		$this->db->join('status', 'status.status_id = booking.status_id');
-		$this->db->join('users', 'users.id = booking.user_id');
-
+		$this->db->from('users');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -33,6 +28,38 @@ class m_admin extends CI_Model{
 
 	function tampil_category(){
 		return $this->db->get('category');
+	}
+
+	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+
+	function delete_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	function edit_data($where){
+		$this->db->select('*');
+		$this->db->from('company');
+		$this->db->join('category', 'category.category_id = company.category_id');
+		$this->db->where("company_id",$where);
+		return $query = $this->db->get();
+}
+function edit_clientdata($where){
+	$this->db->select('*');
+	$this->db->from('booking');
+	$this->db->join('event', 'event.event_id = booking.event_id');
+	$this->db->join('company', 'company.company_id = booking.company_id');
+	$this->db->join('status', 'status.status_id = booking.status_id');
+	$this->db->join('users', 'users.id = booking.user_id');
+	$this->db->where("booking_id",$where);
+	return $query = $this->db->get();
+}
+
+	function update_data($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
 	}
 
 	function event1_book($where){

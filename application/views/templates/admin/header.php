@@ -54,7 +54,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url();?>director/c_director" class="logo">
+    <a href="<?php echo base_url();?>admin/c_admin" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>D</b>IN</span>
       <!-- logo for regular state and mobile devices -->
@@ -133,8 +133,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>director/c_director">
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>admin/c_admin">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -169,7 +169,7 @@
           </ul>
         </li> -->
         <li class="treeview" >
-          <a href="<?php echo base_url();?>sales/c_sales">
+          <a href="<?php echo base_url();?>admin/c_admin">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -177,24 +177,24 @@
           </a>
           <ul class="treeview-menu">
             <?php foreach ($event as $event1) { ?>
-            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
-              <a href="<?php echo base_url();?>director/c_director/event1/<?php echo $event1->event_id; ?>">
+            <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/event1/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
+              <a href="<?php echo base_url();?>admin/c_admin/event1/<?php echo $event1->event_id; ?>">
                 <i class="fa fa-circle-o"></i><?php echo $event1->event_name ?></a></li>
           <?php } ?>
           </ul>
         </li>
-        <!--<li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>director/c_director/myclient">
-            <i class="fa fa-table"></i> <span>My Client</span>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/user' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>admin/c_admin/user">
+            <i class="fa fa-user"></i> <span>User List</span>
           </a>
-        </li>-->
-        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/company' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/add_company' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>director/c_director/company">
+        </li>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/company' || $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/add_company' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>admin/c_admin/company">
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url();?>director/c_director">
+          <a href="<?php echo base_url();?>admin/c_admin">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>
@@ -221,7 +221,7 @@
           </ul>
         </li> -->
         <li class="header">Account</li>
-          <li><a href="<?php echo base_url();?>director/c_director/myprofile"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
+          <li><a href="<?php echo base_url();?>admin/c_admin/myprofile"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
           <li><a href="<?php echo base_url();?>authentication/auth/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
     </section>

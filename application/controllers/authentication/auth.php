@@ -49,6 +49,7 @@ class Auth extends CI_Controller
     //melakukan pengalihan halaman sesuai dengan levelnya
     if ($this->session->userdata('level') == "sales"){redirect('sales/c_sales');}
     if ($this->session->userdata('level') == "director"){redirect('director/c_director');}
+    if ($this->session->userdata('level') == "admin"){redirect('admin/c_admin');}
 
     //proses login dan validasi nya
     if ($this->input->post('submit')) {
@@ -64,6 +65,9 @@ class Auth extends CI_Controller
         }
         else if($data->level == 'sales'){
           redirect('sales/c_sales');
+        }
+        else if($data->level == 'admin'){
+          redirect('admin/c_admin');
         }
       }
 

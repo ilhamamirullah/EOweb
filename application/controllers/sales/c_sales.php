@@ -23,6 +23,16 @@ class c_sales extends MY_Controller {
 	{
 		$data['event'] = $this->m_sales->tampil_event()->result();
 		$data['company'] = $this->m_sales->tampil_data();
+		$data['users'] = $this->m_sales->tampil_users();
+		$data['booking'] = $this->m_sales->booking();
+
+
+		$query = $this->m_sales->latest_book();
+		$data['booking'] = null;
+		if($query){
+		$data['booking'] =  $query;
+	}
+
     $this->load->view('templates/sales/header', $data);
 		$this->load->view('pages/sales/index', $data);
     $this->load->view('templates/sales/footer');

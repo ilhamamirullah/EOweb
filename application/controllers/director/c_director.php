@@ -23,6 +23,15 @@ class c_director extends MY_Controller {
 	{
 		$data['event'] = $this->m_director->tampil_event()->result();
 		$data['company'] = $this->m_director->tampil_data();
+		$data['users'] = $this->m_director->tampil_users();
+		$data['booking'] = $this->m_director->booking();
+
+				$query = $this->m_director->latest_book();
+				$data['booking'] = null;
+				if($query){
+				$data['booking'] =  $query;
+			}
+
     $this->load->view('templates/director/header', $data);
 		$this->load->view('pages/director/index', $data);
     $this->load->view('templates/director/footer');

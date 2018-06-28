@@ -48,6 +48,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/icon/debindo-logo.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -56,9 +57,9 @@
     <!-- Logo -->
     <a href="<?php echo base_url();?>director/c_director" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>D</b>IN</span>
+      <span class="logo-mini"><img src="<?php echo base_url();?>assets/icon/debindo-logo.png" style="width:30px; height:30px; margin-right: 5px;"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Debindo</b></span>
+      <span class="logo-lg"><img src="<?php echo base_url();?>assets/icon/debindo-logo.png" style="width:30px; height:30px; margin-right: 5px;"><b>Debindo</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -73,13 +74,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?php echo base_url();?>assets/dist/img/director.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('username'); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url();?>assets/dist/img/director.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $this->session->userdata('username'); ?>
@@ -110,11 +111,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url();?>assets/dist/img/director.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->userdata('username'); ?></p>
-          <p style="color:#f39c12;"><?php echo $this->session->userdata('level'); ?></p>
+          <p style="color:#ba2646;"><?php echo $this->session->userdata('level'); ?></p>
         </div>
       </div>
       <br>

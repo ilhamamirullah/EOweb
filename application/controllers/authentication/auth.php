@@ -35,7 +35,6 @@ class Auth extends CI_Controller
         'email' => $query->email,
         'no_hp' => $query->contact,
         'nip' => $query->nip,
-        'jabatan' => $query->jabatan,
         'user_created_at' => $query->user_created_at,
         'logged_in' => TRUE
       );

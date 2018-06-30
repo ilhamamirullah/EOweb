@@ -169,7 +169,7 @@
           </ul>
         </li> -->
         <li class="treeview" >
-          <a href="<?php echo base_url();?>sales/c_sales">
+          <a href="<?php echo base_url();?>director/c_director">
             <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -194,7 +194,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url();?>director/c_director">
+          <a href="<?php echo base_url();?>director/c_director/menu_floorplan">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>

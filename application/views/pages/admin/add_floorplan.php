@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="<?php echo base_url(); ?>sales/c_sales/menu_floorplan">Floorplan</a></li>
+      <li><a href="<?php echo base_url(); ?>admin/c_admin/menu_floorplan">Floorplan</a></li>
       <li class="active">Add Floor Plan</li>
     </ol>
   </section>
@@ -61,7 +61,7 @@
                 <br>
                <div class="col-sm-offset-2 col-sm-8">
                   <input type="submit" name="fileSubmit" value="Simpan"/>
-                  <a class="btn btn-danger" type="button" href="<?php echo base_url();?>sales/c_sales/floorplan">Cancel</a>
+                  <a class="btn btn-danger" type="button" href="<?php echo base_url();?>admin/c_admin/floorplan">Cancel</a>
                </div>
             </form>
           </div>

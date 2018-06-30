@@ -100,4 +100,41 @@ class c_director extends MY_Controller {
 
 		}//end if valid_user
 	}
+	function menu_floorplan(){
+		$data['event'] = $this->m_director->tampil_event()->result();
+		$this->load->view('templates/director/header', $data);
+		$this->load->view('pages/director/menu_floorplan',$data);
+		$this->load->view('templates/director/footer');
+	}
+
+	function floorplan($event_id){
+		$data['event'] = $this->m_director->tampil_event()->result();
+		$where = $event_id;
+		$query = $this->m_director->tampil_floorplan($where);
+		$data['floorplan'] = null;
+		if($query){
+		$data['floorplan'] =  $query;
+	}
+		$this->load->view('templates/director/header', $data);
+		$this->load->view('pages/director/floorplan',$data);
+		$this->load->view('templates/director/footer');
+	}
+
+
+			public function download_file($floorplan_id){
+				$this->db->where('floorplan_id',$floorplan_id);
+				$query = $this->db->get('floorplan');
+				$row = $query->row();
+				// fopen("./uploads/files/$row->file_name", "r");
+				// force_download("./uploads/files/$row->file_name", NULL);
+				$file = "./uploads/files/$row->file_name";
+				$filename = "./uploads/files/$row->file_name";
+				header('Content-type: application/pdf');
+				header('Content-Disposition: inline; filename:"' . $filename . '"' );
+				header('Content-Transfer-Encoding: binary');
+				header('Accept-Ranger');
+				@readfile($file);
+
+			}
+
 }

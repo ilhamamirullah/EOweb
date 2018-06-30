@@ -261,7 +261,20 @@ class c_sales extends MY_Controller {
 			'notes' => $notes,
 			'booking_created_by' => $booking_created_by
 			);
-		$this->m_sales->input_clientdata($data,'booking');
+
+		$booking_id = $this->m_sales->input_clientdata('booking',$data);
+
+		$datarecord = array(
+			'booking_id' => $booking_id,
+			'user_id' => $user_id,
+			'event_id' => $event_id,
+			'company_id' => $company_id,
+			'status_id' => $status_id,
+			'record_booking_audit' => $booking_created_by
+			);
+
+		$insertrecord = $this->m_sales->input_clientdata('record_booking', $datarecord);
+
 		$this->session->set_flashdata('success','Data saved');
 		redirect('sales/c_sales/myclient');
 	}else{
@@ -295,6 +308,18 @@ class c_sales extends MY_Controller {
 			$where = array(
 				'booking_id' => $booking_id
 			);
+
+			$datarecord = array(
+				'booking_id' => $booking_id,
+				'user_id' => $user_id,
+				'event_id' => $event_id,
+				'company_id' => $company_id,
+				'status_id' => $status_id,
+				'record_booking_audit' => $booking_created_by
+				);
+
+			$insertrecord = $this->m_sales->input_clientdata('record_booking', $datarecord);
+
 			$this->m_sales->update_myclient($where,$data,'booking');
 			$this->session->set_flashdata('success','Data updated');
 			redirect('sales/c_sales/myclient');

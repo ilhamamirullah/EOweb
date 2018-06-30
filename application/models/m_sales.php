@@ -95,8 +95,9 @@ function edit_clientdata($where){
 		return $this->db->get('event');
 	}
 
-	function input_clientdata($data,$table){
-		$this->db->insert($table,$data);
+	function input_clientdata($table,$data){
+		$query = $this->db->insert($table,$data);
+		return $this->db->insert_id();
 	}
 
 	function tampil_floorplan($where){

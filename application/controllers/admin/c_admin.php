@@ -318,8 +318,9 @@ function delete_user($id)
 }
 
 	function myprofile(){
-	$this->load->view('templates/admin/header');
-	$this->load->view('pages/admin/myprofile');
+	$data['event'] = $this->m_admin->tampil_event()->result();
+	$this->load->view('templates/admin/header', $data);
+	$this->load->view('pages/admin/myprofile', $data);
 	$this->load->view('templates/admin/footer');
 	}
 
@@ -342,5 +343,102 @@ function delete_user($id)
 		$this->load->view('templates/admin/footer');
 		}
 	}
+
+	function menu_floorplan(){
+		$data['event'] = $this->m_admin->tampil_event()->result();
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('pages/admin/menu_floorplan',$data);
+		$this->load->view('templates/admin/footer');
+	}
+
+	function floorplan($event_id){
+		$data['event'] = $this->m_admin->tampil_event()->result();
+		$where = $event_id;
+		$query = $this->m_admin->tampil_floorplan($where);
+		$data['floorplan'] = null;
+		if($query){
+		$data['floorplan'] =  $query;
+	}
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('pages/admin/floorplan',$data);
+		$this->load->view('templates/admin/footer');
+	}
+
+	function create_floorplan()
+	{
+			$data['event'] = $this->m_admin->tampil_event()->result();
+				$this->load->view('templates/admin/header', $data);
+				$this->load->view('pages/admin/add_floorplan');
+				$this->load->view('templates/admin/footer');
+
+				$data = array();
+// If file upload form submitted
+			if($this->input->post('fileSubmit') && !empty($_FILES['files']['name'])){
+					$filesCount = count($_FILES['files']['name']);
+					for($i = 0; $i < $filesCount; $i++){
+							$_FILES['file']['name']     = $_FILES['files']['name'][$i];
+							$_FILES['file']['type']     = $_FILES['files']['type'][$i];
+							$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+							$_FILES['file']['error']     = $_FILES['files']['error'][$i];
+							$_FILES['file']['size']     = $_FILES['files']['size'][$i];
+
+							// File upload configuration
+							$uploadPath = 'uploads/files/';
+							$config['upload_path'] = $uploadPath;
+							$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+
+							// Load and initialize upload library
+							$this->load->library('upload', $config);
+							$this->upload->initialize($config);
+
+							// Upload file to server
+							if($this->upload->do_upload('file')){
+									// Uploaded file data
+									$fileData = $this->upload->data();
+									//$this->input->post('event_id');
+									$uploadData[$i]['title'] = $this->input->post('title');
+									$uploadData[$i]['event_id'] = $this->input->post('event_id');
+									$uploadData[$i]['floorplan_created_by'] = $this->session->userdata('username');
+									$uploadData[$i]['file_name'] = $fileData['file_name'];
+									$uploadData[$i]['description'] = $this->input->post('description');
+							}
+					}
+
+					if(!empty($uploadData)){
+							// Insert files data into the database
+							$insert = $this->m_admin->insert_floorplan($uploadData);
+							$this->session->set_flashdata('success','Data saved');
+							redirect('admin/c_admin/menu_floorplan');
+					}
+				}
+			}
+
+			function delete_floorplan($floorplan_id){
+					$this->db->where('floorplan_id',$floorplan_id);
+					$query = $this->db->get('floorplan');
+					$row = $query->row();
+					unlink("./uploads/files/$row->file_name");
+
+					$where = array('floorplan_id' => $floorplan_id );
+					$this->m_admin->delete_data($where,'floorplan');
+					$this->session->set_flashdata('success','data deleted');
+					redirect('admin/c_admin/menu_floorplan/');
+			}
+
+			public function download_file($floorplan_id){
+				$this->db->where('floorplan_id',$floorplan_id);
+				$query = $this->db->get('floorplan');
+				$row = $query->row();
+				// fopen("./uploads/files/$row->file_name", "r");
+				// force_download("./uploads/files/$row->file_name", NULL);
+				$file = "./uploads/files/$row->file_name";
+				$filename = "./uploads/files/$row->file_name";
+				header('Content-type: application/pdf');
+				header('Content-Disposition: inline; filename:"' . $filename . '"' );
+				header('Content-Transfer-Encoding: binary');
+				header('Accept-Ranger');
+				@readfile($file);
+
+			}
 
 }

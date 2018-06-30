@@ -22,9 +22,9 @@
 
           <h2>Floor Plan</h2>
           <div class="box">
-            <div class="box-header with-border">
+          <!--  <div class="box-header with-border">
                 <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/create_floorplan" class="btn btn-primary btn-sm" >Add FloorPlan</a> </h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
@@ -42,7 +42,7 @@
                     <div class="icon">
                       <i class="ion ion-map"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>admin/c_admin/floorplan/<?php echo $event1->event_id; ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>director/c_director/floorplan/<?php echo $event1->event_id; ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
               <?php } ?>

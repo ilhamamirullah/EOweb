@@ -195,7 +195,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url();?>admin/c_admin">
+          <a href="<?php echo base_url();?>admin/c_admin/menu_floorplan">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>
         </li>

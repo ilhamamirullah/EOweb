@@ -22,9 +22,9 @@
 
           <h2>Floor Plan</h2>
           <div class="box">
-            <div class="box-header with-border">
+          <!--  <div class="box-header with-border">
                 <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/create_floorplan" class="btn btn-primary btn-sm" >Add FloorPlan</a> </h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
@@ -51,9 +51,9 @@
                     <td><?php echo $floorplan1->file_name ?></td>
                     <td><?php echo $floorplan1->description?></td>
                     <td>
-                      <form action="<?php echo base_url();?>admin/c_admin/delete_floorplan/<?php echo $floorplan1->floorplan_id ?>" method="post">
-                      <a href="<?php echo base_url();?>admin/c_admin/download_file/<?php echo $floorplan1->floorplan_id ?>" class="btn btn-success btn-xs">Show</a>
-                      <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
+                      <!-- <form action="<?php echo base_url();?>admin/c_admin/delete_floorplan/<?php echo $floorplan1->floorplan_id ?>" method="post"> -->
+                      <a href="<?php echo base_url();?>director/c_director/download_file/<?php echo $floorplan1->floorplan_id ?>" class="btn btn-success btn-xs">Show</a>
+                      <!-- <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')"> -->
                     </form>
                     </td>
                   </tr>

@@ -100,6 +100,7 @@
               <tr>
                 <th>No</th>
                 <th>Date</th>
+                <th>Event</th>
                 <th>Company</th>
                 <th>Sales</th>
                 <th>Status</th>
@@ -114,6 +115,7 @@
               <tr>
                 <td><?php echo $no++ ?></td>
                   <td><?php echo $booking2->booking_updated_at ?></td>
+                  <td><?php echo $booking2->event_name ?></td>
                   <td><?php echo $booking2->company_name ?></td>
                   <td><?php echo $booking2->username?></td>
                   <td><span <?php if ($booking2->status_name == "Booking") { ?>

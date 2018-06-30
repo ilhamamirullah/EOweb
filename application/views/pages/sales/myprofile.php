@@ -8,8 +8,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="<?php echo base_url(); ?>sales/c_sales/company">Company</a></li>
-      <li class="active">Add Company</li>
+      <li><a href="<?php echo base_url(); ?>sales/c_sales/myprofile">My Profile</a></li>
     </ol>
   </section>
   <!-- Main content -->
@@ -23,42 +22,42 @@
         <div class="row">
           <div class="container" style="max-width:100%;padding:30px 10px;">
             <form class="form-horizontal" autocomplete="off" role="form">
+              <div class="form-group">
+                 <label for="nama" class ="control-label col-sm-2">Nama Lengkap</label>
+             <div class="col-sm-8">
+                 <input type selected disabled hidden="nama" class="form-control" id="nama" name="nama" value="<?php echo $this->session->userdata('name'); ?>" required>
+             </div>
+               </div>
+              <div class="form-group">
+                 <label for="email" class ="control-label col-sm-2">Email</label>
+             <div class="col-sm-8">
+                   <input type selected disabled hidden="email" class="form-control" id="email" name="email" value="<?php echo $this->session->userdata('email'); ?>" required>
+                 </div>
+               </div>
                <div class="form-group">
-                  <label for="nama" class ="control-label col-sm-2">Nama Lengkap</label>
-              <div class="col-sm-8">
-                  <input type selected disabled hidden="nama" class="form-control" id="nama" name="nama" value="<?php echo $this->session->userdata('nama_lengkap'); ?>" required>
-              </div>
-                </div>
+                 <label for="no_hp" class ="control-label col-sm-2">No. HP</label>
+             <div class="col-sm-8">
+                 <input type selected disabled hidden="no_hp" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('no_hp'); ?>" required>
+             </div>
+               </div>
                <div class="form-group">
-                  <label for="email" class ="control-label col-sm-2">Email</label>
-              <div class="col-sm-8">
-                    <input type selected disabled hidden="email" class="form-control" id="email" name="nama" value="<?php echo $this->session->userdata('email'); ?>" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="no_hp" class ="control-label col-sm-2">No. HP</label>
-              <div class="col-sm-8">
-                  <input type selected disabled hidden="no_hp" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('no_hp'); ?>" required>
-              </div>
-                </div>
-                <div class="form-group">
-                  <label for="pic" class ="control-label col-sm-2">Jabatan</label>
-              <div class="col-sm-8">
-                  <input type selected disabled hidden="no_hp" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('jabatan'); ?>" required>
-              </div>
-                </div>
-                <div class="form-group">
-                  <label for="email" class ="control-label col-sm-2">NIP</label>
-              <div class="col-sm-8">
-                  <input type selected disabled hidden="no_hp" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('nip'); ?>" required>              </div>
-                </div>
-                <div class="form-group">
-                  <label for="pic_contact" class ="control-label col-sm-2">Alamat</label>
-              <div class="col-sm-8">
-                  <input type selected disabled hidden="no_hp" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('alamat'); ?>" required>
-                </div>
-                </div>
-                <br>
+                 <label for="pic" class ="control-label col-sm-2">Jabatan</label>
+             <div class="col-sm-8">
+                 <input type selected disabled hidden="no_hp" class="form-control" id="jabatan" name="jabatan" value="<?php echo $this->session->userdata('jabatan'); ?>" required>
+             </div>
+               </div>
+               <div class="form-group">
+                 <label for="email" class ="control-label col-sm-2">NIP</label>
+             <div class="col-sm-8">
+                 <input type selected disabled hidden="no_hp" class="form-control" id="nip" name="nip" value="<?php echo $this->session->userdata('nip'); ?>" required>              </div>
+               </div>
+               <div class="form-group">
+                 <label for="pic_contact" class ="control-label col-sm-2">Alamat</label>
+             <div class="col-sm-8">
+                 <input type selected disabled hidden="no_hp" class="form-control" id="alamat" name="alamat" value="<?php echo $this->session->userdata('alamat'); ?>" required>
+               </div>
+               </div>
+               <br>
                <div class="col-sm-offset-2 col-sm-8">
                   <a type="button" class="btn btn-success" href="<?php echo base_url();?>sales/c_sales/change_password">Change Password</a>
                </div>

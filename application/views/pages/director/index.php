@@ -119,13 +119,13 @@
                     <td><?php echo $booking2->event_name ?></td>
                     <td><?php echo $booking2->company_name ?></td>
                     <td><?php echo $booking2->username?></td>
-                  <td><span <?php if ($booking2->status_name == "Booking") { ?>
+                  <td><span <?php if ($booking2->status_name == "Form") { ?>
                     class="label label-success"
                   <?php }elseif ($booking2->status_name == "Cancel") { ?>
                     class="label label-danger"
                   <?php }elseif ($booking2->status_name == "Normal") { ?>
                     class="label label-info"
-                  <?php }elseif ($booking2->status_name == "Form") { ?>
+                  <?php }elseif ($booking2->status_name == "Booking") { ?>
                     class="label label-warning"
                   <?php }elseif ($booking2->status_name == "Approach") { ?>
                     class="label label-warning"

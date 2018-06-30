@@ -122,13 +122,11 @@ $query = $this->db->get('users');
 return $query->result();;
 }
 
-<<<<<<< HEAD
 public function insert_floorplan($data = array()){
 		$insert = $this->db->insert_batch('floorplan',$data);
 		return $insert?true:false;
 }
 
-=======
 function latest_book(){
 	$this->db->select('*');
 	$this->db->from('booking');
@@ -144,9 +142,6 @@ function latest_book(){
 function booking(){
 	return $this->db->get('booking');
 }
-
-
->>>>>>> 7343fe819d86da4fe74b476ad9ccbd4fa486eb62
 
 
 }

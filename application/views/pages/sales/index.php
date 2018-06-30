@@ -98,25 +98,27 @@
           <div class="table-responsive">
             <table class="table no-margin">
               <thead>
-              <tr>
-                <th>No</th>
-                <th>Date</th>
-                <th>Company</th>
-                <th>Sales</th>
-                <th>Status</th>
-              </tr>
-              </thead>
-              <tbody>
-                <?php
-                if (!empty($booking)) {
-                  $no = 1;
-                  foreach($booking as $booking2){
-                ?>
-              <tr>
-                <td><?php echo $no++ ?></td>
-                  <td><?php echo $booking2->booking_updated_at ?></td>
-                  <td><?php echo $booking2->company_name ?></td>
-                  <td><?php echo $booking2->username?></td>
+                <tr>
+                  <th>No</th>
+                  <th>Date</th>
+                  <th>Event</th>
+                  <th>Company</th>
+                  <th>Sales</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  if (!empty($booking)) {
+                    $no = 1;
+                    foreach($booking as $booking2){
+                  ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                    <td><?php echo $booking2->booking_updated_at ?></td>
+                    <td><?php echo $booking2->event_name ?></td>
+                    <td><?php echo $booking2->company_name ?></td>
+                    <td><?php echo $booking2->username?></td>
                   <td><span <?php if ($booking2->status_name == "Booking") { ?>
                     class="label label-success"
                   <?php }elseif ($booking2->status_name == "Cancel") { ?>

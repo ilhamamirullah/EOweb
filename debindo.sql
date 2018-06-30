@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2018 at 11:37 AM
+-- Generation Time: Jun 30, 2018 at 12:08 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -48,11 +48,8 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`booking_id`, `event_id`, `company_id`, `status_id`, `user_id`, `stand`, `sqm`, `notes`, `booking_created_by`, `booking_updated_by`, `booking_created_at`, `booking_updated_at`) VALUES
-(12, 1, 25, 4, 3, 'special', '12', 'tes', 'ilham', NULL, '2018-03-14 04:53:11', '2018-03-20 09:14:58'),
-(13, 2, 27, 3, 3, 'spesial', '23', 'ss', 'ilham', NULL, '2018-03-14 04:53:41', '2018-03-14 04:53:41'),
-(14, 3, 26, 2, 3, '', '23', '', 'ilham', NULL, '2018-03-14 04:59:09', '2018-03-14 04:59:09'),
-(15, 1, 28, 3, 3, '', '44', '', 'ilham', NULL, '2018-03-14 05:01:27', '2018-03-14 05:01:27'),
-(16, 5, 28, 2, 3, 'Special Design', '12', 'tess', 'ilham', NULL, '2018-06-08 04:31:12', '2018-06-08 04:31:12');
+(28, 1, 25, 4, 3, 'Special Design', '12', '', 'ilham', NULL, '2018-06-30 09:59:46', '2018-06-30 10:03:52'),
+(29, 2, 27, 4, 3, 'Standard Design', '21', '', 'ilham', NULL, '2018-06-30 10:00:41', '2018-06-30 10:00:41');
 
 -- --------------------------------------------------------
 
@@ -126,6 +123,7 @@ CREATE TABLE `event` (
   `event_name` varchar(225) NOT NULL,
   `event_desc` varchar(225) NOT NULL,
   `event_date` date NOT NULL,
+  `event_status` enum('done','undone') NOT NULL,
   `event_created_by` varchar(225) DEFAULT NULL,
   `event_updated_by` varchar(225) DEFAULT NULL,
   `event_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -136,12 +134,12 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_date`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
-(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(3, 'CTCT', 'pameran logistik', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(4, 'REI EXPO', 'pameran properti', '0000-00-00', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(5, 'INDOCRAFT', 'pamaeran batik', '0000-00-00', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
+INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_date`, `event_status`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
+(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(3, 'CTCT', 'pameran logistik', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(4, 'REI EXPO', 'pameran properti', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
+(5, 'INDOCRAFT', 'pamaeran batik', '0000-00-00', 'done', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
 
 -- --------------------------------------------------------
 
@@ -173,6 +171,43 @@ INSERT INTO `floorplan` (`floorplan_id`, `event_id`, `title`, `file_name`, `desc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `history_booking`
+--
+
+CREATE TABLE `history_booking` (
+  `history_booking_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `record_booking`
+--
+
+CREATE TABLE `record_booking` (
+  `record_booking_id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `record_booking_audit` varchar(225) NOT NULL,
+  `record_booking_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `record_booking_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `record_booking`
+--
+
+INSERT INTO `record_booking` (`record_booking_id`, `booking_id`, `user_id`, `event_id`, `company_id`, `status_id`, `record_booking_audit`, `record_booking_created_at`, `record_booking_updated_at`) VALUES
+(4, 28, 3, 1, 25, 3, 'ilham', '2018-06-30 09:59:46', '2018-06-30 09:59:46'),
+(5, 29, 3, 2, 27, 4, 'ilham', '2018-06-30 10:00:41', '2018-06-30 10:00:41'),
+(6, 28, 3, 1, 25, 4, 'ilham', '2018-06-30 10:03:52', '2018-06-30 10:03:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `status`
 --
 
@@ -192,6 +227,22 @@ INSERT INTO `status` (`status_id`, `status_name`, `status_description`) VALUES
 (3, 'Booking', 'Merupakan state dimana company sudah booking'),
 (4, 'Form', 'Merupakan state dimana company sudah dipastikan ikut'),
 (5, 'Cancel', 'Merupakan state dimana perusahaan menyatakan tidak ikut setelah di approach');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todo_list`
+--
+
+CREATE TABLE `todo_list` (
+  `todo_id` int(11) NOT NULL,
+  `todo_name` varchar(225) NOT NULL,
+  `todo_timer` time NOT NULL,
+  `status` enum('done','undone','') NOT NULL,
+  `todo_created_by` varchar(225) NOT NULL,
+  `todo_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `todo_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -221,7 +272,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
-(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-03-21 14:00:07'),
+(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga1', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-06-23 13:48:34'),
 (4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
 (6, 'rizki', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'rizki', 'aaa', 'aa@wwd.d', '08833', '3333', 'ff', NULL, '2018-03-11 08:04:17', '2018-03-11 08:04:17'),
 (7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-23 09:15:39', '2018-06-23 09:15:39');
@@ -268,16 +319,36 @@ ALTER TABLE `floorplan`
   ADD KEY `event_id` (`event_id`);
 
 --
+-- Indexes for table `history_booking`
+--
+ALTER TABLE `history_booking`
+  ADD PRIMARY KEY (`history_booking_id`);
+
+--
+-- Indexes for table `record_booking`
+--
+ALTER TABLE `record_booking`
+  ADD PRIMARY KEY (`record_booking_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`status_id`);
 
 --
+-- Indexes for table `todo_list`
+--
+ALTER TABLE `todo_list`
+  ADD PRIMARY KEY (`todo_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -287,7 +358,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -311,13 +382,31 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `floorplan`
 --
 ALTER TABLE `floorplan`
-  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `history_booking`
+--
+ALTER TABLE `history_booking`
+  MODIFY `history_booking_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `record_booking`
+--
+ALTER TABLE `record_booking`
+  MODIFY `record_booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `todo_list`
+--
+ALTER TABLE `todo_list`
+  MODIFY `todo_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -349,6 +438,12 @@ ALTER TABLE `company`
 --
 ALTER TABLE `floorplan`
   ADD CONSTRAINT `floorplan_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `record_booking`
+--
+ALTER TABLE `record_booking`
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -82,8 +82,9 @@ class c_director extends MY_Controller {
 
 		function myprofile()
 		{
-		$this->load->view('templates/director/header');
-		$this->load->view('pages/director/myprofile');
+		$data['event'] = $this->m_director->tampil_event()->result();
+		$this->load->view('templates/director/header', $data);
+		$this->load->view('pages/director/myprofile', $data);
 		$this->load->view('templates/director/footer');
 	}
 

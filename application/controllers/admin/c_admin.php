@@ -318,8 +318,9 @@ function delete_user($id)
 }
 
 	function myprofile(){
-	$this->load->view('templates/admin/header');
-	$this->load->view('pages/admin/myprofile');
+	$data['event'] = $this->m_admin->tampil_event()->result();
+	$this->load->view('templates/admin/header', $data);
+	$this->load->view('pages/admin/myprofile', $data);
 	$this->load->view('templates/admin/footer');
 	}
 

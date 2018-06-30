@@ -301,8 +301,9 @@ class c_sales extends MY_Controller {
 	}
 
 	function myprofile(){
-		$this->load->view('templates/sales/header');
-		$this->load->view('pages/sales/myprofile');
+		$data['event'] = $this->m_sales->tampil_event()->result();
+		$this->load->view('templates/sales/header', $data);
+		$this->load->view('pages/sales/myprofile', $data);
 		$this->load->view('templates/sales/footer');
 	}
 

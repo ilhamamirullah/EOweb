@@ -23,6 +23,15 @@ class c_admin extends MY_Controller {
 	{
 		$data['event'] = $this->m_admin->tampil_event()->result();
 		$data['company'] = $this->m_admin->tampil_data();
+		$data['users'] = $this->m_admin->tampil_users();
+		$data['booking'] = $this->m_admin->booking();
+
+				$query = $this->m_admin->latest_book();
+				$data['booking'] = null;
+				if($query){
+				$data['booking'] =  $query;
+			}
+
     $this->load->view('templates/admin/header', $data);
 		$this->load->view('pages/admin/index', $data);
     $this->load->view('templates/admin/footer');

@@ -17,12 +17,13 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/square/blue.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+      <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/icon/debindo-logo.png">
   </head>
   </head>
-  <body class="hold-transition login-page">
+  <body class="hold-transition login-page" style="height:500px;">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?php echo base_url();?>"><b>Debindo</b></a>
+        <a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/icon/debindo-logo.png" style="width:30px; height:30px; margin-right: 5px;"><b>Debindo</b></a>
       </div>
     <div class="login-box-body">
       <p class="login-box-msg">Login to start your session</p>

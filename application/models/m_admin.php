@@ -122,11 +122,31 @@ $query = $this->db->get('users');
 return $query->result();;
 }
 
+<<<<<<< HEAD
 public function insert_floorplan($data = array()){
 		$insert = $this->db->insert_batch('floorplan',$data);
 		return $insert?true:false;
 }
 
+=======
+function latest_book(){
+	$this->db->select('*');
+	$this->db->from('booking');
+	$this->db->join('event', 'event.event_id = booking.event_id');
+	$this->db->join('company', 'company.company_id = booking.company_id');
+	$this->db->join('status', 'status.status_id = booking.status_id');
+	$this->db->join('users', 'users.id = booking.user_id');
+	$this->db->order_by('booking_updated_at', 'desc')->limit(5);
+	$query = $this->db->get();
+	return $query->result();
+}
+
+function booking(){
+	return $this->db->get('booking');
+}
+
+
+>>>>>>> 7343fe819d86da4fe74b476ad9ccbd4fa486eb62
 
 
 }

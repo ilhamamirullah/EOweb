@@ -130,12 +130,12 @@ class c_sales extends MY_Controller {
 	}
 }
 
-	function delete_company($company_id){
-			$where = array('company_id' => $company_id );
-			$this->m_sales->delete_data($where,'company');
-			$this->session->set_flashdata('success','data deleted');
-			redirect('sales/c_sales/company/');
-	}
+// function delete_company($company_id){
+//			$where = array('company_id' => $company_id );
+//			$this->m_sales->delete_data($where,'company');
+//			$this->session->set_flashdata('success','data deleted');
+//			redirect('sales/c_sales/company/');
+//	}
 
 	function edit_company($company_id){
 		$data2['event'] = $this->m_sales->tampil_event()->result();

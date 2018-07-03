@@ -116,7 +116,7 @@ $this->db->update('users', $data);
 
 public function cek_old()
 {
-$odld = md5($this->input->post('old'));
+$odl = md5($this->input->post('old'));
 $this->db->where('password',$old);
 $query = $this->db->get('users');
 return $query->result();;
@@ -142,6 +142,7 @@ function latest_book(){
 function booking(){
 	return $this->db->get('booking');
 }
+
 
 
 }

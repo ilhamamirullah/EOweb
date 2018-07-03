@@ -100,8 +100,9 @@ class c_admin extends MY_Controller {
 function delete_user($id)
 {
 		$where = array('id' => $id );
-		$this->m_admin->delete_data($where,'users');
-		$this->session->set_flashdata('success','data deleted');
+		$data = array('active' => '0');
+		$this->m_admin->update_data($where,$data,'users');
+		$this->session->set_flashdata('success','user deleted');
 		redirect('admin/c_admin/user');
 	}
 

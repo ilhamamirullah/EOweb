@@ -38,6 +38,7 @@
                   if (!empty($users)) {
                 		$no = 1;
                 		foreach($users as $users2){
+                      if ($users2->active == 1) {
                 	?>
                 <tr>
                   <td><?php echo $no++ ?></td>
@@ -47,11 +48,11 @@
                   <td>
                     <form action="<?php echo base_url();?>admin/c_admin/delete_user/<?php echo $users2->id ?>" method="post">
                           <a class="btn btn-success btn-xs" <?php echo anchor('admin/c_admin/edit_user/'.$users2->id,'Edit'); ?></a>
-                          <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
+                          <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure want to delete this user?')">
                     </form>
                   </td>
                 </tr>
-              <?php } }?>
+              <?php } } }?>
                 </tbody>
               </table>
             </div>

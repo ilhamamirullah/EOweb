@@ -30,6 +30,7 @@ class Auth extends CI_Controller
         'level' => $query->level,
         'id' => $query->id,
         'name' => $query->name,
+        'active' => $query->active,
         'alamat' => $query->address,
         'email' => $query->email,
         'no_hp' => $query->contact,

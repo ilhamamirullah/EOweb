@@ -33,7 +33,6 @@
                   <th>PIC Number</th>
                   <th>PIC Email</th>
                   <th>Address</th>
-                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,12 +49,6 @@
                   <td><?php echo $company2->pic_contact ?></td>
                   <td><?php echo $company2->email ?></td>
                   <td><?php echo $company2->address ?></td>
-                  <td>
-                    <!-- <form action="<?php echo base_url();?>sales/c_sales/delete_company/<?php echo $company2->company_id ?>" method="post"> -->
-                          <a class="btn btn-success btn-xs" <?php echo anchor('sales/c_sales/edit_company/'.$company2->company_id,'Edit'); ?></a>
-                        <!--  <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')"> -->
-                    </form>
-                  </td>
                 </tr>
               <?php } }?>
                 </tbody>

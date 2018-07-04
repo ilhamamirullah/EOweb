@@ -72,6 +72,13 @@ $.widget.bridge('uibutton', $.ui.button);
       href="<?php echo base_url();?>assets/toastr/toastr.min.css">
 <!-- page script -->
 <script>
+
+jQuery(document).ready(function($) {
+    $(".clickable-row-floorplan").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({

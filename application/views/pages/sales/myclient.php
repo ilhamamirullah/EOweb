@@ -61,8 +61,7 @@
                   <?php }elseif ($booking2->status_name == "Approach") { ?>
                     class="label label-warning"
                   <?php } ?> ><?php echo $booking2->status_name ?></span></td>
-                  <td><?php echo $booking2->sqm?></td></td>
-                  <td><?php echo $booking2->sqm ?></td>
+                  <td><?php echo $booking2->sqm?></td>
                   <td><?php echo $booking2->notes ?></td>
                   <td>
                     <form>

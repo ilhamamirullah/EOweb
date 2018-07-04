@@ -15,13 +15,13 @@ class Auth extends CI_Controller
     $query = $this->model_users->cekAkun($username, $password);
 
     if ($query === 1) {
-      return "User Tidak Ditemukan!";
+      return "User is not found!";
     }
     else if ($query === 2) {
-      return "User Tidak Aktif!";
+      return "User is Nonaktif!";
     }
     else if ($query === 3) {
-      return "Password Salah!";
+      return "Password Wrong!";
     }
     else {
       //membuat session dengan nama userdata

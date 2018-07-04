@@ -109,6 +109,7 @@ function edit_clientdata($where){
 		return $query->result();
 	}
 
+
 	public function update_password()
  {
  $password = md5($this->input->post('new'));

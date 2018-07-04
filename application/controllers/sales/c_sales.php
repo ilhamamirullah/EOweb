@@ -23,7 +23,7 @@ class c_sales extends MY_Controller {
 	{
 		$data['event'] = $this->m_sales->tampil_event()->result();
 		$data['company'] = $this->m_sales->tampil_data();
-		$data['users'] = $this->m_sales->tampil_users();
+		$data['myclient'] = $this->m_sales->tampil_client();
 		$data['booking'] = $this->m_sales->booking();
 
 

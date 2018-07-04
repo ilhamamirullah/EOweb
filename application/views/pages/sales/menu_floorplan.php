@@ -22,9 +22,6 @@
 
           <h2>Floor Plan</h2>
           <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/create_floorplan" class="btn btn-primary btn-sm" >Add FloorPlan</a> </h3>
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">

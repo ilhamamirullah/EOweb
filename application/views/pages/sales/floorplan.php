@@ -16,18 +16,26 @@
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
+
       <div class="row">
         <div class="col-xs-12">
-
-          <h2>Floor Plan</h2>
           <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/create_floorplan" class="btn btn-primary btn-sm" >Add FloorPlan</a> </h3>
+            <div class="box-header">
+              <h3 class="box-title">Floor Plan</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered">
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th style="width: 10px">No</th>
@@ -35,7 +43,6 @@
                     <th>Title</th>
                     <th>File name</th>
                     <th>Description</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,33 +51,24 @@
                       $no = 1;
                   foreach ($floorplan as $floorplan1) {
                    ?>
-                  <tr>
+                    <tr class='clickable-row-floorplan' data-href='<?php echo base_url();?>sales/c_sales/download_file/<?php echo $floorplan1->floorplan_id ?>'>
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $floorplan1->event_id ?></td>
                     <td><?php echo $floorplan1->title ?></td>
                     <td><?php echo $floorplan1->file_name ?></td>
                     <td><?php echo $floorplan1->description?></td>
-                    <td>
-                      <form action="<?php echo base_url();?>sales/c_sales/delete_floorplan/<?php echo $floorplan1->floorplan_id ?>" method="post">
-                      <a href="<?php echo base_url();?>sales/c_sales/download_file/<?php echo $floorplan1->floorplan_id ?>" target="_blank" class="btn btn-success btn-xs">Show</a>
-                      <input type="submit" value="hapus" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda Yakin Data ini Dihapus?')">
-                    </form>
-                    </td>
                   </tr>
                 <?php } } ?>
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <p>floorplan debindo</p>
-            </div>
           </div>
           <!-- /.box -->
         </div>
-
       </div>
-      <!-- /.row -->
+
+
     </section>
     <!-- /.content -->
   </div>

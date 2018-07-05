@@ -69,6 +69,7 @@ class C_sales extends MY_Controller {
 	{
 		$data2['event'] = $this->m_sales->tampil_event()->result();
 		$where = $event_id;
+		$data['whereid'] = $event_id;
 		$query = $this->m_sales->event1_book($where);
 		$data['booking'] = null;
 		if($query){
@@ -76,7 +77,7 @@ class C_sales extends MY_Controller {
 	}
 		// $data['status'] = $this->m_sales->tampil_status()->result();
 		$this->load->view('templates/sales/header', $data2);
-		$this->load->view('pages/sales/event',$data);
+		$this->load->view('pages/sales/event',$data, $data2);
 		$this->load->view('templates/sales/footer');
 	}
 

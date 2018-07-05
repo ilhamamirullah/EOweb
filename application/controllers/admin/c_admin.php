@@ -214,6 +214,7 @@ function delete_user($id)
 	{
 		$data2['event'] = $this->m_admin->tampil_event()->result();
 		$where = $event_id;
+		$data['whereid'] = $event_id;
 		$query = $this->m_admin->event1_book($where);
 		$data['booking'] = null;
 		if($query){
@@ -221,7 +222,7 @@ function delete_user($id)
 	}
 		// $data['status'] = $this->m_sales->tampil_status()->result();
 		$this->load->view('templates/admin/header', $data2);
-		$this->load->view('pages/admin/event',$data);
+		$this->load->view('pages/admin/event',$data, $data2);
 		$this->load->view('templates/admin/footer');
 	}
 
@@ -562,6 +563,19 @@ function delete_user($id)
 			$this->session->set_flashdata('error','Data failed to update');
 			redirect('admin/c_admin/eventcrud');
 			}
+		}
+
+		public function print_company(){
+					$data['event'] = $this->m_admin->tampil_event()->result();
+					$query = $this->m_admin->tampil_data();
+					$data['company'] = null;
+					if($query){
+					 $data['company'] =  $query;
+					}
+				 $this->load->library('pdf');
+				 $this->pdf->setPaper('A4', 'potrait');
+				 $this->pdf->filename = "company_print.pdf";
+				 $this->pdf->load_view('pages/admin/company_print_pdf', $data);
 		}
 
 }

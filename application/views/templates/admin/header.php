@@ -171,7 +171,7 @@
         </li> -->
         <li class="treeview" >
           <a href="<?php echo base_url();?>admin/c_admin">
-            <i class="fa fa-table"></i> <span>Booking</span>
+            <i class="fa fa-table"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -186,7 +186,7 @@
         </li>
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/eventcrud' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>admin/c_admin/eventcrud">
-            <i class="fa fa-book"></i> <span>Event</span>
+            <i class="fa fa-book"></i> <span>Event Master</span>
           </a>
         </li>
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/user' ): ?> class="active"<?php endif; ?>>

@@ -18,6 +18,10 @@
         <div class="col-xs-12">
 
           <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>director/c_director/print_company"  target="_blank" class="btn btn-warning btn-sm">Print</a> </h3>
+              <!-- <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/excel_company" class="btn btn-success btn-sm" >Save to Excel</a> </h3> -->
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">

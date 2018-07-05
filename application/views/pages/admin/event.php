@@ -4,8 +4,22 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Event List 
+        Event    <b>   <?php
+                if (!empty($booking)) {
+                foreach($booking as $booking2){
+                  echo $booking2->event_name;
+                  break;
+                }
+              }else {
+                foreach ($event as $event1) {
+                      if ($event1->event_id == $whereid) {
+                        echo $event1->event_name;
+                      }
+                }
+                }
+              ?> </b>
       </h1>
+
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Event</li>

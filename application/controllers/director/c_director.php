@@ -68,6 +68,7 @@ class C_director extends MY_Controller {
 	{
 		$data2['event'] = $this->m_director->tampil_event()->result();
 		$where = $event_id;
+		$data['whereid'] = $event_id;
 		$query = $this->m_director->event1_book($where);
 		$data['booking'] = null;
 		if($query){
@@ -144,7 +145,19 @@ class C_director extends MY_Controller {
 				header('Content-Transfer-Encoding: binary');
 				header('Accept-Ranger');
 				@readfile($file);
+			}
 
+			public function print_company(){
+						$data['event'] = $this->m_director->tampil_event()->result();
+						$query = $this->m_director->tampil_data();
+						$data['company'] = null;
+						if($query){
+						 $data['company'] =  $query;
+						}
+					 $this->load->library('pdf');
+					 $this->pdf->setPaper('A4', 'potrait');
+					 $this->pdf->filename = "company_print.pdf";
+					 $this->pdf->load_view('pages/director/company_print_pdf', $data);
 			}
 
 }

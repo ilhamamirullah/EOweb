@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_sales extends MY_Controller {
+class C_sales extends MY_Controller {
 
 	function __construct()
 	{
@@ -108,6 +108,8 @@ class c_sales extends MY_Controller {
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
 		$company_created_by = $this->session->userdata('username');
+		date_default_timezone_set('Asia/Jakarta');
+		$company_created_at = date("Y-m-d h:i:s");
 		$data = array(
 			'category_id' => $id_category,
 			'company_name' => $name,
@@ -116,7 +118,8 @@ class c_sales extends MY_Controller {
 			'pic' => $pic,
 			'email' => $email,
 			'pic_contact' => $pic_contact,
-			'company_created_by' => $company_created_by
+			'company_created_by' => $company_created_by,
+			'company_created_at' => $company_created_at
 			);
 		$this->m_sales->input_data($data,'company');
 		$this->session->set_flashdata('success','Data saved');
@@ -251,6 +254,9 @@ class c_sales extends MY_Controller {
 		$sqm = $this->input->post('sqm');
 		$notes = $this->input->post('notes');
 		$booking_created_by = $this->session->userdata('username');
+		date_default_timezone_set('Asia/Jakarta');
+		$booking_created_at = date("Y-m-d h:i:s");
+
 		$data = array(
 			'event_id' => $event_id,
 			'company_id' => $company_id,
@@ -259,7 +265,8 @@ class c_sales extends MY_Controller {
 			'stand' => $stand,
 			'sqm' => $sqm,
 			'notes' => $notes,
-			'booking_created_by' => $booking_created_by
+			'booking_created_by' => $booking_created_by,
+			'booking_created_at' => $booking_created_at
 			);
 
 		$booking_id = $this->m_sales->input_clientdata('booking',$data);
@@ -372,55 +379,6 @@ class c_sales extends MY_Controller {
 			$this->load->view('pages/sales/floorplan',$data);
 			$this->load->view('templates/sales/footer');
 		}
-
-		function create_floorplan()
-    {
-				$data['event'] = $this->m_sales->tampil_event()->result();
-					$this->load->view('templates/sales/header', $data);
-					$this->load->view('pages/sales/add_floorplan');
-					$this->load->view('templates/sales/footer');
-
-					$data = array();
-// If file upload form submitted
-				if($this->input->post('fileSubmit') && !empty($_FILES['files']['name'])){
-						$filesCount = count($_FILES['files']['name']);
-						for($i = 0; $i < $filesCount; $i++){
-								$_FILES['file']['name']     = $_FILES['files']['name'][$i];
-								$_FILES['file']['type']     = $_FILES['files']['type'][$i];
-								$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
-								$_FILES['file']['error']     = $_FILES['files']['error'][$i];
-								$_FILES['file']['size']     = $_FILES['files']['size'][$i];
-
-								// File upload configuration
-								$uploadPath = 'uploads/files/';
-								$config['upload_path'] = $uploadPath;
-								$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-
-								// Load and initialize upload library
-								$this->load->library('upload', $config);
-								$this->upload->initialize($config);
-
-								// Upload file to server
-								if($this->upload->do_upload('file')){
-										// Uploaded file data
-										$fileData = $this->upload->data();
-										//$this->input->post('event_id');
-										$uploadData[$i]['title'] = $this->input->post('title');
-										$uploadData[$i]['event_id'] = $this->input->post('event_id');
-										$uploadData[$i]['floorplan_created_by'] = $this->session->userdata('username');
-										$uploadData[$i]['file_name'] = $fileData['file_name'];
-										$uploadData[$i]['description'] = $this->input->post('description');
-								}
-						}
-
-						if(!empty($uploadData)){
-								// Insert files data into the database
-								$insert = $this->m_sales->insert_floorplan($uploadData);
-								$this->session->set_flashdata('success','Data saved');
-								redirect('sales/c_sales/menu_floorplan');
-						}
-					}
-    		}
 
 				function delete_floorplan($floorplan_id){
 						$this->db->where('floorplan_id',$floorplan_id);

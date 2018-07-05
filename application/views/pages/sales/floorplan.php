@@ -67,6 +67,11 @@
               </table>
             </div>
             <!-- /.box-body -->
+
+            <div class="box-footer clearfix">
+              <p>floorplan debindo</p>
+            </div>
+            
           </div>
           <!-- /.box -->
         </div>

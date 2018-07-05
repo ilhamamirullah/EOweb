@@ -53,6 +53,7 @@ class m_admin extends CI_Model{
 		$this->db->where("company_id",$where);
 		return $query = $this->db->get();
 }
+
 function edit_clientdata($where){
 	$this->db->select('*');
 	$this->db->from('booking');
@@ -127,7 +128,7 @@ public function insert_floorplan($data = array()){
 		return $insert?true:false;
 }
 
-function latest_book(){
+public function latest_book(){
 	$this->db->select('*');
 	$this->db->from('booking');
 	$this->db->join('event', 'event.event_id = booking.event_id');
@@ -139,10 +140,20 @@ function latest_book(){
 	return $query->result();
 }
 
-function booking(){
+public function booking(){
 	return $this->db->get('booking');
 }
 
+function edit_event($where){
+	$this->db->select('*');
+	$this->db->from('event');
+	$this->db->where("event_id",$where);
+	return $query = $this->db->get();
+}
 
+function update_event($where,$data,$table){
+	$this->db->where($where);
+	$this->db->update($table,$data);
+}
 
 }

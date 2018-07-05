@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_admin extends MY_Controller {
+class C_admin extends MY_Controller {
 
 	function __construct()
 	{
@@ -25,16 +25,33 @@ class c_admin extends MY_Controller {
 		$data['company'] = $this->m_admin->tampil_data();
 		$data['users'] = $this->m_admin->tampil_users();
 		$data['booking'] = $this->m_admin->booking();
+		$query = $this->m_admin->latest_book();
+		$data['booking'] = null;
+		if($query){
+		$data['booking'] =  $query;
+	}
 
-				$query = $this->m_admin->latest_book();
-				$data['booking'] = null;
-				if($query){
-				$data['booking'] =  $query;
+	$this->load->view('templates/admin/header', $data);
+	$this->load->view('pages/admin/index', $data);
+	$this->load->view('templates/admin/footer');
+
+		$event = $this->m_admin->tampil_event()->result();
+
+		foreach ($event as $event7) {
+			$event_end_date1 = $event7->event_end_date;
+			$id = $event7->event_id;
+			if ($event_end_date1 < date("Y-m-d") ) {
+				$data = array(
+					'event_status' => "done",
+					);
+					$where = array(
+						'event_id' => $id
+					);
+				$this->m_admin->update_data($where,$data,'event');
 			}
+		}
 
-    $this->load->view('templates/admin/header', $data);
-		$this->load->view('pages/admin/index', $data);
-    $this->load->view('templates/admin/footer');
+
 	}
 
 	public function user()
@@ -76,6 +93,8 @@ class c_admin extends MY_Controller {
 		$address = $this->input->post('address');
 		$email = $this->input->post('email');
 		$contact = $this->input->post('contact');
+		date_default_timezone_set('Asia/Jakarta');
+ 		$user_created_at = date("Y-m-d h:i:s");
 		$data = array(
 			'username' => $username,
 			'password' => $password,
@@ -84,7 +103,8 @@ class c_admin extends MY_Controller {
 			'address' => $address,
 			'email' => $email,
 			'contact' => $contact,
-			'active' => '1'
+			'active' => '1',
+			'user_created_at' => $user_created_at
 			);
 		$this->m_admin->input_data($data,'users');
 		$this->session->set_flashdata('success','Data saved');
@@ -233,6 +253,8 @@ function delete_user($id)
 		$email = $this->input->post('email');
 		$pic_contact = $this->input->post('pic_contact');
 		$company_created_by = $this->session->userdata('username');
+		date_default_timezone_set('Asia/Jakarta');
+		$company_created_at = date("Y-m-d h:i:s");
 		$data = array(
 			'category_id' => $id_category,
 			'company_name' => $name,
@@ -241,7 +263,8 @@ function delete_user($id)
 			'pic' => $pic,
 			'email' => $email,
 			'pic_contact' => $pic_contact,
-			'company_created_by' => $company_created_by
+			'company_created_by' => $company_created_by,
+			'company_created_at' => $company_created_at
 			);
 		$this->m_admin->input_data($data,'company');
 		$this->session->set_flashdata('success','Data saved');
@@ -402,6 +425,9 @@ function delete_user($id)
 									$uploadData[$i]['floorplan_created_by'] = $this->session->userdata('username');
 									$uploadData[$i]['file_name'] = $fileData['file_name'];
 									$uploadData[$i]['description'] = $this->input->post('description');
+									date_default_timezone_set('Asia/Jakarta');
+									$uploadData[$i]['floorplan_created_at'] = date("Y-m-d h:i:s");
+
 							}
 					}
 
@@ -439,7 +465,103 @@ function delete_user($id)
 				header('Content-Transfer-Encoding: binary');
 				header('Accept-Ranger');
 				@readfile($file);
-
 			}
+
+			public function eventcrud(){
+				$data['event'] = $this->m_admin->tampil_event()->result();
+				$this->load->view('templates/admin/header', $data);
+				$this->load->view('pages/admin/eventcrud',$data);
+				$this->load->view('templates/admin/footer');
+			}
+
+			public function add_event(){
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('event_name','event Name','trim|required');
+				$this->form_validation->set_rules('event_start_date','event_start_date','required');
+		    $this->form_validation->set_rules('event_end_date','event_start_date','required');
+				$this->form_validation->set_rules('event_desc','event_desc','required');
+
+				if($this->form_validation->run() != false){
+				$event_name = $this->input->post('event_name');
+				$event_desc = $this->input->post('event_desc');
+				$event_start_date = $this->input->post('event_start_date');
+				$event_end_date = $this->input->post('event_end_date');
+				$event_created_by = $this->session->userdata('username');
+				$event_status = "undone";
+				date_default_timezone_set('Asia/Jakarta');
+				$event_created_at = date("Y-m-d h:i:s");
+				$data = array(
+					'event_name' => $event_name,
+					'event_desc' => $event_desc,
+					'event_start_date' => $event_start_date,
+					'event_end_date' => $event_end_date,
+					'event_status' => $event_status,
+					'event_created_by' => $event_created_by,
+					'event_created_at' => $event_created_at
+					);
+				$this->m_admin->input_data($data,'event');
+				$this->session->set_flashdata('success','Data saved');
+				redirect('admin/c_admin/eventcrud');
+			}else{
+				$this->session->set_flashdata('error','Failed to save');
+				$data['event'] = $this->m_admin->tampil_event()->result();
+				$this->load->view('templates/admin/header', $data);
+				$this->load->view('pages/admin/add_company');
+				$this->load->view('templates/admin/footer');
+			}
+			}
+
+			public function show_add_event(){
+				$data['event'] = $this->m_admin->tampil_event()->result();
+				$this->load->view('templates/admin/header', $data);
+				$this->load->view('pages/admin/add_event', $data);
+				$this->load->view('templates/admin/footer');
+			}
+
+			public function edit_event($event_id){
+				$data2['event'] = $this->m_admin->tampil_event()->result();
+					$where = $event_id;
+					$query = $this->m_admin->edit_event($where)->result();
+					$data['event'] = null;
+					if($query){
+					 $data['event'] =  $query;
+					}
+				$this->load->view('templates/admin/header', $data2);
+				$this->load->view('pages/admin/edit_event', $data);
+				$this->load->view('templates/admin/footer');
+			}
+
+			function update_event(){
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('event_name','event Name','trim|required');
+				$this->form_validation->set_rules('event_start_date','event_start_date','required');
+		    $this->form_validation->set_rules('event_end_date','event_start_date','required');
+				$this->form_validation->set_rules('event_desc','event_desc','required');
+
+				if($this->form_validation->run() != false){
+					$event_id = $this->input->post('event_id');
+					$event_name = $this->input->post('event_name');
+					$event_desc = $this->input->post('event_desc');
+					$event_start_date = $this->input->post('event_start_date');
+					$event_end_date = $this->input->post('event_end_date');
+					$event_updated_by = $this->session->userdata('username');
+				$data = array(
+					'event_name' => $event_name,
+					'event_desc' => $event_desc,
+					'event_start_date' => $event_start_date,
+					'event_end_date' => $event_end_date,
+					'event_updated_by' => $event_updated_by
+				);
+			$where = array(
+				'event_id' => $event_id
+			);
+			$this->m_admin->update_event($where,$data,'event');
+			$this->session->set_flashdata('success','Data updated');
+			redirect('admin/c_admin/eventcrud');
+		}else{
+			$this->session->set_flashdata('error','Data failed to update');
+			redirect('admin/c_admin/eventcrud');
+			}
+		}
 
 }

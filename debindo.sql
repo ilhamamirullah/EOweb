@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2018 at 12:08 PM
+-- Generation Time: Jul 05, 2018 at 02:42 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `debindo`
@@ -39,17 +39,9 @@ CREATE TABLE `booking` (
   `notes` varchar(225) DEFAULT NULL,
   `booking_created_by` varchar(225) DEFAULT NULL,
   `booking_updated_by` varchar(255) DEFAULT NULL,
-  `booking_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `booking_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `booking_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`booking_id`, `event_id`, `company_id`, `status_id`, `user_id`, `stand`, `sqm`, `notes`, `booking_created_by`, `booking_updated_by`, `booking_created_at`, `booking_updated_at`) VALUES
-(28, 1, 25, 4, 3, 'Special Design', '12', '', 'ilham', NULL, '2018-06-30 09:59:46', '2018-06-30 10:03:52'),
-(29, 2, 27, 4, 3, 'Standard Design', '21', '', 'ilham', NULL, '2018-06-30 10:00:41', '2018-06-30 10:00:41');
 
 -- --------------------------------------------------------
 
@@ -96,21 +88,9 @@ CREATE TABLE `company` (
   `pic_contact` varchar(225) NOT NULL,
   `company_created_by` varchar(225) DEFAULT NULL,
   `company_updated_by` varchar(225) DEFAULT NULL,
-  `company_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `company_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `company_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `company`
---
-
-INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `website`, `pic`, `email`, `pic_contact`, `company_created_by`, `company_updated_by`, `company_created_at`, `company_updated_at`) VALUES
-(25, 1, 'Asus', 'Jakarta', 'asus.com', 'Digi', 'digi@asus.com', '123', 'ilham', NULL, '2018-03-14 04:46:58', '2018-03-14 04:46:58'),
-(26, 1, 'Lenovo', 'Bogor', 'lenovo.com', 'yasien', 'yasien@lenovo.com', '321', 'ilham', NULL, '2018-03-14 04:51:31', '2018-03-14 04:51:31'),
-(27, 2, '420 Society', 'Bandung', '420official.com', 'randi', 'randi@420official.com', '567', 'ilham', 'ilham', '2018-03-14 04:52:27', '2018-03-14 04:52:46'),
-(28, 3, 'sosis', 'bogor', 'sosis.com', 'irene', 'irene@sosis.com', '569', 'ilham', NULL, '2018-03-14 05:01:10', '2018-03-14 05:01:10'),
-(29, 2, 'joger', 'bali', 'jogerjelek.com', 'nyoman', 'nyoman@jogerjelek.com', '789', 'ilham', NULL, '2018-03-15 01:59:13', '2018-03-15 01:59:13'),
-(30, 2, 'levis', 'jakarta', 'levis.com', 'kevin', 'kevin@levis.com', '999', 'ilham', NULL, '2018-03-15 02:04:17', '2018-03-15 02:04:17');
 
 -- --------------------------------------------------------
 
@@ -121,12 +101,13 @@ INSERT INTO `company` (`company_id`, `category_id`, `company_name`, `address`, `
 CREATE TABLE `event` (
   `event_id` int(11) NOT NULL,
   `event_name` varchar(225) NOT NULL,
-  `event_desc` varchar(225) NOT NULL,
-  `event_date` date NOT NULL,
+  `event_desc` text NOT NULL,
+  `event_start_date` date NOT NULL,
+  `event_end_date` date NOT NULL,
   `event_status` enum('done','undone') NOT NULL,
   `event_created_by` varchar(225) DEFAULT NULL,
   `event_updated_by` varchar(225) DEFAULT NULL,
-  `event_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `event_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `event_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -134,12 +115,12 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_date`, `event_status`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
-(1, 'Trade Expo Indonesia', 'pameran ekspor Kementrian Perdagangan', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(3, 'CTCT', 'pameran logistik', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(4, 'REI EXPO', 'pameran properti', '0000-00-00', 'done', NULL, NULL, '2018-03-11 07:35:44', '2018-03-11 07:35:44'),
-(5, 'INDOCRAFT', 'pamaeran batik', '0000-00-00', 'done', NULL, NULL, '2018-03-20 09:19:37', '2018-03-20 09:19:37');
+INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_start_date`, `event_end_date`, `event_status`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
+(1, 'Trade Expo Indonesia 2018', 'pameran ekspor Kementrian Perdagangan', '2018-07-01', '2018-07-05', 'undone', NULL, 'admin', '2018-03-11 14:35:44', '2018-07-05 11:39:01'),
+(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '2018-07-05', '2018-07-06', 'undone', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 10:18:05'),
+(3, 'CTCT', 'pameran logistik', '2018-07-04', '2018-07-04', 'done', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 10:19:11'),
+(4, 'REI EXPO', 'pameran properti', '2018-07-06', '2018-07-07', 'undone', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 09:56:10'),
+(5, 'INDOCRAFT', 'pamaeran batik', '2018-07-02', '2018-07-03', 'done', NULL, NULL, '2018-03-20 16:19:37', '2018-07-05 10:19:11');
 
 -- --------------------------------------------------------
 
@@ -155,18 +136,9 @@ CREATE TABLE `floorplan` (
   `description` text,
   `floorplan_created_by` varchar(255) DEFAULT NULL,
   `floorplan_updated_by` varchar(255) DEFAULT NULL,
-  `floorplan_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `floorplan_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `floorplan_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `floorplan`
---
-
-INSERT INTO `floorplan` (`floorplan_id`, `event_id`, `title`, `file_name`, `description`, `floorplan_created_by`, `floorplan_updated_by`, `floorplan_created_at`, `floorplan_updated_at`) VALUES
-(1, 2, 'tes', '1__Policy_Procedure_-_Annual_and_OIL_Leave_220118.pdf', 'tes', 'ilham', NULL, '2018-06-23 09:17:37', '2018-06-23 09:17:37'),
-(2, 3, 'coba', '1__Policy_Procedure_-_Sick_Leave_21012018.pdf', 'coba', 'ilham', NULL, '2018-06-23 09:18:41', '2018-06-23 09:18:41'),
-(3, 3, 'coba', '1__Policy_Procedure_-_Work_From_Home-15052018.pdf', 'coba', 'ilham', NULL, '2018-06-23 09:18:41', '2018-06-23 09:18:41');
 
 -- --------------------------------------------------------
 
@@ -192,18 +164,8 @@ CREATE TABLE `record_booking` (
   `company_id` int(11) NOT NULL,
   `status_id` int(11) NOT NULL,
   `record_booking_audit` varchar(225) NOT NULL,
-  `record_booking_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `record_booking_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `record_booking_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `record_booking`
---
-
-INSERT INTO `record_booking` (`record_booking_id`, `booking_id`, `user_id`, `event_id`, `company_id`, `status_id`, `record_booking_audit`, `record_booking_created_at`, `record_booking_updated_at`) VALUES
-(4, 28, 3, 1, 25, 3, 'ilham', '2018-06-30 09:59:46', '2018-06-30 09:59:46'),
-(5, 29, 3, 2, 27, 4, 'ilham', '2018-06-30 10:00:41', '2018-06-30 10:00:41'),
-(6, 28, 3, 1, 25, 4, 'ilham', '2018-06-30 10:03:52', '2018-06-30 10:03:52');
 
 -- --------------------------------------------------------
 
@@ -240,7 +202,7 @@ CREATE TABLE `todo_list` (
   `todo_timer` time NOT NULL,
   `status` enum('done','undone','') NOT NULL,
   `todo_created_by` varchar(225) NOT NULL,
-  `todo_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `todo_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `todo_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -263,7 +225,7 @@ CREATE TABLE `users` (
   `nip` varchar(100) DEFAULT NULL,
   `jabatan` varchar(100) DEFAULT NULL,
   `photo` varchar(225) DEFAULT NULL,
-  `user_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -272,10 +234,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
-(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga1', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 07:02:09', '2018-06-23 13:48:34'),
-(4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 07:02:09', '0000-00-00 00:00:00'),
-(6, 'rizki', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'rizki', 'aaa', 'aa@wwd.d', '08833', '3333', 'ff', NULL, '2018-03-11 08:04:17', '2018-03-11 08:04:17'),
-(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-23 09:15:39', '2018-06-23 09:15:39');
+(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga1', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 14:02:09', '2018-06-23 13:48:34'),
+(4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 14:02:09', '0000-00-00 00:00:00'),
+(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-23 16:15:39', '2018-06-23 09:15:39');
 
 --
 -- Indexes for dumped tables
@@ -358,7 +319,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -370,19 +331,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `floorplan`
 --
 ALTER TABLE `floorplan`
-  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `history_booking`
@@ -394,7 +355,7 @@ ALTER TABLE `history_booking`
 -- AUTO_INCREMENT for table `record_booking`
 --
 ALTER TABLE `record_booking`
-  MODIFY `record_booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `record_booking_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -412,7 +373,7 @@ ALTER TABLE `todo_list`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

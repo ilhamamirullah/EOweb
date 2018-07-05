@@ -33,7 +33,7 @@
                   <!-- <div class="small-box bg-green"> -->
                   <div class="small-box <?php $a = array('bg-green', 'bg-orange', 'bg-red', 'bg-purple', 'bg-blue', 'bg-olive', 'bg-aqua', 'bg-fuchsia', 'bg-maroon'); echo $a[rand(0,8)];?>">
                     <div class="inner">
-                      <h4><?php echo $event1->event_date; ?></h4>
+                      <h4><?php echo $event1->event_start_date; ?></h4>
                       <p><b><?php echo $event1->event_name; ?></b></p>
                     </div>
                     <div class="icon">

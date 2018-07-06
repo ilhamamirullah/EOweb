@@ -160,4 +160,34 @@ class C_director extends MY_Controller {
 					 $this->pdf->load_view('pages/director/company_print_pdf', $data);
 			}
 
+			public function print_book($event_id){
+				$data['event'] = $this->m_director->tampil_event()->result();
+				$where = $event_id;
+				$data['whereid'] = $event_id;
+				$query = $this->m_director->event1_book($where);
+				$data['booking'] = null;
+				if($query){
+				$data['booking'] =  $query;
+			}
+					 $this->load->library('pdf');
+					 $this->pdf->setPaper('A4', 'potrait');
+					 $this->pdf->filename = "book_print.pdf";
+					 $this->pdf->load_view('pages/director/book_print_pdf', $data);
+			}
+
+			public function print_book_form($event_id){
+				$data['event'] = $this->m_director->tampil_event()->result();
+				$where = $event_id;
+				$data['whereid'] = $event_id;
+				$query = $this->m_director->event1_book($where);
+				$data['booking'] = null;
+				if($query){
+				$data['booking'] =  $query;
+			}
+					 $this->load->library('pdf');
+					 $this->pdf->setPaper('A4', 'potrait');
+					 $this->pdf->filename = "book_print.pdf";
+					 $this->pdf->load_view('pages/director/book_form_print_pdf', $data);
+			}
+
 }

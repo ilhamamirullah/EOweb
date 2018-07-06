@@ -39,10 +39,10 @@
                  <select class="form-control select2" name="event_id" style="width: 100%;">
                    <option selected disabled hidden>Choose here</option>
                    <?php
-                    foreach($event as $event2){
+                    foreach($event as $event2){ if ($event2->event_status == "undone") {
                   ?>
                    <option value="<?php echo $event2->event_id ?>"><?php echo $event2->event_name ?></option>
-                   <?php } ?>
+                 <?php } }?>
                  </select>
                  <span class="help-block"></span>
                  </div>

@@ -36,13 +36,20 @@ class C_admin extends MY_Controller {
 	$this->load->view('templates/admin/footer');
 
 		$event = $this->m_admin->tampil_event()->result();
-
 		foreach ($event as $event7) {
 			$event_end_date1 = $event7->event_end_date;
 			$id = $event7->event_id;
 			if ($event_end_date1 < date("Y-m-d") ) {
 				$data = array(
 					'event_status' => "done",
+					);
+					$where = array(
+						'event_id' => $id
+					);
+				$this->m_admin->update_data($where,$data,'event');
+			}else {
+				$data = array(
+					'event_status' => "undone",
 					);
 					$where = array(
 						'event_id' => $id
@@ -557,8 +564,31 @@ function delete_user($id)
 				'event_id' => $event_id
 			);
 			$this->m_admin->update_event($where,$data,'event');
+			$event = $this->m_admin->tampil_event()->result();
+			foreach ($event as $event7) {
+				$event_end_date1 = $event7->event_end_date;
+				$id = $event7->event_id;
+				if ($event_end_date1 < date("Y-m-d") ) {
+					$data = array(
+						'event_status' => "done",
+						);
+						$where = array(
+							'event_id' => $id
+						);
+					$this->m_admin->update_data($where,$data,'event');
+				}else {
+					$data = array(
+						'event_status' => "undone",
+						);
+						$where = array(
+							'event_id' => $id
+						);
+					$this->m_admin->update_data($where,$data,'event');
+				}
+			}
 			$this->session->set_flashdata('success','Data updated');
 			redirect('admin/c_admin/eventcrud');
+
 		}else{
 			$this->session->set_flashdata('error','Data failed to update');
 			redirect('admin/c_admin/eventcrud');
@@ -576,6 +606,36 @@ function delete_user($id)
 				 $this->pdf->setPaper('A4', 'potrait');
 				 $this->pdf->filename = "company_print.pdf";
 				 $this->pdf->load_view('pages/admin/company_print_pdf', $data);
+		}
+
+		public function print_book($event_id){
+			$data['event'] = $this->m_admin->tampil_event()->result();
+			$where = $event_id;
+			$data['whereid'] = $event_id;
+			$query = $this->m_admin->event1_book($where);
+			$data['booking'] = null;
+			if($query){
+			$data['booking'] =  $query;
+		}
+				 $this->load->library('pdf');
+				 $this->pdf->setPaper('A4', 'potrait');
+				 $this->pdf->filename = "book_print.pdf";
+				 $this->pdf->load_view('pages/admin/book_print_pdf', $data);
+		}
+
+		public function print_book_form($event_id){
+			$data['event'] = $this->m_admin->tampil_event()->result();
+			$where = $event_id;
+			$data['whereid'] = $event_id;
+			$query = $this->m_admin->event1_book($where);
+			$data['booking'] = null;
+			if($query){
+			$data['booking'] =  $query;
+		}
+				 $this->load->library('pdf');
+				 $this->pdf->setPaper('A4', 'potrait');
+				 $this->pdf->filename = "book_print.pdf";
+				 $this->pdf->load_view('pages/admin/book_form_print_pdf', $data);
 		}
 
 }

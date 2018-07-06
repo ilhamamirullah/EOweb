@@ -406,7 +406,46 @@ class C_sales extends MY_Controller {
 					header('Content-Transfer-Encoding: binary');
 					header('Accept-Ranger');
 					@readfile($file);
+				}
 
+				public function print_myclient(){
+					$data['event'] = $this->m_sales->tampil_event()->result();
+					$query = $this->m_sales->tampil_client();
+					$data['booking'] = null;
+					if($query){
+					 $data['booking'] =  $query;
+					}
+						 $this->load->library('pdf');
+						 $this->pdf->setPaper('A4', 'potrait');
+						 $this->pdf->filename = "book_print.pdf";
+						 $this->pdf->load_view('pages/sales/myclient_print_pdf', $data);
+				}
+
+				public function print_myclient_specific($event_id){
+					$data['event'] = $this->m_sales->tampil_event()->result();
+					$data['whereid'] = $event_id;
+					$query = $this->m_sales->tampil_client();
+					$data['booking'] = null;
+					if($query){
+					 $data['booking'] =  $query;
+					}
+						 $this->load->library('pdf');
+						 $this->pdf->setPaper('A4', 'potrait');
+						 $this->pdf->filename = "book_print.pdf";
+						 $this->pdf->load_view('pages/sales/myclient_specific_print_pdf', $data);
+				}
+
+				public function print_company(){
+							$data['event'] = $this->m_sales->tampil_event()->result();
+							$query = $this->m_sales->tampil_data();
+							$data['company'] = null;
+							if($query){
+							 $data['company'] =  $query;
+							}
+						 $this->load->library('pdf');
+						 $this->pdf->setPaper('A4', 'potrait');
+						 $this->pdf->filename = "company_print.pdf";
+						 $this->pdf->load_view('pages/sales/company_print_pdf', $data);
 				}
 
 

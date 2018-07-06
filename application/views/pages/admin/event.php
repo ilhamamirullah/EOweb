@@ -33,6 +33,9 @@
 
           <div class="box">
             <div class="box-header">
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/print_book/<?php echo $whereid; ?>"  target="_blank" class="btn btn-warning btn-sm" >Print All</a> </h3>
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/print_book_form/<?php echo $whereid; ?>"  target="_blank" class="btn btn-success btn-sm" >Print Form</a> </h3>
+              <!-- <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/excel_book" class="btn btn-success btn-sm" >Save to Excel</a> </h3> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">

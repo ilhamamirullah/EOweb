@@ -22,6 +22,10 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/choose_client" class="btn btn-primary btn-sm" >Add Client</a> </h3>
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/print_myclient"  target="_blank" class="btn btn-warning btn-sm" >Print All</a></h3>
+              <?php foreach ($event as $event1) { if ($event1->event_status == "undone") {?>
+                <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/print_myclient_specific/<?php echo $event1->event_id; ?>"  target="_blank" class="btn btn-warning btn-sm" >Print <?php echo $event1->event_name; ?></a></h3>
+              <?php } }?>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -43,7 +47,7 @@
                 if (!empty($booking)) {
                   $no = 1;
                    foreach($booking as $booking2){
-                     if ($booking2->user_id === $this->session->userdata('id')) {
+                     if ($booking2->user_id === $this->session->userdata('id') && $booking2->event_status == "undone") {
                  ?>
                 <tr>
                   <td><?php echo $no++ ?></td>

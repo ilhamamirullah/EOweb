@@ -20,6 +20,8 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/add_company" class="btn btn-primary btn-sm" >Add Company</a> </h3>
+              <h3 class="box-title"> <a href="<?php echo base_url(); ?>sales/c_sales/print_company"  target="_blank" class="btn btn-warning btn-sm">Print</a> </h3>
+              <!-- <h3 class="box-title"> <a href="<?php echo base_url(); ?>admin/c_admin/excel_company" class="btn btn-success btn-sm" >Save to Excel</a> </h3> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">

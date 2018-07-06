@@ -177,11 +177,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <?php foreach ($event as $event1) { ?>
+            <?php foreach ($event as $event1) { if ($event1->event_status == "undone") {?>
             <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/event1/'.$event1->event_id ): ?> class="active"<?php endif; ?>>
               <a href="<?php echo base_url();?>director/c_director/event1/<?php echo $event1->event_id; ?>">
                 <i class="fa fa-circle-o"></i><?php echo $event1->event_name ?></a></li>
-          <?php } ?>
+          <?php } }?>
           </ul>
         </li>
         <!--<li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>

@@ -448,6 +448,36 @@ class C_sales extends MY_Controller {
 						 $this->pdf->load_view('pages/sales/company_print_pdf', $data);
 				}
 
+				public function print_book($event_id){
+					$data['event'] = $this->m_sales->tampil_event()->result();
+					$where = $event_id;
+					$data['whereid'] = $event_id;
+					$query = $this->m_sales->event1_book($where);
+					$data['booking'] = null;
+					if($query){
+					$data['booking'] =  $query;
+				}
+						 $this->load->library('pdf');
+						 $this->pdf->setPaper('A4', 'potrait');
+						 $this->pdf->filename = "book_print.pdf";
+						 $this->pdf->load_view('pages/sales/book_print_pdf', $data);
+				}
+
+				public function print_book_form($event_id){
+					$data['event'] = $this->m_sales->tampil_event()->result();
+					$where = $event_id;
+					$data['whereid'] = $event_id;
+					$query = $this->m_sales->event1_book($where);
+					$data['booking'] = null;
+					if($query){
+					$data['booking'] =  $query;
+				}
+						 $this->load->library('pdf');
+						 $this->pdf->setPaper('A4', 'potrait');
+						 $this->pdf->filename = "book_print.pdf";
+						 $this->pdf->load_view('pages/sales/book_form_print_pdf', $data);
+				}
+
 
 
 }

@@ -54,10 +54,16 @@
             <td><?php echo $company2->email ?></td>
             <td><?php echo $company2->address ?></td>
           </tr>
-        <?php } }?>
+
+        <?php } ?>
+        <tr>
+          <td colspan="6"><center><b>Total</b> <center></td>
+          <td> <b> <?php echo count($company); ?></b></td>
+        </tr>
+      <?php } ?>
           </tbody>
         </table>
     </div>
-    <footer style="margin-top:50px;"><center><strong>Copyright &copy; 2018 <a href="https://debindo.com">PT. Debindomulti Adhiswasti</a>.</strong> All right reserved.</center></footer>
+    <footer style="margin-top:30px; font-size: 10px;"><center><strong>Copyright &copy; 2018 <a href="https://debindo.com">PT. Debindomulti Adhiswasti</a>.</strong> All right reserved.</center></footer>
   </body>
 </html>

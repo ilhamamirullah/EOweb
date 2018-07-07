@@ -199,7 +199,7 @@
             <i class="fa fa-folder"></i> <span>Company</span>
           </a>
         </li>
-        <li>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/floorplan' || $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/menu_floorplan' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>admin/c_admin/menu_floorplan">
             <i class="fa fa-book"></i> <span>FloorPlan</span>
           </a>

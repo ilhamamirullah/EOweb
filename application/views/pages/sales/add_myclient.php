@@ -73,8 +73,8 @@
               <div class="col-sm-8">
                   <select class="form-control select2" name="stand" style="width: 100%;">
                   <option selected disabled hidden>Choose here</option>
-                  <option  select value="Standard Design">Standard Design</option>
-                  <option select value="Special Design">Special Design</option>
+                  <option  select value="standard design">Standard Design</option>
+                  <option select value="special design">Special Design</option>
                 </select>
                   <span class="help-block"></span>
               </div>

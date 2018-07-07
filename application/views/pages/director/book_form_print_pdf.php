@@ -57,17 +57,27 @@
             <?php
             if (!empty($booking)) {
               $no = 1;
+              $jmlsqm = 0;
               foreach($booking as $booking2){
                 if ($booking2->status_name == "Form") {
             ?>
           <tr>
             <td><?php echo $no++ ?></td>
-              <td><?php echo $booking2->booking_updated_at ?></td>
+              <td><?php $date = date_create($booking2->booking_updated_at); echo date_format($date, 'd/m/Y H:i:s'); ?></td>
               <td><?php echo $booking2->company_name ?></td>
               <td><?php echo $booking2->username?></td>
               <td><?php echo $booking2->sqm?></td>
           </tr>
-        <?php } } }?>
+        <?php } } ?>
+        <tr>
+          <td colspan="4"><center><b>Total SQM</b> <center></td>
+          <td><?php echo $jmlsqm; ?></td>
+        </tr>
+        <tr>
+          <td colspan="4"><center><b>Jumlah data</b> <center></td>
+          <td><?php echo count($booking); ?></td>
+        </tr>
+      <?php } ?>
           </tbody>
         </table>
     </div>

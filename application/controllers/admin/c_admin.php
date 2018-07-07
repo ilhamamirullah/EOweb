@@ -23,7 +23,7 @@ class C_admin extends MY_Controller {
 	{
 		$data['event'] = $this->m_admin->tampil_event()->result();
 		$data['company'] = $this->m_admin->tampil_data();
-		$data['users'] = $this->m_admin->tampil_users();
+		$data['users'] = $this->m_admin->tampil_user_list();;
 		$data['booking'] = $this->m_admin->booking();
 		$query = $this->m_admin->latest_book();
 		$data['booking'] = null;
@@ -57,8 +57,6 @@ class C_admin extends MY_Controller {
 				$this->m_admin->update_data($where,$data,'event');
 			}
 		}
-
-
 	}
 
 	public function user()
@@ -492,8 +490,10 @@ function delete_user($id)
 				if($this->form_validation->run() != false){
 				$event_name = $this->input->post('event_name');
 				$event_desc = $this->input->post('event_desc');
-				$event_start_date = $this->input->post('event_start_date');
-				$event_end_date = $this->input->post('event_end_date');
+				$start_date = date_create($this->input->post('event_start_date'));
+				$end_date = date_create($this->input->post('event_end_date'));
+				$event_start_date = date_format($start_date, 'Y/m/d');
+				$event_end_date = date_format($end_date, 'Y/m/d');
 				$event_created_by = $this->session->userdata('username');
 				$event_status = "undone";
 				date_default_timezone_set('Asia/Jakarta');

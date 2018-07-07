@@ -54,7 +54,12 @@
             <td><?php echo $company2->email ?></td>
             <td><?php echo $company2->address ?></td>
           </tr>
-        <?php } }?>
+        <?php } ?>
+        <tr>
+          <td colspan="6"><center><b>Total</b> <center></td>
+          <td> <b> <?php echo count($company); ?></b></td>
+        </tr>
+      <?php } ?>
           </tbody>
         </table>
     </div>

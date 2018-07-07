@@ -43,8 +43,8 @@
                 <tr>
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $event2->event_name ?></td>
-                  <td><?php echo $event2->event_start_date ?></td>
-                  <td><?php echo $event2->event_end_date ?></td>
+                  <td><?php $date = date_create($event2->event_start_date); echo date_format($date, 'd/m/Y'); ?></td>
+                  <td><?php $date = date_create($event2->event_end_date); echo date_format($date, 'd/m/Y'); ?></td>
                   <td><?php echo $event2->event_desc ?></td>
                   <td <?php if ($event2->event_status == "done") {
                     ?>style="background:red;" <?php } ?>><?php echo $event2->event_status ?></td>

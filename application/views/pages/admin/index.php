@@ -114,7 +114,7 @@
                 ?>
               <tr>
                 <td><?php echo $no++ ?></td>
-                  <td><?php echo $booking2->booking_updated_at ?></td>
+                  <td><?php $date = date_create($booking2->booking_updated_at); echo date_format($date, 'd/m/Y H:i:s'); ?></td>
                   <td><?php echo $booking2->event_name ?></td>
                   <td><?php echo $booking2->company_name ?></td>
                   <td><?php echo $booking2->username?></td>

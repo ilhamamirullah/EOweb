@@ -38,7 +38,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input name="event_start_date" id="event_start_date" type="text" class="form-control" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask>
+                        <input name="event_start_date" id="event_start_date" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                         <span class="help-block" style="color:red;"><?php echo form_error('event_start_date'); ?></span>
                       </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input name="event_end_date" id="event_end_date" type="text" class="form-control" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask>
+                        <input name="event_end_date" id="event_end_date" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                         <span class="help-block" style="color:red;"><?php echo form_error('event_end_date'); ?></span>
                       </div>
                     </div>

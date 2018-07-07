@@ -104,5 +104,18 @@ function booking(){
 	return $this->db->get('booking');
 }
 
+function record_book(){
+	$this->db->select('*');
+	$this->db->from('record_booking');
+	$this->db->join('booking', 'booking.booking_id = record_booking.booking_id');
+	$this->db->join('users', 'users.id = record_booking.user_id');
+	$this->db->join('event', 'event.event_id = record_booking.event_id');
+	$this->db->join('company', 'company.company_id = record_booking.company_id');
+	$this->db->join('status', 'status.status_id = record_booking.status_id');
+	$this->db->order_by('record_booking.booking_id', "asc");
+	$query = $this->db->get();
+	return $query->result();
+}
+
 
 }

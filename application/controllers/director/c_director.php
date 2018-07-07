@@ -190,4 +190,30 @@ class C_director extends MY_Controller {
 					 $this->pdf->load_view('pages/director/book_form_print_pdf', $data);
 			}
 
+			public function record_book()
+			{
+				$data['event'] = $this->m_director->tampil_event()->result();
+				$query = $this->m_director->record_book();
+				$data['record_book'] = null;
+				if($query){
+				 $data['record_book'] =  $query;
+				}
+				$this->load->view('templates/director/header', $data);
+				$this->load->view('pages/director/record_book',$data);
+				$this->load->view('templates/director/footer');
+			}
+
+			public function print_record_book(){
+				$data['event'] = $this->m_director->tampil_event()->result();
+				$query = $this->m_director->record_book();
+				$data['record_book'] = null;
+				if($query){
+				$data['record_book'] =  $query;
+			}
+					 $this->load->library('pdf');
+					 $this->pdf->setPaper('A4', 'potrait');
+					 $this->pdf->filename = "record_book_print.pdf";
+					 $this->pdf->load_view('pages/director/record_book_print_pdf', $data);
+			}
+
 }

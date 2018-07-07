@@ -184,11 +184,11 @@
           <?php } }?>
           </ul>
         </li>
-        <!--<li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/myclient' ): ?> class="active"<?php endif; ?>>
-          <a href="<?php echo base_url();?>director/c_director/myclient">
-            <i class="fa fa-table"></i> <span>My Client</span>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/record_book' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>director/c_director/record_book">
+            <i class="fa fa-book"></i> <span>Record Book</span>
           </a>
-        </li>-->
+        </li>
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/company' || $_SERVER['REQUEST_URI'] == '/debindo/director/c_director/add_company' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>director/c_director/company">
             <i class="fa fa-folder"></i> <span>Company</span>

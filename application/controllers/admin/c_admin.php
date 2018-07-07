@@ -638,4 +638,31 @@ function delete_user($id)
 				 $this->pdf->load_view('pages/admin/book_form_print_pdf', $data);
 		}
 
+		public function record_book()
+		{
+			$data['event'] = $this->m_admin->tampil_event()->result();
+			$query = $this->m_admin->record_book();
+			$data['record_book'] = null;
+			if($query){
+			 $data['record_book'] =  $query;
+			}
+			$this->load->view('templates/admin/header', $data);
+			$this->load->view('pages/admin/record_book',$data);
+			$this->load->view('templates/admin/footer');
+		}
+
+		public function print_record_book(){
+			$data['event'] = $this->m_admin->tampil_event()->result();
+			$query = $this->m_admin->record_book();
+			$data['record_book'] = null;
+			if($query){
+			$data['record_book'] =  $query;
+		}
+				 $this->load->library('pdf');
+				 $this->pdf->setPaper('A4', 'potrait');
+				 $this->pdf->filename = "record_book_print.pdf";
+				 $this->pdf->load_view('pages/admin/record_book_print_pdf', $data);
+		}
+
+
 }

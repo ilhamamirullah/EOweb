@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2018 at 02:42 PM
+-- Generation Time: Jul 07, 2018 at 11:24 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -34,8 +34,8 @@ CREATE TABLE `booking` (
   `company_id` int(11) NOT NULL,
   `status_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `stand` varchar(225) DEFAULT NULL,
-  `sqm` varchar(225) DEFAULT NULL,
+  `stand` enum('standard design','special design') DEFAULT NULL,
+  `sqm` float DEFAULT NULL,
   `notes` varchar(225) DEFAULT NULL,
   `booking_created_by` varchar(225) DEFAULT NULL,
   `booking_updated_by` varchar(255) DEFAULT NULL,
@@ -116,11 +116,11 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`event_id`, `event_name`, `event_desc`, `event_start_date`, `event_end_date`, `event_status`, `event_created_by`, `event_updated_by`, `event_created_at`, `event_updated_at`) VALUES
-(1, 'Trade Expo Indonesia 2018', 'pameran ekspor Kementrian Perdagangan', '2018-07-01', '2018-07-05', 'undone', NULL, 'admin', '2018-03-11 14:35:44', '2018-07-05 11:39:01'),
-(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '2018-07-05', '2018-07-06', 'undone', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 10:18:05'),
-(3, 'CTCT', 'pameran logistik', '2018-07-04', '2018-07-04', 'done', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 10:19:11'),
-(4, 'REI EXPO', 'pameran properti', '2018-07-06', '2018-07-07', 'undone', NULL, NULL, '2018-03-11 14:35:44', '2018-07-05 09:56:10'),
-(5, 'INDOCRAFT', 'pamaeran batik', '2018-07-02', '2018-07-03', 'done', NULL, NULL, '2018-03-20 16:19:37', '2018-07-05 10:19:11');
+(1, 'Trade Expo Indonesia 2018', 'pameran ekspor Kementrian Perdagangan', '2018-07-01', '2018-07-05', 'done', NULL, 'admin', '2018-03-11 14:35:44', '2018-07-06 02:25:34'),
+(2, 'Indonesia Fashion & Craft', 'pameran batik setelah lebaran', '2018-07-02', '2018-07-08', 'undone', NULL, 'admin', '2018-03-11 14:35:44', '2018-07-06 02:29:31'),
+(3, 'CTCT', 'pameran logistik', '2018-07-04', '2018-07-19', 'undone', NULL, NULL, '2018-03-11 14:35:44', '2018-07-06 02:27:17'),
+(4, 'REI EXPO', 'pameran properti', '2018-07-01', '2018-07-06', 'done', NULL, 'admin', '2018-03-11 14:35:44', '2018-07-07 01:05:03'),
+(5, 'INDOCRAFT', 'pamaeran batik', '2018-07-02', '2018-07-03', 'done', NULL, NULL, '2018-03-20 16:19:37', '2018-07-06 02:25:34');
 
 -- --------------------------------------------------------
 
@@ -234,9 +234,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `active`, `name`, `address`, `email`, `contact`, `nip`, `jabatan`, `photo`, `user_created_at`, `user_updated_at`) VALUES
-(3, 'ilham', '202cb962ac59075b964b07152d234b70', 'sales', '1', 'Ilham Amirullah', 'Jasinga1', 'ilham.aespi@gmail.com', '085716887907', '777', 'Sales', 'tes', '2018-02-18 14:02:09', '2018-06-23 13:48:34'),
-(4, 'yandra', '202cb962ac59075b964b07152d234b70', 'director', '1', 'yandra', 'jak', NULL, NULL, NULL, NULL, NULL, '2018-02-18 14:02:09', '0000-00-00 00:00:00'),
-(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-23 16:15:39', '2018-06-23 09:15:39');
+(8, 'admin', '36f17c3939ac3e7b2fc9396fa8e953ea', 'admin', '1', 'admin', NULL, NULL, NULL, NULL, 'administrator', NULL, '2018-07-07 00:00:00', '2018-07-07 09:23:00'),
+(9, 'sales', '36f17c3939ac3e7b2fc9396fa8e953ea', 'sales', '1', 'sales', NULL, NULL, NULL, NULL, 'sales', NULL, '2018-07-07 00:00:00', '2018-07-07 09:23:11'),
+(10, 'director', '36f17c3939ac3e7b2fc9396fa8e953ea', 'director', '1', 'director', NULL, NULL, NULL, NULL, 'director', NULL, '2018-07-07 00:00:00', '2018-07-07 09:23:21');
 
 --
 -- Indexes for dumped tables
@@ -290,7 +290,11 @@ ALTER TABLE `history_booking`
 --
 ALTER TABLE `record_booking`
   ADD PRIMARY KEY (`record_booking_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `booking_id` (`booking_id`),
+  ADD KEY `event_id` (`event_id`),
+  ADD KEY `company_id` (`company_id`),
+  ADD KEY `status_id` (`status_id`);
 
 --
 -- Indexes for table `status`
@@ -319,7 +323,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -331,19 +335,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `floorplan`
 --
 ALTER TABLE `floorplan`
-  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `floorplan_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `history_booking`
@@ -355,7 +359,7 @@ ALTER TABLE `history_booking`
 -- AUTO_INCREMENT for table `record_booking`
 --
 ALTER TABLE `record_booking`
-  MODIFY `record_booking_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `record_booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -373,7 +377,7 @@ ALTER TABLE `todo_list`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -404,6 +408,10 @@ ALTER TABLE `floorplan`
 -- Constraints for table `record_booking`
 --
 ALTER TABLE `record_booking`
+  ADD CONSTRAINT `record_booking_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`),
+  ADD CONSTRAINT `record_booking_ibfk_2` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`),
+  ADD CONSTRAINT `record_booking_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
+  ADD CONSTRAINT `record_booking_ibfk_4` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`),
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 

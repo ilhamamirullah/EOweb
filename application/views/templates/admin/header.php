@@ -184,6 +184,11 @@
           <?php } }?>
           </ul>
         </li>
+        <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/record_book' ): ?> class="active"<?php endif; ?>>
+          <a href="<?php echo base_url();?>admin/c_admin/record_book">
+            <i class="fa fa-book"></i> <span>Record Book</span>
+          </a>
+        </li>
         <li <?php if ( $_SERVER['REQUEST_URI'] == '/debindo/admin/c_admin/eventcrud' ): ?> class="active"<?php endif; ?>>
           <a href="<?php echo base_url();?>admin/c_admin/eventcrud">
             <i class="fa fa-book"></i> <span>Event Master</span>

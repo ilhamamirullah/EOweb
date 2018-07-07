@@ -57,7 +57,11 @@
                     </form>
                     </td>
                   </tr>
-                <?php } } ?>
+                <?php } }else{ ?>
+                  <tr>
+                    <td align="top" colspan="6" class="dataTables_empty"> <center> No data available in table</center></td>
+                  </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>

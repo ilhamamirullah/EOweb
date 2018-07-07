@@ -130,7 +130,11 @@
                     class="label label-warning"
                   <?php } ?> ><?php echo $booking2->status_name ?></span></td>
               </tr>
-            <?php } }?>
+            <?php } }else{ ?>
+              <tr>
+                <td align="top" colspan="6" class="dataTables_empty"> <center> No data available in table</center></td>
+              </tr>
+            <?php } ?>
               </tbody>
             </table>
           </div>

@@ -60,7 +60,7 @@
                   </tr>
                 <?php } }else{ ?>
                   <tr>
-                    <td valign="top" colspan="6" class="dataTables_empty"> <center> No data available in table</center></td>
+                    <td align="top" colspan="6" class="dataTables_empty"> <center> No data available in table</center></td>
                   </tr>
                 <?php } ?>
                 </tbody>

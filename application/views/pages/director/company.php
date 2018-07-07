@@ -38,6 +38,7 @@
                 </thead>
                 <tbody>
                   <?php
+                  if (!empty($company)) {
                 		$no = 1;
                 		foreach($company as $company2){
                 	?>
@@ -50,7 +51,7 @@
                   <td><?php echo $company2->email ?></td>
                   <td><?php echo $company2->address ?></td>
                 </tr>
-              <?php } ?>
+              <?php } }?>
                 </tbody>
               </table>
             </div>

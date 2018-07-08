@@ -490,13 +490,13 @@ function delete_user($id)
 				if($this->form_validation->run() != false){
 				$event_name = $this->input->post('event_name');
 				$event_desc = $this->input->post('event_desc');
+				date_default_timezone_set('Asia/Jakarta');
 				$start_date = date_create($this->input->post('event_start_date'));
 				$end_date = date_create($this->input->post('event_end_date'));
-				$event_start_date = date_format($start_date, 'Y/m/d');
-				$event_end_date = date_format($end_date, 'Y/m/d');
+				$event_start_date = date_format($start_date, 'Y-m-d');
+				$event_end_date = date_format($end_date, 'Y-m-d');
 				$event_created_by = $this->session->userdata('username');
 				$event_status = "undone";
-				date_default_timezone_set('Asia/Jakarta');
 				$event_created_at = date("Y-m-d h:i:s");
 				$data = array(
 					'event_name' => $event_name,
@@ -550,8 +550,10 @@ function delete_user($id)
 					$event_id = $this->input->post('event_id');
 					$event_name = $this->input->post('event_name');
 					$event_desc = $this->input->post('event_desc');
-					$event_start_date = $this->input->post('event_start_date');
-					$event_end_date = $this->input->post('event_end_date');
+					$start_date = date_create($this->input->post('event_start_date'));
+					$end_date = date_create($this->input->post('event_end_date'));
+					$event_start_date = date_format($start_date, 'Y/d/m');
+					$event_end_date = date_format($end_date, 'Y/d/m');
 					$event_updated_by = $this->session->userdata('username');
 				$data = array(
 					'event_name' => $event_name,
@@ -602,11 +604,14 @@ function delete_user($id)
 					if($query){
 					 $data['company'] =  $query;
 					}
-				 $this->load->library('pdf');
-				 $this->pdf->setPaper('A4', 'potrait');
-				 $this->pdf->filename = "company_print.pdf";
-				 $this->pdf->load_view('pages/admin/company_print_pdf', $data);
-		}
+				 // $this->load->library('pdf');
+				 // $this->pdf->setPaper('A4', 'potrait');
+				 // $this->pdf->filename = "company_print.pdf";
+				 // $this->pdf->load_view('pages/admin/company_print_pdf', $data);
+				 $this->load->library('pdfgenerator');
+				 $html = $this->load->view('pages/admin/company_print_pdf', $data, true);
+				 $this->pdfgenerator->generate($html,'company_list');
+				}
 
 		public function print_book($event_id){
 			$data['event'] = $this->m_admin->tampil_event()->result();
@@ -618,7 +623,7 @@ function delete_user($id)
 			$data['booking'] =  $query;
 		}
 				 $this->load->library('pdf');
-				 $this->pdf->setPaper('A4', 'potrait');
+				 // $this->pdf->setPaper('A4', 'potrait');
 				 $this->pdf->filename = "book_print.pdf";
 				 $this->pdf->load_view('pages/admin/book_print_pdf', $data);
 		}

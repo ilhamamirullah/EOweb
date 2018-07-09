@@ -1,6 +1,6 @@
 <?php
 
-class m_admin extends CI_Model{
+class M_admin extends CI_Model{
 
 	function tampil_data(){
 		$this->db->select('*');
